@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.datatables.min.css"/>
+    <!--分页-->
+    <link rel="stylesheet" href="../static/assets/css/pagination.css" />
+    <script type="text/javascript" src="../static/assets/js/jquery.pagination.js"></script>
+</head>
+<body>
+<!-- content start -->
+<div class="admin-content">
+
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品</strong> / <small>列表</small></div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-md-6 am-cf">
+            <div class="am-fl am-cf">
+                <div class="am-btn-toolbar am-fl">
+                    <div class="am-btn-group am-btn-group-xs">
+                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 批量删除</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="am-u-md-3 am-cf">
+            <div class="am-fr">
+                <div class="am-input-group am-input-group-sm">
+                    <input type="text" class="am-form-field">
+                    <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form">
+                <table class="am-table am-table-striped am-table-hover table-main">
+                    <thead>
+                    <tr>
+                        <th class="table-check"><input type="checkbox" class="parent_check" /></th><th class="table-id">ID</th><th class="table-title">商品名称</th><th class="table-type">类别</th><th class="table-author">价格</th><th class="table-date">修改日期</th><th class="table-set">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="spuList">
+
+                    </tbody>
+                </table>
+                <div class="am-cf mypage">
+                    <%--显示分页条--%>
+                </div>
+                <hr />
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- content end -->
+<script type="text/javascript">
+
+    var size = 2;      //每页的数据行
+    var total = 0;     //总数据量
+    var startPage = 0;  //开始页号
+    var endPage = 0;    //尾页号
+    var hitPage = 0;    //激活页号
+    var pages = 0;    //页数
+    var showpages = 5; //分页条展示多少页数
+    var flag = 1;      //-1表示向上翻页，1表示向下翻页
+    var data;
+
+
+
+    $(function () {
+       getSpuList(1);
+
+    });
+
+    //获取商品信息列表
+    function getSpuList(pageNum) {
+         var url = "<%=basePath%>manage/spu/list?pageNum=" + pageNum +"&pageSize=" + size;
+        $.get(url,function(data){
+            total = data.total;
+            pages = Math.ceil(total / size) ;
+
+            flag = 1;
+            setContent(data.list);
+            pageInfo(startPage, endPage, flag);
+
+        });
+    }
+
+    //渲染页面
+    function setContent( data){
+        var str;
+        for(var i in data) {
+            str += '<tr>';
+            str += '<td><input type="checkbox" class="son_check" del_id="\'+ data[i].id + \'"/></td>';
+            str += '<td>' + data[i].id + '</td>';
+            str += '<td><a href="#">' + data[i].name + '</a></td>';
+            str += '<td>' + data[i].subTitle + '</td>';
+            str += '<td>' + data[i].detail + '</td>';
+            str += '<td>' + data[i].createTime + '</td>';
+            str += '<td>';
+            str += '<div class="am-btn-toolbar">';
+            str += '<div class="am-btn-group am-btn-group-xs">';
+            str += '<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>';
+            str += '<button class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</button>';
+            str += '</div>';
+            str += '</div>';
+            str += '</td>';
+            str += '</tr>';
+        }
+        if(str != "" || str != null){
+            $("#spuList").html(str);
+        }else{
+            $("#spuList").html("<br/><span style='width:50%;height:100px;display:block;margin:0 auto;'>暂无数据</span>");
+
+        }
+    }
+
+
+    //渲染点击两分页图标箭头的功能
+    function pageInfo(startPage, endPage, flag){
+        //如果startPage == 1的话，'«'图标不显示， 如果endPage >= pages, '»'图标不显示,flag判断是那个图标被点击了
+        var str2 = '';
+
+        str2 += '共'+ total + '条记录';
+        str2 += '<div class="am-fr">';
+        str2 += '<ul class="am-pagination">';
+
+        if(flag == 1){
+            if(startPage == 0) {     //初始化时
+                startPage = 1;
+            }else{
+                startPage = startPage + showpages;
+            }
+            if(hitPage <= 0) {
+                hitPage = 1;
+            }else {
+                hitPage = endPage + 1;
+            }
+            endPage = endPage + showpages;
+        }else if(flag == -1) {
+            hitPage = startPage - 1;
+            endPage = startPage -1;
+            if(hitPage <= 0){
+                hitPage = 1;
+            }
+            startPage = startPage - showpages;
+            if(startPage <= 0) {
+                startPage = 1;
+            }
+        }
+
+        if(startPage != 1) {
+            str2 += '<li class="am-disabled front"><a href="#">«</a></li>';
+        }
+
+        if(endPage > pages) {
+            endPage = pages;
+        }
+        for(var i = startPage ; i <= endPage; i++ ) {
+            if( i == hitPage){
+                if(i == startPage){
+                    str2 += '<li class="am-active startPage hitPage"><a href="javascript:void(0);">'+ i + '</a></li>';
+                }else if(i == endPage){
+                    str2 += '<li class="am-active endPage hitPage"><a href="javascript:void(0);">'+ i + '</a></li>';
+                }else {
+                    str2 += ' <li class="am-active hitPage"><a href="javascript:void(0);">'+ i + '</a></li>';
+                }
+            }else{
+                if(i == startPage){
+                    str2 += '<li class="startPage hitPage"><a href="javascript:void(0);">'+ i + '</a></li>';
+                }else if(i == endPage){
+                    str2 += '<li class="endPage hitPage"><a href="javascript:void(0);">'+ i + '</a></li>';
+                }else {
+                    str2 += ' <li class="hitPage" ><a href="javascript:void(0);">'+ i + '</a></li>';
+                }
+            }
+        }
+
+
+        if(endPage < pages){
+            str2 += '<li class="am-disabled up"><a href="#">»</a></li>';
+        }
+        str2 += '</ul>';
+        str2 += '</div>';
+        $(".mypage").html(str2);
+    }
+
+
+    //更新相应页面的渲染
+    $(document).on('click', '.hitPage', function(e) {
+        hitPage = $(this).children().text();
+        var url = "<%=basePath%>manage/spu/list?pageNum=" + hitPage + "&pageSize=" + size;
+        $.get(url, function(data){
+            setContent(data.list);
+        });
+        $(this).addClass('am-active');
+        $(this).siblings().removeClass('am-active');
+
+
+    });
+
+    $(document).on('click', '.front', function(e) {
+        startPage = parseInt($('.startPage').children().text());
+        endPage = parseInt($('.endPage').children().text());
+        var url = "<%=basePath%>manage/spu/list?pageNum=" + (startPage-1) + "&pageSize=" + size;
+        $.get(url, function(data){
+            setContent(data.list);
+        });
+        flag = -1;
+        pageInfo(startPage, endPage, flag);
+
+    });
+    $(document).on('click', '.up', function(e) {
+        startPage = parseInt($('.startPage').children().text());
+        endPage = parseInt($('.endPage').children().text());
+        var url = "<%=basePath%>manage/spu/list?pageNum=" + (endPage + 1);
+        $.get(url, function(data){
+            setContent(data.list);
+        });
+        flag = 1;
+        pageInfo(startPage, endPage, flag);
+
+    });
+
+</script>
+</body>
+</html>
