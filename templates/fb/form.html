@@ -114,7 +114,17 @@
                             <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 帐号列表
                         </a>
                     </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.groupList') }}>
+                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 小组列表
+                        </a>
+                    </li>
                 </ul>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href={{ url_for('buyerList') }}>
+                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 买手列表
+                </a>
             </li>
         </ul>
     </div>
@@ -152,7 +162,7 @@
                             </div>
                         </div>
                         <div class="widget-body am-fr">
-                            <form id="fb-form" class="am-form tpl-form-line-form" {{ url_for('form') }} method="post">
+                            <form id="fb-form" class="am-form tpl-form-line-form" {{ url_for('fb.form') }} method="post">
                                 <div class="am-form-group">
                                     <label class="am-form-label am-u-sm-2">请勾选小组</label>
                                     <div class="am-u-sm-10">

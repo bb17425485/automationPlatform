@@ -5,7 +5,7 @@
 # @Software : PyCharm
 
 from db import MysqlPool
-import configparser,random,threading,traceback
+import configparser,random,traceback,re
 from selenium import webdriver
 from time import sleep
 from datetime import datetime,timedelta
@@ -14,6 +14,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 from fake_useragent import UserAgent
 from logger import Logger
 
@@ -24,6 +25,120 @@ error_log = Logger('log/error.log', level='error')
 # log.logger.warning('警告')
 # log.logger.error('报错')
 # log.logger.critical('严重')
+
+def groupTask():
+    config = configparser.RawConfigParser()
+    config.read("fb-user.ini", encoding="utf-8")
+    keywords = ["amazon code","amazon coupons","the deals","super deal"]
+    for i, account in enumerate(config):
+        if i == 2:
+            acc = {}
+            ua = config[account]['user-agent']
+            cookies = config[account]['cookies']
+            acc['account'] = account
+            acc['cookies'] = cookies
+            acc['user-agent'] = ua
+            collectionGroup(acc,keywords)
+
+
+def collectionGroup(acc,keywrods):
+    options = webdriver.ChromeOptions()
+    options.add_argument("user-agent=" + acc['user-agent'])
+    prefs = {
+        'profile.default_content_setting_values': {
+            'notifications': 2
+        }
+    }
+    options.add_experimental_option('prefs', prefs)
+    options.add_argument("--start-maximized")
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(options=options)
+    driver.get("https://www.baidu.com/")
+    if type('') is type(acc['cookies']):
+        cookie_list = eval(acc['cookies'])
+    else:
+        cookie_list = acc['cookies']
+    for cookie in cookie_list:
+        driver.add_cookie(cookie_dict=cookie)
+    for keyword in keywrods:
+        # 公开小组 & 非公开小组
+        group_types = ["&epa=FILTERS&filters=eyJncm91cHNfc2hvd19vbmx5Ijoie1wibmFtZVwiOlwicHVibGljX2dyb3Vwc1wiLFwiYXJnc1wiOlwiXCJ9In0%3D","&epa=FILTERS&filters=eyJncm91cHNfc2hvd19vbmx5Ijoie1wibmFtZVwiOlwiY2xvc2VkX2dyb3Vwc1wiLFwiYXJnc1wiOlwiXCJ9In0%3D"]
+        for group_num,group in enumerate(group_types):
+            driver.get("https://www.facebook.com/search/groups/?q=%s"%keyword+group)
+            WebDriverWait(driver, 5).until(
+                EC.visibility_of_element_located((By.XPATH,'//div[@id="BrowseResultsContainer"]')))
+            for i in range(15):
+                ActionChains(driver).send_keys(Keys.END).perform()
+                sleep(1.5)
+                if i > 10:
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            EC.visibility_of_element_located((By.ID, 'browse_end_of_results_footer')))
+                        break
+                    except:
+                        pass
+            divs = driver.find_elements_by_xpath('//div[@id="BrowseResultsContainer"]/../div')
+            for j,div in enumerate(divs):
+                if j == 0:
+                    proDivs = div.find_elements_by_xpath('./div')
+                elif j == 1:
+                    proDivs = div.find_elements_by_xpath('./div/div/div')
+                else:
+                    proDivs = div.find_elements_by_xpath('./div/div')
+                if len(proDivs) <= 1:
+                    break
+                for pro in proDivs:
+                    pro_url = pro.find_element_by_tag_name('a').get_attribute("href")
+                    if group_num == 0:
+                        pro_url = re.sub("\?.*", "members/", pro_url)
+                    js = 'window.open("' + pro_url + '")'
+                    driver.execute_script(js)
+                    driver.switch_to.window(driver.window_handles[1])
+                    try:
+                        if group_num == 0:
+                            WebDriverWait(driver, 5).until(
+                                EC.visibility_of_element_located((By.XPATH, '//div[@id="groupsMemberBrowser"]')))
+                        else:
+                            WebDriverWait(driver, 5).until(
+                                EC.visibility_of_element_located((By.XPATH, '//div[@id="content_container"]')))
+                        group_name = driver.find_element_by_xpath('//div[@data-testid="group_sidebar_nav"]//a').text
+                        group_admin = ""
+                        if group_num == 0:
+                            nums = driver.find_element_by_xpath('//div[@id="groupsMemberBrowser"]//span').text.replace(",","")
+                            admins_div = driver.find_elements_by_xpath('//div[@data-testid="GroupAdminGrid"]/ul/div')
+                            for admin_div in admins_div:
+                                group_admin += admin_div.find_element_by_tag_name('img').get_attribute("aria-label") + "|"
+                        else:
+                            nums = driver.find_element_by_xpath('//div[@id="pagelet_group_about"]/div[2]//span').text.replace("成员 · ","").replace(",","")
+                            admins_div = driver.find_elements_by_xpath('//div[@id="pagelet_group_about"]/div[2]/div[2]/div[2]/a')
+                            for admin_div in admins_div:
+                                group_admin += admin_div.find_element_by_tag_name('img').get_attribute("aria-label") + "|"
+                        if int(nums) < 4000:
+                            error_log.logger.error("-----%s人数为%s，跳过-----"%(group_name,nums))
+                            driver.close()
+                            driver.switch_to.window(driver.window_handles[0])
+                            continue
+                        driver.close()
+                        driver.switch_to.window(driver.window_handles[0])
+                        mp = MysqlPool()
+                        sql = "insert into tb_group(name,nums,admins,type,url,add_time) values(%s,%s,%s,%s,%s,now())"
+                        param = [filter_str(group_name),nums,filter_str(group_admin),group_num,pro_url]
+                        try:
+                            mp.insert(sql,param)
+                            all_log.logger.info("-----%s入库成功-----"% group_name)
+                        except:
+                            error_log.logger.error("-----%s已入库，跳过-----" % group_name)
+                        sleep(1)
+                    except:
+                        traceback.print_exc()
+                        error_log.logger.error("*****获取%s信息出错*****"%pro_url)
+                        driver.close()
+                        driver.switch_to.window(driver.window_handles[0])
+
+
+
+
+
 
 
 def getTask():
@@ -407,5 +522,11 @@ def doComment(acc,task,content):
     finally:
         driver.quit()
 
+def filter_str(desstr, restr=''):
+    # 过滤除中英文及数字及英文标点以外的其他字符
+    res = re.compile("[^\u4e00-\u9fa5^. !//_,$&%^*()<>+\"'?@#-|:~{}+|—^a-z^A-Z^0-9]")
+    return res.sub(restr, desstr)
+
 if __name__ == "__main__":
-    getTask()
+    # getTask()
+    groupTask()

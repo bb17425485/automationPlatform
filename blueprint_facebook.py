@@ -185,3 +185,47 @@ def parserToJson(config):
 
 def allowed_file(filename):
     return '.' in filename
+
+@fb.route('/groupList')
+@login_required
+def groupList():
+    return render_template("fb/group-list.html", user=session.get('user'))
+
+@fb.route('/getGroupData',methods=['POST'])
+def getGroupData():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "select * from tb_group where 1=1 "
+    param = []
+    try:
+        if json_data.get('type'):
+            sql += "and type=%s "
+            param.append(json_data.get('type'))
+    except:
+        pass
+    try:
+        if json_data.get('name'):
+            name = '%' + str(json_data.get('name')) + '%'
+            sql += " and name like %s "
+            param.append(name)
+    except:
+        pass
+    try:
+        if json_data.get('bigNum'):
+            sql += " and nums < %s "
+            param.append(json_data.get('bigNum'))
+    except:
+        pass
+    try:
+        if json_data.get('smallNum'):
+            sql += " and nums > %s "
+            param.append(json_data.get('smallNum'))
+    except:
+        pass
+    sql += "order by nums desc"
+    group_list = mp.fetch_all(sql,param)
+    res_json = {"code":"0000","list":group_list}
+    return jsonify(res_json)

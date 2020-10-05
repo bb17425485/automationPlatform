@@ -10,26 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="icon" type="image/png" href="../../static/assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="../../static/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="../static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../static/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <script src="../../static/assets/js/echarts.min.js"></script>
-    <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../static/assets/css/amazeui.datatables.min.css"/>
-    <link rel="stylesheet" href="../../static/assets/css/app.css">
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/reset.css"/>
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/pagination.css"/>
-    <script src="../../static/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/jquery.pagination_js/js/jquery.pagination.js"></script>
+    <script src="../static/assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.datatables.min.css"/>
+    <link rel="stylesheet" href="../static/assets/css/app.css">
+    <link rel="stylesheet" href="../static/jquery.pagination_js/css/reset.css"/>
+    <link rel="stylesheet" href="../static/jquery.pagination_js/css/pagination.css"/>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/jquery.pagination_js/js/jquery.pagination.js"></script>
 </head>
 <body data-type="widgets">
-<script src="../../static/assets/js/theme.js"></script>
+<script src="../static/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
     <!-- 头部 -->
     <header>
         <!-- logo -->
         <div class="am-fl tpl-header-logo">
-            <a href="javascript:;"><img src="../../static/assets/img/logo.png" alt=""></a>
+            <a href="javascript:;"><img src="../static/assets/img/logo.png" alt=""></a>
         </div>
         <!-- 右侧内容 -->
         <div class="tpl-header-fluid">
@@ -86,9 +86,9 @@
                     <i class="am-icon-table sidebar-nav-link-logo"></i> FB模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub"  style="display: block;">
+                <ul class="sidebar-nav sidebar-nav-sub">
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.fbList') }} class="sub-active">
+                        <a href={{ url_for('fb.fbList') }}>
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
                         </a>
                     </li>
@@ -116,7 +116,7 @@
                 </ul>
             </li>
             <li class="sidebar-nav-link">
-                <a href={{ url_for('buyerList') }}>
+                <a href={{ url_for('buyerList') }} class="sub-active">
                     <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 买手列表
                 </a>
             </li>
@@ -129,26 +129,31 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">Facebook任务列表</div>
+                            <div class="widget-title  am-cf">买手列表</div>
                         </div>
                         <div class="widget-body  am-fr">
                             <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
                                 <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="state">
-                                        <option value="none">选择状态</option>
-                                        <option value="working">进行中</option>
-                                        <option value="finish">已完成</option>
+                                    <select data-am-selected="{btnSize: 'sm'}" id="group_type">
+                                        <option value="none">选择类型</option>
+                                        <option value="0">公开</option>
+                                        <option value="1">非公开</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-2">
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
                                 <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="group_id" placeholder="请输入群组"/>
+                                    <input type="text" class="am-form-field" id="small_num" placeholder="人数大于"/>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
+                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                    <input type="text" class="am-form-field" id="big_num" placeholder="人数小于"/>
                                 </div>
                             </div>
                             <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
                                 <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
+                                    <input type="text" class="am-form-field" id="group_name" placeholder="请输入群组关键词"/>
                                     <span class="am-input-group-btn">
                                         <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
                                                 type="button" onclick="submitOpt()"></button>
@@ -161,37 +166,14 @@
                                        id="example-r">
                                     <thead>
                                     <tr>
-                                        <th width="30%">群组</th>
-                                        <th width="10%">关键词</th>
-                                        <th width="6%">发帖数</th>
-                                        <th width="6%">分享数</th>
-                                        <th width="6%">完成数</th>
-                                        <th width="10%">状态</th>
-                                        <th width="16%">添加时间</th>
-                                        <th width="16%">完成时间</th>
+                                        <th>买手姓名</th>
+                                        <th>PayPal</th>
+                                        <th>ASIN</th>
+                                        <th>添加时间</th>
+                                        <th>profile</th>
                                     </tr>
                                     </thead>
                                     <tbody id="list-tbody">
-                                    {#                                    {% for post in post_list %}#}
-                                    {#                                        {% if loop.index/2 != 0 %}#}
-                                    {#                                            <tr class="gradeX">#}
-                                    {#                                                {% else %}#}
-                                    {#                                            <tr class="even gradeC">#}
-                                    {#                                        {% endif %}#}
-                                    {#                                    <td>{{ post.group_id }}</td>#}
-                                    {#                                    <td>{{ post.keyword }}</td>#}
-                                    {#                                    <td>{{ post.nums }}</td>#}
-                                    {#                                    {% if post.state == 'working' %}#}
-                                    {#                                        <td class="am-warning">进行中</td>#}
-                                    {#                                    {% elif post.state == 'finish' %}#}
-                                    {#                                        <td class="am-success">已完成</td>#}
-                                    {#                                    {% else %}#}
-                                    {#                                        <td>未知</td>#}
-                                    {#                                    {% endif %}#}
-                                    {#                                    <td>{{ post.add_time }}</td>#}
-                                    {#                                    <td>{{ post.finish_time }}</td>#}
-                                    {#                                    </tr>#}
-                                    {#                                    {% endfor %}#}
                                     </tbody>
                                 </table>
                             </div>
@@ -210,10 +192,10 @@
         </div>
     </div>
 </div>
-<script src="../../static/assets/js/amazeui.min.js"></script>
-<script src="../../static/assets/js/amazeui.datatables.min.js"></script>
-<script src="../../static/assets/js/dataTables.responsive.min.js"></script>
-<script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/post-list.js"></script>
+<script src="../static/assets/js/amazeui.min.js"></script>
+<script src="../static/assets/js/amazeui.datatables.min.js"></script>
+<script src="../static/assets/js/dataTables.responsive.min.js"></script>
+<script src="../static/assets/js/app.js"></script>
+<script src="../static/assets/js/buyer-list.js"></script>
 </body>
 </html>

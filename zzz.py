@@ -5,7 +5,7 @@
 # @Software : PyCharm
 
 from db import MysqlPool
-import random,string,configparser
+import random,string,configparser,re
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -35,15 +35,37 @@ class DownThread:
             n -= 1
             time.sleep(1)
 
+def filter_emoji(desstr, restr=''):
+    # 过滤表情
+    res = re.compile(u'[\U00010000-\U0010ffff\\uD800-\\uDBFF\\uDC00-\\uDFFF]')
+    return res.sub(restr, desstr)
+
+def filter_str(desstr, restr=''):
+    # 过滤除中英文及数字及英文标点以外的其他字符
+    res = re.compile("[^\u4e00-\u9fa5^. !//_,$&%^*()<>+\"'?@#-|:~{}+|—^a-z^A-Z^0-9]")
+    return res.sub(restr, desstr)
 
 if __name__ == '__main__':
-    c = DownThread()
-    t = threading.Thread(target=c.run, args=(10,))
-    t.start()
-    time.sleep(3)
-    c.terminate()
-    t.join()
-    t.is_alive()
+    # b = "aaaa"
+    # c = "bbbbbbbbbbbb"
+    # a = 'https://www.facebook.com/groups/436275050546458/?ref=br_rs%s'%b+c
+    b = "💥💥💥Promotions, Great Deals& Coupons💥💥💥"
+    r3 = "[.!//_,$&%^*()<>+\"'?@#-|:~{}]+|[——！\\\\，。=？、：“”‘'《》【】￥……（）]+"
+    # a = ["a","b"]
+    # for i,v in enumerate(a):
+    #     print(i)
+    # p = re.compile("\?.*")
+    # print(re.sub(r3, "",b))
+    print(filter_str(b))
+
+
+    # c = DownThread()
+    # t = threading.Thread(target=c.run, args=(10,))
+    # t.start()
+    # time.sleep(3)
+    # c.terminate()
+    # t.join()
+    # t.is_alive()
 
 
 

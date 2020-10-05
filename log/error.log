@@ -1,8 +1,677 @@
-2020-09-30 01:22:50,642 - D:/PycharmProjects/automationPlatform/1.py[line:44] - ERROR: error
-2020-09-30 01:44:09,122 - D:/PycharmProjects/automationPlatform/fbJob.py[line:355] - ERROR: -----未找到8RGXGPQ8的帖子,此任务跳过-----
-2020-09-30 01:46:52,042 - D:/PycharmProjects/automationPlatform/fbJob.py[line:355] - ERROR: -----未找到8RGXGPQ8的帖子,此任务跳过-----
-2020-09-30 01:47:17,588 - D:/PycharmProjects/automationPlatform/fbJob.py[line:284] - ERROR: -----Coupons, Codes, Deals, Krazy Glitches & Steals!!回答问题报错-----
-2020-09-30 01:48:10,490 - D:/PycharmProjects/automationPlatform/fbJob.py[line:284] - ERROR: -----Coupons, Codes, Deals, Krazy Glitches & Steals!!回答问题报错-----
-2020-09-30 01:49:05,193 - D:/PycharmProjects/automationPlatform/fbJob.py[line:355] - ERROR: -----未找到8RGXGPQ8的帖子,此任务跳过-----
-2020-09-30 01:49:44,668 - D:/PycharmProjects/automationPlatform/fbJob.py[line:388] - ERROR: *****Crazy Discount Codes分享失败-此贴无分享功能*****
-2020-09-30 01:59:18,067 - D:/PycharmProjects/automationPlatform/fbJob.py[line:355] - ERROR: -----未找到8RGXGPQ8的帖子,此任务跳过-----
+2020-10-01 21:30:56,219 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:31:40,927 - ERROR: -----Run Run Deals Coupons Codes无需回答问题-----
+2020-10-01 21:32:19,134 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:33:09,396 - ERROR: -----Run Run Deals Coupons Codes无需回答问题-----
+2020-10-01 21:33:56,064 - ERROR: -----Run Run Deals Coupons Codes无需回答问题-----
+2020-10-01 21:34:44,670 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:35:32,261 - ERROR: -----Run Run Deals Coupons Codes无需回答问题-----
+2020-10-01 21:35:56,855 - ERROR: -----查找群组Super Savings (Codes, Deals, Coupons 10-99% off)出错-----
+2020-10-01 21:54:32,967 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:55:20,894 - ERROR: -----Run Run Deals Coupons Codes未找到8RGXGPQ8的帖子,此任务跳过-----
+2020-10-01 21:56:40,306 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:58:00,979 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:58:42,760 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-01 21:59:23,127 - ERROR: -----查找群组Run Run Deals Coupons Codes出错-----
+2020-10-02 14:18:29,706 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 14:18:34,374 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 14:18:39,193 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 14:18:44,087 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 14:18:48,437 - ERROR: -----Amazon Online shopping已入库，跳过-----
+2020-10-02 14:18:58,430 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 14:19:03,500 - ERROR: -----Super Savings (Codes, Deals, Coupons 🔥🔥10-99% off)已入库，跳过-----
+2020-10-02 14:19:15,204 - ERROR: -----💥💥💥Promotions, Great Deals& Coupons💥💥💥已入库，跳过-----
+2020-10-02 15:44:41,922 - ERROR: -----AMAZON CANADA REVIEW人数为199，跳过-----
+2020-10-02 15:51:00,245 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 15:51:05,550 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 15:51:11,106 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 15:51:16,009 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 15:51:20,570 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 15:51:24,819 - ERROR: -----Amazon Online shopping已入库，跳过-----
+2020-10-02 15:51:29,412 - ERROR: -----Amazon canada reviewers已入库，跳过-----
+2020-10-02 15:51:35,217 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 15:51:38,910 - ERROR: -----AMAZON CANADA REVIEW人数为199，跳过-----
+2020-10-02 15:51:41,892 - ERROR: -----Marcazon - Amazon CA Deals, Discounts, Coupons and more!!人数为3530，跳过-----
+2020-10-02 15:52:13,699 - ERROR: -----Amazon sales code NO Review %10-%99 OFF人数为323，跳过-----
+2020-10-02 15:52:21,294 - ERROR: -----Amazon deals and steals人数为1027，跳过-----
+2020-10-02 15:52:28,465 - ERROR: -----Amazon Italy code NO Review %10-%99 OFF人数为348，跳过-----
+2020-10-02 15:52:36,610 - ERROR: -----50%-99% Off Amazon Code and Deals人数为3007，跳过-----
+2020-10-02 15:52:53,383 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 15:53:15,535 - ERROR: -----Amazon Deals,Codes-Coupons & US人数为3804，跳过-----
+2020-10-02 15:53:18,075 - ERROR: -----[NO REVIEW] Best Amazon Deals /Discount /Codes /Coupons 50%off- 99%off人数为2256，跳过-----
+2020-10-02 15:53:30,578 - ERROR: -----Unreal Deals! Discounts, Glitches, Codes, & Coupons!人数为3234，跳过-----
+2020-10-02 15:53:52,038 - ERROR: -----Amazon Weekly Hot Deals人数为1534，跳过-----
+2020-10-02 15:54:09,114 - ERROR: -----Amazon 30%-99% Off Deals & Coupons (US)人数为1280，跳过-----
+2020-10-02 15:54:12,038 - ERROR: -----Amazon Prime/ Netflix recommendations also Tv Series人数为3062，跳过-----
+2020-10-02 15:54:15,385 - ERROR: -----Amazon discounts and deals, promo codes and more人数为570，跳过-----
+2020-10-02 15:54:22,829 - ERROR: -----Amazon reviewers group US /CA /UK/DE人数为2217，跳过-----
+2020-10-02 15:54:26,196 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3049，跳过-----
+2020-10-02 15:54:54,994 - ERROR: -----No review 10% to 99% off code Amazon deals人数为577，跳过-----
+2020-10-02 15:55:02,713 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 15:55:39,586 - ERROR: -----Maga Deals Code & coupons人数为2566，跳过-----
+2020-10-02 15:55:42,749 - ERROR: -----"Amazon Buyers & Sellers Community人数为1495，跳过-----
+2020-10-02 15:55:50,498 - ERROR: -----Daily Best Amazon Deals, Codes & Coupons人数为732，跳过-----
+2020-10-02 15:55:58,878 - ERROR: -----Best deals and promo codes Kids toys & games人数为3650，跳过-----
+2020-10-02 15:56:16,907 - ERROR: -----Amazon reviewers canada人数为170，跳过-----
+2020-10-02 15:56:25,250 - ERROR: -----Amazon Canada REviewer人数为2024，跳过-----
+2020-10-02 15:56:32,103 - ERROR: -----CA Review Group人数为1391，跳过-----
+2020-10-02 15:56:54,302 - ERROR: -----Amazon Online Shopping已入库，跳过-----
+2020-10-02 15:56:58,259 - ERROR: -----No Review, 10% to 90% Off Codes/Deals Group 🇺🇸🎁人数为1249，跳过-----
+2020-10-02 16:01:09,354 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 16:01:13,772 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 16:01:18,757 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 16:01:23,088 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 16:01:27,516 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 16:01:31,751 - ERROR: -----Amazon Online shopping已入库，跳过-----
+2020-10-02 16:01:36,636 - ERROR: -----Amazon canada reviewers已入库，跳过-----
+2020-10-02 16:01:40,809 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 16:01:45,169 - ERROR: -----AMAZON CANADA REVIEW人数为199，跳过-----
+2020-10-02 16:01:48,162 - ERROR: -----Marcazon - Amazon CA Deals, Discounts, Coupons and more!!人数为3530，跳过-----
+2020-10-02 16:01:52,105 - ERROR: -----Amazon Reviewers Group已入库，跳过-----
+2020-10-02 16:01:56,372 - ERROR: -----Super Deals, Code & Coupons已入库，跳过-----
+2020-10-02 16:02:00,947 - ERROR: -----Coupons, Codes, Glitches & Deals Under $10 🔥🛒🎁已入库，跳过-----
+2020-10-02 16:02:05,328 - ERROR: -----Super Savings (Codes, Deals, Coupons 🔥🔥10-99% off)已入库，跳过-----
+2020-10-02 16:02:09,411 - ERROR: -----Deals And Code For USA已入库，跳过-----
+2020-10-02 16:02:13,253 - ERROR: -----Upto 99% Off Deals with Codes已入库，跳过-----
+2020-10-02 16:02:17,179 - ERROR: -----Amazon sales code NO Review %10-%99 OFF人数为323，跳过-----
+2020-10-02 16:02:20,834 - ERROR: -----Amazing Codes and Savings!已入库，跳过-----
+2020-10-02 16:02:24,983 - ERROR: -----Amazon deals and steals人数为1027，跳过-----
+2020-10-02 16:02:27,882 - ERROR: -----Amazon Kindle and Print Book Promotion已入库，跳过-----
+2020-10-02 16:02:31,612 - ERROR: -----Amazon Italy code NO Review %10-%99 OFF人数为348，跳过-----
+2020-10-02 16:02:34,825 - ERROR: -----US Amazon Reviewers,Codes,Coupons,Deals Group已入库，跳过-----
+2020-10-02 16:02:38,784 - ERROR: -----Amazing Deals & Codes已入库，跳过-----
+2020-10-02 16:02:42,638 - ERROR: -----50%-99% Off Amazon Code and Deals人数为3007，跳过-----
+2020-10-02 16:02:46,524 - ERROR: -----Amazon Deals已入库，跳过-----
+2020-10-02 16:02:51,523 - ERROR: -----Code Queen's Amazing $20 & Under Deals|Codes|Glitches👑👑已入库，跳过-----
+2020-10-02 16:02:56,015 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 16:03:01,324 - ERROR: -----Sweet Deals Finder已入库，跳过-----
+2020-10-02 16:03:05,375 - ERROR: -----💥💥💥Promotions, Great Deals& Coupons💥💥💥已入库，跳过-----
+2020-10-02 16:03:10,643 - ERROR: -----Amazing Deals and codes US已入库，跳过-----
+2020-10-02 16:03:15,098 - ERROR: -----crazy deals coupon cods Glitches Freebies已入库，跳过-----
+2020-10-02 16:03:19,178 - ERROR: -----Amazon Deals,Codes-Coupons & US人数为3804，跳过-----
+2020-10-02 16:03:21,642 - ERROR: -----[NO REVIEW] Best Amazon Deals /Discount /Codes /Coupons 50%off- 99%off人数为2256，跳过-----
+2020-10-02 16:03:25,149 - ERROR: -----Deals & Discounts Community已入库，跳过-----
+2020-10-02 16:03:29,244 - ERROR: -----Deals and codes community 🔥🔥🔥已入库，跳过-----
+2020-10-02 16:03:33,217 - ERROR: -----Unreal Deals! Discounts, Glitches, Codes, & Coupons!人数为3234，跳过-----
+2020-10-02 16:03:36,242 - ERROR: -----Refund After Shipped - Amazon已入库，跳过-----
+2020-10-02 16:03:40,352 - ERROR: -----AMAZON , FLIPKART , EBAY BEST OFFERS已入库，跳过-----
+2020-10-02 16:03:44,707 - ERROR: -----Coupons Deals & Codes 🌺🌸Ali’s Deals🌺🌸已入库，跳过-----
+2020-10-02 16:03:48,956 - ERROR: -----Code Queen's Amazing Baby, Kids, & Mom Deals🍭🤱🚼🍼👨‍👩‍👧‍👦🪅已入库，跳过-----
+2020-10-02 16:03:53,245 - ERROR: -----Amazon Deals Discount Free Item Group 🔥🔥已入库，跳过-----
+2020-10-02 16:03:57,864 - ERROR: -----USA Coupon Codes & Discount Deals | Save on Amazon Promos已入库，跳过-----
+2020-10-02 16:04:01,878 - ERROR: -----Amazon 30%-99% Off Deals & Coupons (US)人数为1280，跳过-----
+2020-10-02 16:04:05,470 - ERROR: -----DEALS N’ STEALS , PROMO CODES, GLITCHES, And FREEBIES已入库，跳过-----
+2020-10-02 16:04:09,879 - ERROR: -----Amazon Prime/ Netflix recommendations also Tv Series人数为3062，跳过-----
+2020-10-02 16:04:13,045 - ERROR: -----Amazon discounts and deals, promo codes and more人数为570，跳过-----
+2020-10-02 16:04:16,479 - ERROR: -----Save With Codes已入库，跳过-----
+2020-10-02 16:04:20,907 - ERROR: -----Amazon reviewers group US /CA /UK/DE人数为2217，跳过-----
+2020-10-02 16:04:24,126 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3049，跳过-----
+2020-10-02 16:04:27,230 - ERROR: -----Germany - Schnäppchen, Angebote, Codes, Deals and More!已入库，跳过-----
+2020-10-02 16:04:32,002 - ERROR: -----Amazon Deals /Discount Codes /Coupons 50%off -99%off已入库，跳过-----
+2020-10-02 16:04:36,766 - ERROR: -----Amazon Save with Us - Discounts, Codes, Deals, Coupons (US)已入库，跳过-----
+2020-10-02 16:04:40,837 - ERROR: -----Deals and Codes Group已入库，跳过-----
+2020-10-02 16:04:46,914 - ERROR: -----Amazing - Deals & Codes 🛍已入库，跳过-----
+2020-10-02 16:04:50,768 - ERROR: -----No review 10% to 99% off code Amazon deals人数为577，跳过-----
+2020-10-02 16:04:54,337 - ERROR: -----🔥Special PROMOTIONS🔥⚡NO REVIEW ⚡ FREEBIES - GREAT DEALS已入库，跳过-----
+2020-10-02 16:04:58,480 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 16:05:01,811 - ERROR: -----亚马逊US测评群 🔥🔥 US 50%-99% Big Deal Code Promotion Discount 🔥🔥已入库，跳过-----
+2020-10-02 16:05:06,728 - ERROR: -----Marv's Codes, Deals, Steals, Freebies & Glitches已入库，跳过-----
+2020-10-02 16:05:11,426 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 16:05:15,662 - ERROR: -----Mega Deals, Codes & Coupons已入库，跳过-----
+2020-10-02 16:05:22,246 - ERROR: -----Amazon, Google Play, iTunes Apstore, Xbox Gift card and giveaway已入库，跳过-----
+2020-10-02 16:05:27,340 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 16:05:31,305 - ERROR: -----Maga Deals Code & coupons人数为2566，跳过-----
+2020-10-02 16:05:34,345 - ERROR: -----"Amazon Buyers & Sellers Community人数为1495，跳过-----
+2020-10-02 16:05:37,179 - ERROR: -----Amazon Virtual Assistants已入库，跳过-----
+2020-10-02 16:05:40,950 - ERROR: -----Daily Best Amazon Deals, Codes & Coupons人数为732，跳过-----
+2020-10-02 16:05:44,188 - ERROR: -----Pokémon Go Worldwide Gift Exchange已入库，跳过-----
+2020-10-02 16:05:48,439 - ERROR: -----Best deals and promo codes Kids toys & games人数为3650，跳过-----
+2020-10-02 16:05:51,457 - ERROR: -----Bomb Deals Baby Edition- Promo Codes & More已入库，跳过-----
+2020-10-02 16:05:55,678 - ERROR: -----Great Freebies, Glitches , Deals, Codes For Coupons, Couponers, Couponing已入库，跳过-----
+2020-10-02 16:06:02,019 - ERROR: -----Bomb Deals - Promo Codes - Coupons已入库，跳过-----
+2020-10-02 16:06:06,304 - ERROR: -----Amazon reviewers canada人数为170，跳过-----
+2020-10-02 16:06:09,318 - ERROR: -----Amazon FBA Private Label Secrets已入库，跳过-----
+2020-10-02 16:06:13,423 - ERROR: -----Amazon Canada REviewer人数为2024，跳过-----
+2020-10-02 16:06:17,055 - ERROR: -----USA Deal Code Promotion Discount已入库，跳过-----
+2020-10-02 16:06:21,132 - ERROR: -----CA Review Group人数为1391，跳过-----
+2020-10-02 16:06:24,150 - ERROR: -----Bewitching Deals & Freebies Canada已入库，跳过-----
+2020-10-02 16:06:27,976 - ERROR: -----Amazon AWS Certified已入库，跳过-----
+2020-10-02 16:06:32,843 - ERROR: -----Amazon BootCamp Pakistan已入库，跳过-----
+2020-10-02 16:06:37,175 - ERROR: -----USA,UK,IT,FR,DE,SE,GER,AU Amazon review,Coupons, Codes, Deals已入库，跳过-----
+2020-10-02 16:06:41,879 - ERROR: -----Amazon Online Shopping已入库，跳过-----
+2020-10-02 16:06:45,456 - ERROR: -----No Review, 10% to 90% Off Codes/Deals Group 🇺🇸🎁人数为1249，跳过-----
+2020-10-02 16:06:48,405 - ERROR: -----Amazon Coupon/ Review/ No Review Group-Us已入库，跳过-----
+2020-10-02 16:06:53,168 - ERROR: -----Awesome Deals, Online Codes, Black Friday Sales, Promos & Cyber Shopping已入库，跳过-----
+2020-10-02 16:06:56,882 - ERROR: -----Amazon Weekly Hot Deals人数为1534，跳过-----
+2020-10-02 16:12:07,297 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 16:12:11,699 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 16:12:16,587 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 16:12:20,805 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 16:12:25,237 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 16:12:34,929 - ERROR: -----Amazon Online shopping已入库，跳过-----
+2020-10-02 16:12:39,539 - ERROR: -----Amazon canada reviewers已入库，跳过-----
+2020-10-02 16:12:43,734 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 16:12:47,650 - ERROR: -----AMAZON CANADA REVIEW人数为199，跳过-----
+2020-10-02 16:12:50,753 - ERROR: -----Amazon Reviewers Group已入库，跳过-----
+2020-10-02 16:12:54,625 - ERROR: -----Marcazon - Amazon CA Deals, Discounts, Coupons and more!!人数为3530，跳过-----
+2020-10-02 16:12:57,778 - ERROR: -----Super Deals, Code & Coupons已入库，跳过-----
+2020-10-02 16:13:02,061 - ERROR: -----Coupons, Codes, Glitches & Deals Under $10 🔥🛒🎁已入库，跳过-----
+2020-10-02 16:13:06,400 - ERROR: -----Super Savings (Codes, Deals, Coupons 🔥🔥10-99% off)已入库，跳过-----
+2020-10-02 16:13:10,520 - ERROR: -----Deals And Code For USA已入库，跳过-----
+2020-10-02 16:13:14,718 - ERROR: -----Upto 99% Off Deals with Codes已入库，跳过-----
+2020-10-02 16:13:18,555 - ERROR: -----Amazon sales code NO Review %10-%99 OFF人数为323，跳过-----
+2020-10-02 16:13:22,119 - ERROR: -----Amazing Codes and Savings!已入库，跳过-----
+2020-10-02 16:13:26,966 - ERROR: -----Amazon Kindle and Print Book Promotion已入库，跳过-----
+2020-10-02 16:13:30,703 - ERROR: -----Amazon deals and steals人数为1027，跳过-----
+2020-10-02 16:13:33,938 - ERROR: -----Amazon Italy code NO Review %10-%99 OFF人数为348，跳过-----
+2020-10-02 16:13:37,626 - ERROR: -----US Amazon Reviewers,Codes,Coupons,Deals Group已入库，跳过-----
+2020-10-02 16:13:41,686 - ERROR: -----Amazing Deals & Codes已入库，跳过-----
+2020-10-02 16:13:45,548 - ERROR: -----50%-99% Off Amazon Code and Deals人数为3007，跳过-----
+2020-10-02 16:13:48,595 - ERROR: -----Amazon Deals已入库，跳过-----
+2020-10-02 16:13:53,416 - ERROR: -----Code Queen's Amazing $20 & Under Deals|Codes|Glitches👑👑已入库，跳过-----
+2020-10-02 16:13:58,087 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 16:14:02,970 - ERROR: -----Sweet Deals Finder已入库，跳过-----
+2020-10-02 16:14:09,548 - ERROR: -----💥💥💥Promotions, Great Deals& Coupons💥💥💥已入库，跳过-----
+2020-10-02 16:14:13,797 - ERROR: -----Amazing Deals and codes US已入库，跳过-----
+2020-10-02 16:14:17,809 - ERROR: -----crazy deals coupon cods Glitches Freebies已入库，跳过-----
+2020-10-02 16:14:21,810 - ERROR: -----Amazon Deals,Codes-Coupons & US人数为3804，跳过-----
+2020-10-02 16:14:24,539 - ERROR: -----Only（50%-99%）NO PP/NO REVIEW-US Code Deal Amazon人数为274，跳过-----
+2020-10-02 16:14:27,703 - ERROR: -----[NO REVIEW] Best Amazon Deals /Discount /Codes /Coupons 50%off- 99%off人数为2256，跳过-----
+2020-10-02 16:14:30,835 - ERROR: -----Deals and codes community 🔥🔥🔥已入库，跳过-----
+2020-10-02 16:14:35,177 - ERROR: -----Unreal Deals! Discounts, Glitches, Codes, & Coupons!人数为3234，跳过-----
+2020-10-02 16:14:38,506 - ERROR: -----Refund After Shipped - Amazon已入库，跳过-----
+2020-10-02 16:14:42,787 - ERROR: -----AMAZON , FLIPKART , EBAY BEST OFFERS已入库，跳过-----
+2020-10-02 16:14:47,037 - ERROR: -----Coupons Deals & Codes 🌺🌸Ali’s Deals🌺🌸已入库，跳过-----
+2020-10-02 16:14:51,367 - ERROR: -----Code Queen's Amazing Baby, Kids, & Mom Deals🍭🤱🚼🍼👨‍👩‍👧‍👦🪅已入库，跳过-----
+2020-10-02 16:14:55,651 - ERROR: -----Amazon Deals Discount Free Item Group 🔥🔥已入库，跳过-----
+2020-10-02 16:14:59,776 - ERROR: -----USA Coupon Codes & Discount Deals | Save on Amazon Promos已入库，跳过-----
+2020-10-02 16:15:03,554 - ERROR: -----Amazon 30%-99% Off Deals & Coupons (US)人数为1280，跳过-----
+2020-10-02 16:15:06,712 - ERROR: -----Amazon Prime/ Netflix recommendations also Tv Series人数为3062，跳过-----
+2020-10-02 16:15:09,905 - ERROR: -----DEALS N’ STEALS , PROMO CODES, GLITCHES, And FREEBIES已入库，跳过-----
+2020-10-02 16:15:13,842 - ERROR: -----Amazon discounts and deals, promo codes and more人数为570，跳过-----
+2020-10-02 16:15:17,773 - ERROR: -----Save With Codes已入库，跳过-----
+2020-10-02 16:15:21,480 - ERROR: -----Amazon reviewers group US /CA /UK/DE人数为2261，跳过-----
+2020-10-02 16:15:24,479 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3325，跳过-----
+2020-10-02 16:15:28,049 - ERROR: -----Germany - Schnäppchen, Angebote, Codes, Deals and More!已入库，跳过-----
+2020-10-02 16:15:32,351 - ERROR: -----Amazon Deals /Discount Codes /Coupons 50%off -99%off已入库，跳过-----
+2020-10-02 16:15:36,723 - ERROR: -----Amazon Save with Us - Discounts, Codes, Deals, Coupons (US)已入库，跳过-----
+2020-10-02 16:15:41,094 - ERROR: -----Deals and Codes Group已入库，跳过-----
+2020-10-02 16:15:46,068 - ERROR: -----Amazing - Deals & Codes 🛍已入库，跳过-----
+2020-10-02 16:15:49,694 - ERROR: -----No review 10% to 99% off code Amazon deals人数为577，跳过-----
+2020-10-02 16:15:53,204 - ERROR: -----🔥Special PROMOTIONS🔥⚡NO REVIEW ⚡ FREEBIES - GREAT DEALS已入库，跳过-----
+2020-10-02 16:15:56,921 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 16:16:00,386 - ERROR: -----亚马逊US测评群 🔥🔥 US 50%-99% Big Deal Code Promotion Discount 🔥🔥已入库，跳过-----
+2020-10-02 16:16:04,796 - ERROR: -----Marv's Codes, Deals, Steals, Freebies & Glitches已入库，跳过-----
+2020-10-02 16:16:09,271 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 16:16:14,993 - ERROR: -----Mega Deals, Codes & Coupons已入库，跳过-----
+2020-10-02 16:16:20,186 - ERROR: -----Amazon, Google Play, iTunes Apstore, Xbox Gift card and giveaway已入库，跳过-----
+2020-10-02 16:16:24,447 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 16:16:28,158 - ERROR: -----Maga Deals Code & coupons人数为2566，跳过-----
+2020-10-02 16:16:31,369 - ERROR: -----"Amazon Buyers & Sellers Community人数为1495，跳过-----
+2020-10-02 16:16:34,789 - ERROR: -----Amazon Virtual Assistants已入库，跳过-----
+2020-10-02 16:16:38,620 - ERROR: -----Daily Best Amazon Deals, Codes & Coupons人数为732，跳过-----
+2020-10-02 16:16:42,274 - ERROR: -----Pokémon Go Worldwide Gift Exchange已入库，跳过-----
+2020-10-02 16:16:47,106 - ERROR: -----Best deals and promo codes Kids toys & games人数为3650，跳过-----
+2020-10-02 16:16:50,632 - ERROR: -----Bomb Deals Baby Edition- Promo Codes & More已入库，跳过-----
+2020-10-02 16:16:54,823 - ERROR: -----Great Freebies, Glitches , Deals, Codes For Coupons, Couponers, Couponing已入库，跳过-----
+2020-10-02 16:17:00,045 - ERROR: -----Bomb Deals - Promo Codes - Coupons已入库，跳过-----
+2020-10-02 16:17:03,706 - ERROR: -----Amazon reviewers canada人数为170，跳过-----
+2020-10-02 16:17:07,183 - ERROR: -----Amazon FBA Private Label Secrets已入库，跳过-----
+2020-10-02 16:17:11,034 - ERROR: -----Amazon Canada REviewer人数为2024，跳过-----
+2020-10-02 16:17:15,511 - ERROR: -----USA Deal Code Promotion Discount已入库，跳过-----
+2020-10-02 16:17:19,525 - ERROR: -----CA Review Group人数为1391，跳过-----
+2020-10-02 16:17:23,032 - ERROR: -----Bewitching Deals & Freebies Canada已入库，跳过-----
+2020-10-02 16:17:27,002 - ERROR: -----Amazon AWS Certified已入库，跳过-----
+2020-10-02 16:17:31,268 - ERROR: -----Amazon BootCamp Pakistan已入库，跳过-----
+2020-10-02 16:17:35,231 - ERROR: -----USA,UK,IT,FR,DE,SE,GER,AU Amazon review,Coupons, Codes, Deals已入库，跳过-----
+2020-10-02 16:17:39,259 - ERROR: -----Amazon Online Shopping已入库，跳过-----
+2020-10-02 16:17:42,939 - ERROR: -----No Review, 10% to 90% Off Codes/Deals Group 🇺🇸🎁人数为1249，跳过-----
+2020-10-02 16:17:46,382 - ERROR: -----Amazon Coupon/ Review/ No Review Group-Us已入库，跳过-----
+2020-10-02 16:17:50,611 - ERROR: -----Awesome Deals, Online Codes, Black Friday Sales, Promos & Cyber Shopping已入库，跳过-----
+2020-10-02 16:27:42,048 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 16:27:47,134 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 16:27:52,183 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 16:27:57,597 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 16:28:02,405 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 16:28:06,841 - ERROR: -----Amazon Online shopping已入库，跳过-----
+2020-10-02 16:28:11,465 - ERROR: -----Amazon canada reviewers已入库，跳过-----
+2020-10-02 16:28:16,171 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 16:28:19,958 - ERROR: -----AMAZON CANADA REVIEW人数为199，跳过-----
+2020-10-02 16:28:23,499 - ERROR: -----Amazon Reviewers Group已入库，跳过-----
+2020-10-02 16:28:27,171 - ERROR: -----Marcazon - Amazon CA Deals, Discounts, Coupons and more!!人数为3530，跳过-----
+2020-10-02 16:28:30,875 - ERROR: -----Super Deals, Code & Coupons已入库，跳过-----
+2020-10-02 16:28:35,787 - ERROR: -----Coupons, Codes, Glitches & Deals Under $10 🔥🛒🎁已入库，跳过-----
+2020-10-02 16:28:40,768 - ERROR: -----Super Savings (Codes, Deals, Coupons 🔥🔥10-99% off)已入库，跳过-----
+2020-10-02 16:28:45,490 - ERROR: -----Deals And Code For USA已入库，跳过-----
+2020-10-02 16:28:49,790 - ERROR: -----Upto 99% Off Deals with Codes已入库，跳过-----
+2020-10-02 16:28:53,716 - ERROR: -----Amazon sales code NO Review %10-%99 OFF人数为323，跳过-----
+2020-10-02 16:28:57,304 - ERROR: -----Amazing Codes and Savings!已入库，跳过-----
+2020-10-02 16:29:03,282 - ERROR: -----Amazon Kindle and Print Book Promotion已入库，跳过-----
+2020-10-02 16:29:06,983 - ERROR: -----Amazon deals and steals人数为1027，跳过-----
+2020-10-02 16:29:10,598 - ERROR: -----Amazon Italy code NO Review %10-%99 OFF人数为348，跳过-----
+2020-10-02 16:29:14,583 - ERROR: -----US Amazon Reviewers,Codes,Coupons,Deals Group已入库，跳过-----
+2020-10-02 16:29:19,288 - ERROR: -----Amazing Deals & Codes已入库，跳过-----
+2020-10-02 16:29:23,626 - ERROR: -----Amazon Deals已入库，跳过-----
+2020-10-02 16:29:27,924 - ERROR: -----50%-99% Off Amazon Code and Deals人数为3007，跳过-----
+2020-10-02 16:29:32,588 - ERROR: -----Code Queen's Amazing $20 & Under Deals|Codes|Glitches👑👑已入库，跳过-----
+2020-10-02 16:29:36,408 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 16:29:46,976 - ERROR: -----Sweet Deals Finder已入库，跳过-----
+2020-10-02 16:29:51,282 - ERROR: -----💥💥💥Promotions, Great Deals& Coupons💥💥💥已入库，跳过-----
+2020-10-02 16:29:55,717 - ERROR: -----[NO REVIEW] Best Amazon Deals /Discount /Codes /Coupons 50%off- 99%off人数为2256，跳过-----
+2020-10-02 16:30:03,760 - ERROR: -----Amazing Deals and codes US已入库，跳过-----
+2020-10-02 16:30:08,026 - ERROR: -----crazy deals coupon cods Glitches Freebies已入库，跳过-----
+2020-10-02 16:30:12,021 - ERROR: -----Amazon Deals,Codes-Coupons & US人数为3804，跳过-----
+2020-10-02 16:30:15,790 - ERROR: -----Deals and codes community 🔥🔥🔥已入库，跳过-----
+2020-10-02 16:30:19,772 - ERROR: -----Unreal Deals! Discounts, Glitches, Codes, & Coupons!人数为3234，跳过-----
+2020-10-02 16:30:23,215 - ERROR: -----Refund After Shipped - Amazon已入库，跳过-----
+2020-10-02 16:30:28,056 - ERROR: -----AMAZON , FLIPKART , EBAY BEST OFFERS已入库，跳过-----
+2020-10-02 16:30:32,259 - ERROR: -----Coupons Deals & Codes 🌺🌸Ali’s Deals🌺🌸已入库，跳过-----
+2020-10-02 16:30:37,162 - ERROR: -----Code Queen's Amazing Baby, Kids, & Mom Deals🍭🤱🚼🍼👨‍👩‍👧‍👦🪅已入库，跳过-----
+2020-10-02 16:30:41,638 - ERROR: -----Amazon Deals Discount Free Item Group 🔥🔥已入库，跳过-----
+2020-10-02 16:30:46,044 - ERROR: -----USA Coupon Codes & Discount Deals | Save on Amazon Promos已入库，跳过-----
+2020-10-02 16:30:50,005 - ERROR: -----Amazon 30%-99% Off Deals & Coupons (US)人数为1280，跳过-----
+2020-10-02 16:30:53,463 - ERROR: -----DEALS N’ STEALS , PROMO CODES, GLITCHES, And FREEBIES已入库，跳过-----
+2020-10-02 16:30:57,580 - ERROR: -----Amazon Prime/ Netflix recommendations also Tv Series人数为3062，跳过-----
+2020-10-02 16:31:06,700 - ERROR: -----Amazon discounts and deals, promo codes and more人数为570，跳过-----
+2020-10-02 16:31:10,745 - ERROR: -----Save With Codes已入库，跳过-----
+2020-10-02 16:31:14,832 - ERROR: -----Amazon reviewers group US /CA /UK/DE人数为2261，跳过-----
+2020-10-02 16:31:17,746 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3324，跳过-----
+2020-10-02 16:31:21,914 - ERROR: -----Germany - Schnäppchen, Angebote, Codes, Deals and More!已入库，跳过-----
+2020-10-02 16:31:25,959 - ERROR: -----Amazon Deals /Discount Codes /Coupons 50%off -99%off已入库，跳过-----
+2020-10-02 16:31:47,442 - ERROR: -----Amazon Save with Us - Discounts, Codes, Deals, Coupons (US)已入库，跳过-----
+2020-10-02 16:31:52,001 - ERROR: -----Deals and Codes Group已入库，跳过-----
+2020-10-02 16:31:56,180 - ERROR: -----No review 10% to 99% off code Amazon deals人数为577，跳过-----
+2020-10-02 16:32:00,954 - ERROR: -----Amazing - Deals & Codes 🛍已入库，跳过-----
+2020-10-02 16:32:06,099 - ERROR: -----🔥Special PROMOTIONS🔥⚡NO REVIEW ⚡ FREEBIES - GREAT DEALS已入库，跳过-----
+2020-10-02 16:32:14,946 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 16:32:26,324 - ERROR: -----亚马逊US测评群 🔥🔥 US 50%-99% Big Deal Code Promotion Discount 🔥🔥已入库，跳过-----
+2020-10-02 16:32:31,537 - ERROR: -----Marv's Codes, Deals, Steals, Freebies & Glitches已入库，跳过-----
+2020-10-02 16:32:37,197 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 16:32:42,506 - ERROR: -----Mega Deals, Codes & Coupons已入库，跳过-----
+2020-10-02 16:32:47,578 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 16:32:52,184 - ERROR: -----Amazon, Google Play, iTunes Apstore, Xbox Gift card and giveaway已入库，跳过-----
+2020-10-02 16:32:56,444 - ERROR: -----Maga Deals Code & coupons人数为2566，跳过-----
+2020-10-02 16:32:59,402 - ERROR: -----"Amazon Buyers & Sellers Community人数为1495，跳过-----
+2020-10-02 16:33:02,795 - ERROR: -----Amazon Virtual Assistants已入库，跳过-----
+2020-10-02 16:33:12,206 - ERROR: -----Daily Best Amazon Deals, Codes & Coupons人数为732，跳过-----
+2020-10-02 16:33:22,609 - ERROR: -----Pokémon Go Worldwide Gift Exchange已入库，跳过-----
+2020-10-02 16:33:27,216 - ERROR: -----Best deals and promo codes Kids toys & games人数为3650，跳过-----
+2020-10-02 16:33:32,960 - ERROR: -----Bomb Deals Baby Edition- Promo Codes & More已入库，跳过-----
+2020-10-02 16:33:36,923 - ERROR: -----Great Freebies, Glitches , Deals, Codes For Coupons, Couponers, Couponing已入库，跳过-----
+2020-10-02 16:33:44,047 - ERROR: -----Bomb Deals - Promo Codes - Coupons已入库，跳过-----
+2020-10-02 16:33:47,945 - ERROR: -----Amazon reviewers canada人数为170，跳过-----
+2020-10-02 16:33:56,610 - ERROR: -----Amazon FBA Private Label Secrets已入库，跳过-----
+2020-10-02 16:34:00,394 - ERROR: -----Amazon Canada REviewer人数为2024，跳过-----
+2020-10-02 16:34:03,875 - ERROR: -----USA Deal Code Promotion Discount已入库，跳过-----
+2020-10-02 16:34:08,352 - ERROR: -----CA Review Group人数为1391，跳过-----
+2020-10-02 16:34:11,806 - ERROR: -----Bewitching Deals & Freebies Canada已入库，跳过-----
+2020-10-02 16:34:18,035 - ERROR: -----Amazon AWS Certified已入库，跳过-----
+2020-10-02 16:34:23,179 - ERROR: -----Amazon BootCamp Pakistan已入库，跳过-----
+2020-10-02 16:34:27,686 - ERROR: -----USA,UK,IT,FR,DE,SE,GER,AU Amazon review,Coupons, Codes, Deals已入库，跳过-----
+2020-10-02 16:34:33,330 - ERROR: -----Amazon Online Shopping已入库，跳过-----
+2020-10-02 16:34:38,462 - ERROR: -----No Review, 10% to 90% Off Codes/Deals Group 🇺🇸🎁人数为1249，跳过-----
+2020-10-02 16:34:41,775 - ERROR: -----Amazon Coupon/ Review/ No Review Group-Us已入库，跳过-----
+2020-10-02 16:34:46,580 - ERROR: -----Awesome Deals, Online Codes, Black Friday Sales, Promos & Cyber Shopping已入库，跳过-----
+2020-10-02 16:35:29,748 - ERROR: -----Amazon Codes人数为354，跳过-----
+2020-10-02 16:35:39,170 - ERROR: *****获取https://www.facebook.com/groups/253621595973713/?ref=br_rs信息出错*****
+2020-10-02 16:35:54,032 - ERROR: -----Canada Deals and Coupons 🇨🇦人数为883，跳过-----
+2020-10-02 16:36:33,545 - ERROR: -----Amazon Canada Deals & Discounts人数为2374，跳过-----
+2020-10-02 16:36:42,452 - ERROR: -----discount-10% to 100% AMAZON deal/Coupon/ code all marketplace人数为532，跳过-----
+2020-10-02 16:36:48,774 - ERROR: -----Canada Deals and Review人数为969，跳过-----
+2020-10-02 16:37:01,480 - ERROR: -----AMAZON review, Deal, Code, Promotion, Discount all marketplace人数为570，跳过-----
+2020-10-02 16:37:17,831 - ERROR: -----SHEIN Offer & Coupon Code人数为2062，跳过-----
+2020-10-02 16:37:22,125 - ERROR: -----amazon deals人数为2566，跳过-----
+2020-10-02 16:37:32,091 - ERROR: -----Amazon Top France, Bons Plans Promotions Code Promo...人数为1499，跳过-----
+2020-10-02 16:37:42,383 - ERROR: -----Amazon International Seller & buyer - promote,deal,code,coupon人数为1321，跳过-----
+2020-10-02 16:37:58,736 - ERROR: -----Amazon Coupons and Codes!人数为330，跳过-----
+2020-10-02 16:38:02,793 - ERROR: -----Amazon reviewer group Canada人数为1752，跳过-----
+2020-10-02 16:38:07,959 - ERROR: -----amazon-Deal-all country人数为476，跳过-----
+2020-10-02 16:38:12,284 - ERROR: -----Amazon honest buyers club人数为2061，跳过-----
+2020-10-02 16:38:22,992 - ERROR: -----<3 Amazon PayPig's <3人数为215，跳过-----
+2020-10-02 16:38:38,556 - ERROR: -----Amazon.Codes.Helpful click. Refund After Shipped Only. Discount. Deals人数为486，跳过-----
+2020-10-02 16:38:43,413 - ERROR: -----Amazon FBA Service Providers & Virtual Assistants (AMZ One Step)人数为2955，跳过-----
+2020-10-02 16:38:58,380 - ERROR: -----OPTIMUM POINTS DEALS/CODES人数为2369，跳过-----
+2020-10-02 16:39:02,579 - ERROR: -----Free Amazon Codes人数为739，跳过-----
+2020-10-02 16:39:07,571 - ERROR: -----80% 99% Codes For Amazon Shopaholics人数为1663，跳过-----
+2020-10-02 16:39:27,969 - ERROR: -----99% Deals | Amazon |�� USA人数为1672，跳过-----
+2020-10-02 16:39:40,205 - ERROR: -----AU Amazon Honest Review/ Test/ Discount/ Deals/ Codes人数为33，跳过-----
+2020-10-02 16:40:00,135 - ERROR: -----Amazon products testing Group人数为3036，跳过-----
+2020-10-02 16:40:14,547 - ERROR: -----AMZ 50~99% Code Discount Deals everyday! US UK DE IT ES FR JP CA人数为2024，跳过-----
+2020-10-02 16:40:30,451 - ERROR: -----AliExpress Items For Review人数为1805，跳过-----
+2020-10-02 16:41:14,129 - ERROR: -----Deal/Review/Free Promotional Codes and Deals人数为540，跳过-----
+2020-10-02 16:41:18,269 - ERROR: -----Amazon No Review & 99% off Codes- US only人数为1019，跳过-----
+2020-10-02 16:41:31,669 - ERROR: -----amazon gifting & games (canadians only)人数为99，跳过-----
+2020-10-02 16:41:51,926 - ERROR: -----Amazon & Ebay Sellers Canada人数为2256，跳过-----
+2020-10-02 16:42:07,602 - ERROR: -----❎UK no review, review group❎codes, deals and glitches人数为2622，跳过-----
+2020-10-02 16:42:17,594 - ERROR: -----Amazon KDP Training w/ Ryan Hogue人数为1768，跳过-----
+2020-10-02 16:42:55,510 - ERROR: -----Amazon Deal's - US/UK/CA/FR/DE/IT/ES/JP人数为1850，跳过-----
+2020-10-02 16:43:36,563 - ERROR: -----Amazon Merch Training w/ Ryan Hogue人数为2514，跳过-----
+2020-10-02 16:43:47,838 - ERROR: -----Amazon reviewers group(Us,Uk,Ca,De)人数为2635，跳过-----
+2020-10-02 16:43:52,248 - ERROR: -----Amazon&Walmart Ranking Keyword sellers&Buyer Club- US/UK/DE/FR/IT/CA/ES人数为2169，跳过-----
+2020-10-02 16:44:40,396 - ERROR: -----Amazon Hot Deals, Steals, Promos, Coupon, Codes, Glitches & Freebies已入库，跳过-----
+2020-10-02 16:44:46,518 - ERROR: -----Amazon Discount Outlet Group已入库，跳过-----
+2020-10-02 16:44:50,671 - ERROR: -----Marcazon - Amazon CA Deals, Discounts, Coupons and more!!人数为3530，跳过-----
+2020-10-02 16:44:55,011 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 16:45:00,833 - ERROR: -----Amazing Deals Save with Code已入库，跳过-----
+2020-10-02 16:45:05,184 - ERROR: -----Super Saving Amazon Coupons & Deals 🔥💥🔥人数为1367，跳过-----
+2020-10-02 16:45:09,368 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 16:45:16,828 - ERROR: -----Bomb Deals - Promo Codes - Coupons已入库，跳过-----
+2020-10-02 16:45:21,882 - ERROR: -----Amani's Discount Codes!!!已入库，跳过-----
+2020-10-02 16:45:31,639 - ERROR: -----Coupons, Codes, Glitches & Deals Under $10 🔥🛒🎁已入库，跳过-----
+2020-10-02 16:45:37,322 - ERROR: -----💥💥💥Promotions, Great Deals& Coupons💥💥💥已入库，跳过-----
+2020-10-02 16:45:47,028 - ERROR: -----Coupons Deals & Codes 🌺🌸Ali’s Deals🌺🌸已入库，跳过-----
+2020-10-02 16:45:52,843 - ERROR: -----Super Deals, Code & Coupons已入库，跳过-----
+2020-10-02 16:45:57,628 - ERROR: -----crazy deals coupon cods Glitches Freebies已入库，跳过-----
+2020-10-02 16:46:01,799 - ERROR: -----Amazon Deals,Codes-Coupons & US人数为3804，跳过-----
+2020-10-02 16:46:08,853 - ERROR: -----Amazon 30%-99% Off Deals & Coupons (US)人数为1280，跳过-----
+2020-10-02 16:46:13,230 - ERROR: -----Amazon canada reviewers已入库，跳过-----
+2020-10-02 16:46:17,909 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 16:46:21,506 - ERROR: -----Amazon deals and steals人数为1027，跳过-----
+2020-10-02 16:46:25,647 - ERROR: -----Deals & Discounts Community已入库，跳过-----
+2020-10-02 16:46:30,238 - ERROR: -----US Amazon Reviewers,Codes,Coupons,Deals Group已入库，跳过-----
+2020-10-02 16:46:34,531 - ERROR: -----Amazon Lightning Deals - Coupons and Quick Sales人数为794，跳过-----
+2020-10-02 16:46:39,574 - ERROR: -----Coupon e Codici Sconto Amazon人数为3144，跳过-----
+2020-10-02 16:46:42,533 - ERROR: -----[NO REVIEW] Best Amazon Deals /Discount /Codes /Coupons 50%off- 99%off人数为2256，跳过-----
+2020-10-02 16:47:05,545 - ERROR: -----DEALS AND STEALS: see what Coupons, Codes and Glitches we reveal!人数为2390，跳过-----
+2020-10-02 16:47:08,567 - ERROR: -----Amazon sales code NO Review %10-%99 OFF人数为325，跳过-----
+2020-10-02 16:47:11,699 - ERROR: -----Couponing for Beginners人数为3549，跳过-----
+2020-10-02 16:47:14,638 - ERROR: -----Amazon/Walmart/eBay/aliexpress best Deals and Coupons人数为128，跳过-----
+2020-10-02 16:47:18,663 - ERROR: -----Amazon Deals Discount Free Item Group 🔥🔥已入库，跳过-----
+2020-10-02 16:47:24,274 - ERROR: -----The Best Canadian Deals / Coupons / Promotions & Events人数为2315，跳过-----
+2020-10-02 16:47:32,021 - ERROR: -----Amazon Deals /Discount Codes /Coupons 50%off -99%off已入库，跳过-----
+2020-10-02 16:47:35,832 - ERROR: -----Unreal Deals! Discounts, Glitches, Codes, & Coupons!人数为3234，跳过-----
+2020-10-02 16:47:39,917 - ERROR: -----Maga Deals Code & coupons人数为2566，跳过-----
+2020-10-02 16:47:42,994 - ERROR: -----Amazon Deals and Steals人数为749，跳过-----
+2020-10-02 16:47:45,714 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 16:47:59,507 - ERROR: -----Crazy Deals, Coupons and glitches人数为3857，跳过-----
+2020-10-02 16:48:02,212 - ERROR: -----Amazon discounts and deals, promo codes and more人数为570，跳过-----
+2020-10-02 16:48:05,207 - ERROR: -----Freebies, Coupons, and Deals Canada人数为304，跳过-----
+2020-10-02 16:48:18,279 - ERROR: -----Woman accessories & clothing - Deals & Coupons ;)人数为2767，跳过-----
+2020-10-02 16:48:22,210 - ERROR: -----USA Coupon Codes & Discount Deals | Save on Amazon Promos已入库，跳过-----
+2020-10-02 16:48:27,798 - ERROR: -----Amazon Save with Us - Discounts, Codes, Deals, Coupons (US)已入库，跳过-----
+2020-10-02 16:48:32,215 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3324，跳过-----
+2020-10-02 16:48:35,361 - ERROR: -----Jolly Deals, Real Deals, Promo Code, Coupon, Discount人数为3980，跳过-----
+2020-10-02 16:48:45,181 - ERROR: -----Daily Best Amazon Deals, Codes & Coupons人数为732，跳过-----
+2020-10-02 16:48:59,179 - ERROR: -----🎯Amazon latest discount promo deals Increase sells Ratings人数为410，跳过-----
+2020-10-02 16:49:11,293 - ERROR: -----Mega Deals, Codes & Coupons已入库，跳过-----
+2020-10-02 16:49:15,651 - ERROR: -----Udemy Daily Free Coupons人数为301，跳过-----
+2020-10-02 16:49:28,662 - ERROR: -----MEGA DEALS, PROMO CODES, COUPONS, DISCOUNTS 100% Works人数为305，跳过-----
+2020-10-02 16:49:45,286 - ERROR: -----Coupon Canada人数为3048，跳过-----
+2020-10-02 16:49:57,395 - ERROR: -----Samples, Glitches and more人数为1317，跳过-----
+2020-10-02 16:50:00,572 - ERROR: -----Free Offers, Cashback, Coupons, Deals (Recharge, Shopping - Tips & Tricks)人数为137，跳过-----
+2020-10-02 16:50:04,035 - ERROR: -----Coupons and Promo Codes Group人数为3264，跳过-----
+2020-10-02 16:50:10,694 - ERROR: -----Great Freebies, Glitches , Deals, Codes For Coupons, Couponers, Couponing已入库，跳过-----
+2020-10-02 16:50:14,920 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 16:50:24,999 - ERROR: -----Canada & US Online Deals Group人数为2238，跳过-----
+2020-10-02 16:50:34,983 - ERROR: -----Bomb Deals Baby Edition- Promo Codes & More已入库，跳过-----
+2020-10-02 16:50:40,123 - ERROR: -----亚马逊欧洲TOP1000测评群 🔥🔥 EU 50%-99% Big Deal Code Promotion Discount 🔥🔥人数为511，跳过-----
+2020-10-02 16:50:45,445 - ERROR: -----Sweet Deals Finder已入库，跳过-----
+2020-10-02 16:50:49,642 - ERROR: -----Coupons, Deals in Nova Scotia人数为961，跳过-----
+2020-10-02 16:50:54,039 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 16:51:03,456 - ERROR: -----Amazon Associates Central人数为414，跳过-----
+2020-10-02 16:51:20,078 - ERROR: -----Bewitching Deals & Freebies Canada已入库，跳过-----
+2020-10-02 16:51:24,212 - ERROR: -----USA,UK,IT,FR,DE,SE,GER,AU Amazon review,Coupons, Codes, Deals已入库，跳过-----
+2020-10-02 16:51:28,181 - ERROR: -----No Review, 10% to 90% Off Codes/Deals Group 🇺🇸🎁人数为1249，跳过-----
+2020-10-02 16:51:32,450 - ERROR: -----Amazon Coupon/ Review/ No Review Group-Us已入库，跳过-----
+2020-10-02 16:52:28,280 - ERROR: -----Amazon Deals, Coupons and Discounts已入库，跳过-----
+2020-10-02 16:52:35,754 - ERROR: -----Deals Codes-Coupons & US已入库，跳过-----
+2020-10-02 16:52:41,017 - ERROR: -----Amazon Deals | Online Steals | Coupon Freebies已入库，跳过-----
+2020-10-02 16:52:46,179 - ERROR: -----Canada Deals and Coupons 🇨🇦人数为883，跳过-----
+2020-10-02 16:52:55,097 - ERROR: -----Amazon deals with codes, discount(10%-80%)🇺🇲已入库，跳过-----
+2020-10-02 16:53:11,548 - ERROR: -----Amazon Deals & Coupons人数为281，跳过-----
+2020-10-02 16:53:19,062 - ERROR: *****获取https://www.facebook.com/groups/253621595973713/?ref=br_rs信息出错*****
+2020-10-02 16:53:23,094 - ERROR: -----discount-10% to 100% AMAZON deal/Coupon/ code all marketplace人数为532，跳过-----
+2020-10-02 16:53:27,885 - ERROR: -----Amazon Coupons Deals & Codes & Discounts Club已入库，跳过-----
+2020-10-02 16:53:38,617 - ERROR: -----Great Deals & Discount Codes已入库，跳过-----
+2020-10-02 16:53:43,421 - ERROR: -----Amazon Coupons and Codes!人数为330，跳过-----
+2020-10-02 16:53:53,693 - ERROR: -----Amazon Codes - Coupons 🇫🇷已入库，跳过-----
+2020-10-02 16:53:58,443 - ERROR: -----AMAZON review, Deal, Code, Promotion, Discount all marketplace人数为570，跳过-----
+2020-10-02 16:54:03,417 - ERROR: -----Viralix Global Group - Amazon Deals and Coupons已入库，跳过-----
+2020-10-02 16:54:08,927 - ERROR: -----Amazon Deals Coupon and Discount已入库，跳过-----
+2020-10-02 16:54:19,732 - ERROR: -----Amazon Codes - USA已入库，跳过-----
+2020-10-02 16:54:25,218 - ERROR: -----Babies & Toddler Amazon Promo Codes已入库，跳过-----
+2020-10-02 16:54:32,493 - ERROR: -----Amazon US Products Discounts And Freebies人数为2027，跳过-----
+2020-10-02 16:54:36,575 - ERROR: -----Amazon Canada Deals & Discounts人数为2374，跳过-----
+2020-10-02 16:54:40,775 - ERROR: -----Coupons 4 you人数为2910，跳过-----
+2020-10-02 16:54:50,170 - ERROR: -----CANADA deals,coupons and promo codes已入库，跳过-----
+2020-10-02 16:54:55,077 - ERROR: -----SHEIN Offer & Coupon Code人数为2062，跳过-----
+2020-10-02 16:55:01,519 - ERROR: -----🔥 Amazon Deals Discount Codes Coupons Giveaways ebay Code US已入库，跳过-----
+2020-10-02 16:55:05,174 - ERROR: -----steal deals discounts & coupons人数为545，跳过-----
+2020-10-02 16:55:10,088 - ERROR: -----Amazon.Codes.Helpful click. Refund After Shipped Only. Discount. Deals人数为486，跳过-----
+2020-10-02 16:55:19,857 - ERROR: -----Amazon Deals Discount Codes Coupons人数为613，跳过-----
+2020-10-02 16:55:29,659 - ERROR: -----Amazone Coupons/Deals/Rabatte Deutschland已入库，跳过-----
+2020-10-02 16:55:41,038 - ERROR: -----Amazon Codes人数为354，跳过-----
+2020-10-02 16:55:50,322 - ERROR: -----Amazon Promo Codes & Coupons已入库，跳过-----
+2020-10-02 16:56:01,251 - ERROR: -----Freebies, Deals, Sweepstakes and Fun人数为3421，跳过-----
+2020-10-02 16:56:05,913 - ERROR: -----Deals & Coupons for all sites (US UK CA DE ES IT FR JP)人数为763，跳过-----
+2020-10-02 16:56:09,958 - ERROR: -----99% Deals | Amazon |�� USA人数为1672，跳过-----
+2020-10-02 16:56:14,263 - ERROR: -----Stockpiles, Auctions, Bundles, Coupons, Deals & More人数为3669，跳过-----
+2020-10-02 16:56:18,975 - ERROR: -----Amazon ma passion (codes promos et bons plans)已入库，跳过-----
+2020-10-02 16:56:24,572 - ERROR: -----Coupons Queens人数为210，跳过-----
+2020-10-02 16:56:40,283 - ERROR: -----Amazon trusted, verified seller and free stuff😍😍 freebies samples人数为94，跳过-----
+2020-10-02 16:56:44,432 - ERROR: -----Amazon reviewer group Canada人数为1752，跳过-----
+2020-10-02 16:56:49,456 - ERROR: -----Freebies, Contests & Giveaways!!人数为828，跳过-----
+2020-10-02 16:56:54,494 - ERROR: -----Bons Plans, promos, vente flash Amazon code réduction coupon已入库，跳过-----
+2020-10-02 16:56:59,398 - ERROR: -----80% 99% Codes For Amazon Shopaholics人数为1663，跳过-----
+2020-10-02 16:57:03,975 - ERROR: -----the children's place coupon Canada人数为93，跳过-----
+2020-10-02 16:57:23,202 - ERROR: -----🔥Glitch & Deal World | Săn Code Tại Đây🔥- Amazon Coupon Code🔥人数为1125，跳过-----
+2020-10-02 16:57:32,636 - ERROR: -----BioLife New Donor Coupons & Info人数为3529，跳过-----
+2020-10-02 16:57:42,521 - ERROR: -----JCPenney Coupons and Deals人数为1247，跳过-----
+2020-10-02 16:57:46,977 - ERROR: -----Promo Codes for Amazon US - Coupon Codes, Freebies and MORE!人数为759，跳过-----
+2020-10-02 16:57:51,415 - ERROR: -----Free Samples & Product Testers Canada人数为1623，跳过-----
+2020-10-02 16:57:55,526 - ERROR: -----🇱🇷Amazon NO REVIEW GROUP -US and 10% to 99% codes 🇱🇷人数为3117，跳过-----
+2020-10-02 16:58:00,652 - ERROR: -----Freebie Friends (Legit Free Samples, Coupons, Free Money, and More)人数为3166，跳过-----
+2020-10-02 16:58:04,943 - ERROR: -----Amazon Savings for Canadian人数为1478，跳过-----
+2020-10-02 16:58:09,340 - ERROR: -----Extreme Couponing & Product Trading ~ Alberta人数为2630，跳过-----
+2020-10-02 16:58:13,479 - ERROR: -----Amazon No Review & 99% off Codes- US only人数为1019，跳过-----
+2020-10-02 16:58:22,915 - ERROR: -----I💙Emailing Companies For Coupons.人数为2541，跳过-----
+2020-10-02 16:58:33,122 - ERROR: -----Dropshipping Amazon Academy人数为1963，跳过-----
+2020-10-02 16:58:38,068 - ERROR: -----Amazon Millionaire's Mastermind Group!已入库，跳过-----
+2020-10-02 16:58:50,972 - ERROR: -----Morocco🇲🇦Online Shopping 👜 Shein Romwe Aliexpress Modanisa Amazon🌐👜🛍已入库，跳过-----
+2020-10-02 16:58:56,576 - ERROR: -----Ontario Coupon/ Deals/ Free Samples Club人数为57，跳过-----
+2020-10-02 16:59:00,678 - ERROR: -----So Cal Coupons人数为2905，跳过-----
+2020-10-02 16:59:10,611 - ERROR: -----LesCouponsRabais - Echange de coupons人数为3558，跳过-----
+2020-10-02 16:59:20,496 - ERROR: -----Winnipeg Couponing Friends人数为2644，跳过-----
+2020-10-02 16:59:24,716 - ERROR: -----Children’s place coupon swap!人数为115，跳过-----
+2020-10-02 17:00:27,951 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 17:00:35,695 - ERROR: -----COUPONS, CODES, GLITCHES & DEALS已入库，跳过-----
+2020-10-02 17:00:39,624 - ERROR: -----The Best Canadian Deals / Coupons / Promotions & Events人数为2315，跳过-----
+2020-10-02 17:00:43,107 - ERROR: -----The DEALS WORLD人数为262，跳过-----
+2020-10-02 17:00:46,610 - ERROR: -----DAILY DEALS人数为1983，跳过-----
+2020-10-02 17:01:00,999 - ERROR: -----Great Deals Chilliwack人数为2879，跳过-----
+2020-10-02 17:01:05,070 - ERROR: -----The deal code and funder人数为2245，跳过-----
+2020-10-02 17:01:09,432 - ERROR: -----All The Deals 💁🏼‍♀️🛍人数为2725，跳过-----
+2020-10-02 17:01:14,988 - ERROR: -----The Big Deals Entertainment人数为1774，跳过-----
+2020-10-02 17:01:18,563 - ERROR: -----Deals and codes community 🔥🔥🔥已入库，跳过-----
+2020-10-02 17:01:33,343 - ERROR: -----Code Queen's Amazing $20 & Under Deals|Codes|Glitches👑👑已入库，跳过-----
+2020-10-02 17:02:04,798 - ERROR: -----The Deal Depot人数为2033，跳过-----
+2020-10-02 17:02:07,736 - ERROR: -----Reelin' In The Deals人数为3844，跳过-----
+2020-10-02 17:02:10,930 - ERROR: -----Amazon: Deals of the Day人数为238，跳过-----
+2020-10-02 17:02:42,111 - ERROR: -----Crazy Deals, Coupons and glitches人数为3859，跳过-----
+2020-10-02 17:02:45,290 - ERROR: -----Simply the Deals人数为3192，跳过-----
+2020-10-02 17:02:56,860 - ERROR: -----Discount HQ Deals and Steals of the Midlands人数为3105，跳过-----
+2020-10-02 17:03:03,603 - ERROR: -----THE WHEEL DEALS GALLERY人数为156，跳过-----
+2020-10-02 17:03:22,949 - ERROR: -----Canada Deals已入库，跳过-----
+2020-10-02 17:03:27,570 - ERROR: -----Canadian Online Hot Deals已入库，跳过-----
+2020-10-02 17:03:32,059 - ERROR: -----BC SOFTROADING人数为1906，跳过-----
+2020-10-02 17:04:19,964 - ERROR: -----The Boys Memes 💪 Amazon Prime人数为3324，跳过-----
+2020-10-02 17:04:23,054 - ERROR: -----Sweet Deals Glitches Freebies人数为2012，跳过-----
+2020-10-02 17:04:31,428 - ERROR: -----Amazon Deals人数为3090，跳过-----
+2020-10-02 17:04:42,922 - ERROR: -----Admins approved this just to watch OP get dragged人数为3225，跳过-----
+2020-10-02 17:05:07,959 - ERROR: -----Coast to Coast Deals! Coupons, Codes, Glitches & Freebies!人数为3293，跳过-----
+2020-10-02 17:05:39,848 - ERROR: -----Home Decor Deals and Farmhouse Decor人数为1234，跳过-----
+2020-10-02 17:05:43,447 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 17:05:47,420 - ERROR: -----Amazon Prime/ Netflix recommendations also Tv Series人数为3062，跳过-----
+2020-10-02 17:06:00,355 - ERROR: -----Save The Sharks人数为1790，跳过-----
+2020-10-02 17:06:03,286 - ERROR: -----Niagara Buy/Sell & Discounts人数为1780，跳过-----
+2020-10-02 17:06:18,670 - ERROR: -----Hot Deals, Promos & Codes人数为564，跳过-----
+2020-10-02 17:06:31,763 - ERROR: -----The Freebie Girl人数为922，跳过-----
+2020-10-02 17:06:35,591 - ERROR: -----Toronto Comedy Community人数为3369，跳过-----
+2020-10-02 17:06:44,302 - ERROR: -----save the animals (sta)人数为1614，跳过-----
+2020-10-02 17:07:06,534 - ERROR: -----Amazing Things in this World人数为1139，跳过-----
+2020-10-02 17:07:19,681 - ERROR: -----OFF THE GRID REAL ESTATE人数为2782，跳过-----
+2020-10-02 17:07:32,180 - ERROR: -----Bargain Buys: Home & Garden Edition人数为1984，跳过-----
+2020-10-02 17:07:35,492 - ERROR: -----Toronto Entrepreneurs Conference人数为1650，跳过-----
+2020-10-02 17:07:38,627 - ERROR: -----Royal Caribbean Cruise Line Deals, Planning, & Tips!人数为2637，跳过-----
+2020-10-02 17:07:42,369 - ERROR: -----The Crafters Bin人数为1220，跳过-----
+2020-10-02 17:07:50,536 - ERROR: -----Victoria Fastball Club - Home of the Victoria Devils人数为250，跳过-----
+2020-10-02 17:07:53,694 - ERROR: -----The new high desert cars and trucks under $2000人数为1348，跳过-----
+2020-10-02 17:07:56,982 - ERROR: -----KMCC- Rentals - Best Deals !人数为1149，跳过-----
+2020-10-02 17:08:43,442 - ERROR: -----Deal of the Day人数为2490，跳过-----
+2020-10-02 17:08:53,612 - ERROR: -----Amazing Amazon Deals人数为3846，跳过-----
+2020-10-02 17:09:03,648 - ERROR: -----Best Deals人数为2157，跳过-----
+2020-10-02 17:09:20,378 - ERROR: -----The Deal Divas- Coupons, Deals, And Glitches已入库，跳过-----
+2020-10-02 17:09:31,361 - ERROR: -----CANADA deals,coupons and promo codes已入库，跳过-----
+2020-10-02 17:09:36,404 - ERROR: -----😳 THE Underground never dies人数为3360，跳过-----
+2020-10-02 17:09:46,373 - ERROR: -----Busy Moms Shopping Deals! **The Group**人数为1423，跳过-----
+2020-10-02 17:09:55,293 - ERROR: -----The Ideal Deal Dublin人数为1565，跳过-----
+2020-10-02 17:09:59,720 - ERROR: -----Gifs, Goodies & More Galore人数为1945，跳过-----
+2020-10-02 17:10:03,934 - ERROR: -----The Wheel Deals MUMBAI / PUNE / NASIK人数为1447，跳过-----
+2020-10-02 17:10:19,571 - ERROR: -----The Real Deal with Owen Hone [Members Only]人数为191，跳过-----
+2020-10-02 17:10:29,474 - ERROR: -----Deals & Steals In the Grove人数为379，跳过-----
+2020-10-02 17:10:39,230 - ERROR: -----Commissary Deals in the KMC人数为2760，跳过-----
+2020-10-02 17:10:44,126 - ERROR: -----The Sweat Studio人数为274，跳过-----
+2020-10-02 17:10:48,541 - ERROR: -----SaasWiz - The bridge between SaaS Founders & Lifetime Deals Wizards人数为3047，跳过-----
+2020-10-02 17:11:04,441 - ERROR: -----Canada Deals and Coupons 🇨🇦人数为883，跳过-----
+2020-10-02 17:11:08,443 - ERROR: -----New Westies are the Besties!人数为3559，跳过-----
+2020-10-02 17:11:13,193 - ERROR: -----Canadian Coupons, Deals and Freebies已入库，跳过-----
+2020-10-02 17:11:23,402 - ERROR: -----the children's place coupon Canada人数为93，跳过-----
+2020-10-02 17:11:50,044 - ERROR: -----Amazon Deals Coupon and Discount已入库，跳过-----
+2020-10-02 17:11:54,945 - ERROR: -----The Modern Mom人数为3859，跳过-----
+2020-10-02 17:12:04,546 - ERROR: -----BC's Homemade and Personalized Gifts人数为271，跳过-----
+2020-10-02 17:12:10,186 - ERROR: -----Extreme Couponing Canada已入库，跳过-----
+2020-10-02 17:12:25,753 - ERROR: -----The Nifty Rose人数为196，跳过-----
+2020-10-02 17:12:30,151 - ERROR: -----The Farmhouse Feel :: Decor & Ideas人数为2617，跳过-----
+2020-10-02 17:12:34,410 - ERROR: -----The Penny Pincher人数为833，跳过-----
+2020-10-02 17:12:44,932 - ERROR: -----Amazon's The Boys已入库，跳过-----
+2020-10-02 17:13:00,313 - ERROR: -----THE NEW ORIGINAL NORTH BAY $1 AUCTIONS人数为3166，跳过-----
+2020-10-02 17:13:04,682 - ERROR: -----Buy and Sell The Glebe, Old Ottawa East and South人数为628，跳过-----
+2020-10-02 17:13:24,979 - ERROR: -----The Pate Crate - Exclusive Discount Sales, and Giveaways!!人数为531，跳过-----
+2020-10-02 17:13:33,430 - ERROR: -----Freebies, Free Stuff, Free Samples , Sent by Mail人数为1012，跳过-----
+2020-10-02 17:13:48,598 - ERROR: -----The Enlightened Target Group人数为3235，跳过-----
+2020-10-02 17:14:09,625 - ERROR: -----💗 The Pink Bargain Closet 💗人数为144，跳过-----
+2020-10-02 17:14:14,410 - ERROR: -----The Pink Porcupine VIP Group - SALE INFO人数为1611，跳过-----
+2020-10-02 17:14:48,080 - ERROR: -----Our Skinny Taste Meals人数为3022，跳过-----
+2020-10-02 17:14:52,811 - ERROR: -----CLICK THE LINK人数为509，跳过-----
+2020-10-02 17:15:15,714 - ERROR: -----Finding Your Best Lifestyle - FDU-V - MADS 6718 - Discussion Group人数为29，跳过-----
+2020-10-02 17:15:19,946 - ERROR: -----The Thrifty Miniaturist-Share & Sell人数为2294，跳过-----
+2020-10-02 17:15:28,902 - ERROR: -----The IT Crowd - Weird's All I've Got!人数为2173，跳过-----
+2020-10-02 17:15:39,516 - ERROR: -----Win Prizes Online- Sweeps, Freebies, Deals & More人数为2325，跳过-----
+2020-10-02 17:16:00,722 - ERROR: -----Best Filelinked Code人数为590，跳过-----
+2020-10-02 17:16:20,171 - ERROR: -----Dollar Tea Club Members人数为844，跳过-----
+2020-10-02 17:16:24,579 - ERROR: -----Nifty & Thrifty In The BLA人数为3272，跳过-----
+2020-10-02 17:16:41,680 - ERROR: -----After the Hunt - Midwest Wild Game & Fish Recipes and Processing人数为3108，跳过-----
+2020-10-02 17:17:28,997 - ERROR: -----Super Deals canada人数为292，跳过-----
+2020-10-02 17:17:32,674 - ERROR: -----Super Savings (Codes, Deals, Coupons 🔥🔥10-99% off)已入库，跳过-----
+2020-10-02 17:17:36,895 - ERROR: -----Super Deal人数为1007，跳过-----
+2020-10-02 17:17:40,133 - ERROR: -----Super Deals人数为231，跳过-----
+2020-10-02 17:17:43,077 - ERROR: -----Super Deals人数为1257，跳过-----
+2020-10-02 17:17:46,436 - ERROR: -----Super Deals, Code & Coupons已入库，跳过-----
+2020-10-02 17:17:50,753 - ERROR: -----The Deals and Codes Finder 📦💙已入库，跳过-----
+2020-10-02 17:17:56,459 - ERROR: -----Sweet Deals Finder已入库，跳过-----
+2020-10-02 17:18:00,515 - ERROR: -----Super deal and code coupon人数为315，跳过-----
+2020-10-02 17:18:15,630 - ERROR: -----Canada Deals已入库，跳过-----
+2020-10-02 17:18:20,789 - ERROR: -----Super Deal 👏 Jual & Beli Barang Area Tawau人数为1389，跳过-----
+2020-10-02 17:18:23,576 - ERROR: -----Deals Online人数为2552，跳过-----
+2020-10-02 17:18:27,244 - ERROR: -----Upto 99% Off Deals with Codes已入库，跳过-----
+2020-10-02 17:18:31,321 - ERROR: -----Amazon Deals (Coupons, Codes and Deals) By Budget Chicks已入库，跳过-----
+2020-10-02 17:18:36,256 - ERROR: -----Dani's Daily Deals - Canada人数为3234，跳过-----
+2020-10-02 17:18:44,245 - ERROR: -----Freebies & saving Codes已入库，跳过-----
+2020-10-02 17:18:52,702 - ERROR: -----super sweet deals人数为402，跳过-----
+2020-10-02 17:18:57,431 - ERROR: -----Deals and codes community 🔥🔥🔥已入库，跳过-----
+2020-10-02 17:19:02,271 - ERROR: -----USA Coupon Codes & Discount Deals | Save on Amazon Promos已入库，跳过-----
+2020-10-02 17:19:06,446 - ERROR: -----Hot Amazing Deals & Coupons codes 90% off人数为2640，跳过-----
+2020-10-02 17:19:09,861 - ERROR: -----Deals to Coupons!!!已入库，跳过-----
+2020-10-02 17:19:13,605 - ERROR: -----Super Thrifty deals人数为194，跳过-----
+2020-10-02 17:19:16,481 - ERROR: -----Pet Savings Club - Dogs, Cats & More - Super Deals - Save Money Today人数为1771，跳过-----
+2020-10-02 17:19:24,612 - ERROR: -----�Deals And Codes For USA Ladies�人数为1427，跳过-----
+2020-10-02 17:19:28,002 - ERROR: -----Mega Deals, Codes & Coupons已入库，跳过-----
+2020-10-02 17:19:49,858 - ERROR: -----5 STARS★★★★★ |COUPON| CODES| DEALS人数为177，跳过-----
+2020-10-02 17:19:53,161 - ERROR: -----Super Saving Amazon Coupons & Deals 🔥💥🔥人数为1367，跳过-----
+2020-10-02 17:19:56,584 - ERROR: -----Super Savings: Baby, Kid, Teen, Pet Edition (Codes, Deals, Coupons)人数为2654，跳过-----
+2020-10-02 17:20:00,132 - ERROR: -----😍🔥Fabulous Saving Deals Upto 99% OFF😍🔥🔥人数为1678，跳过-----
+2020-10-02 17:20:08,238 - ERROR: -----Discount & Deals Coupons Codes人数为204，跳过-----
+2020-10-02 17:20:11,627 - ERROR: -----The Savvy Shopper 🛍 Daily Deals, Discounts, Promo Codes and Coupons!已入库，跳过-----
+2020-10-02 17:20:15,579 - ERROR: -----Super Hot Savings - Coupons l Codes l Deals l Rebates l Freebies人数为511，跳过-----
+2020-10-02 17:20:18,803 - ERROR: -----Discount & Deals Coupons Codes人数为539，跳过-----
+2020-10-02 17:20:21,685 - ERROR: -----Sweet Deals N Codes人数为1551，跳过-----
+2020-10-02 17:20:26,845 - ERROR: -----💢💢 Cisley's Discount Deals & Bundles 2 💢💢人数为346，跳过-----
+2020-10-02 17:20:35,083 - ERROR: -----The Real Deal Fashion & Accessories人数为46，跳过-----
+2020-10-02 17:20:38,238 - ERROR: -----Sweet Deals Finder人数为23，跳过-----
+2020-10-02 17:20:41,451 - ERROR: -----Coupon Tree - Deals • Savings • Promo Codes • Discounts人数为1384，跳过-----
+2020-10-02 17:20:49,580 - ERROR: -----💥💥 SUPER DISCOUNT CODES PROMOTIONS & GLITCH 💥💥人数为3706，跳过-----
+2020-10-02 17:20:52,731 - ERROR: -----Baby & Toddler Deals, Discounts, Savings | SWS人数为922，跳过-----
+2020-10-02 17:21:09,251 - ERROR: -----❤Druk Supervise Girls❤人数为2671，跳过-----
+2020-10-02 17:21:12,522 - ERROR: -----Major Discount Deals人数为691，跳过-----
+2020-10-02 17:21:16,213 - ERROR: -----Hello Savings - Deals & Discounts人数为3400，跳过-----
+2020-10-02 17:21:19,590 - ERROR: -----Green New Deal人数为2184，跳过-----
+2020-10-02 17:21:22,475 - ERROR: -----Coupon Codes & Discount Deals 🌺人数为570，跳过-----
+2020-10-02 17:21:26,506 - ERROR: -----Hamilton Super Food Deals人数为2271，跳过-----
+2020-10-02 17:21:29,923 - ERROR: -----Sana's Amazing Deals, Promos, Coupons and more人数为3991，跳过-----
+2020-10-02 17:21:32,861 - ERROR: -----Happy Money Saver Deals!人数为576，跳过-----
+2020-10-02 17:21:40,686 - ERROR: -----Great Deals & discounts - Promo Codes & Coupons人数为667，跳过-----
+2020-10-02 17:21:44,055 - ERROR: -----Top Best Deals Online | Savings人数为183，跳过-----
+2020-10-02 17:21:52,310 - ERROR: -----BC Super duty F250/F350人数为501，跳过-----
+2020-10-02 17:21:55,727 - ERROR: -----CANADA DEALS AND SAVINGS已入库，跳过-----
+2020-10-02 17:21:59,900 - ERROR: -----Discount Deals Canada - Amazing deals, sales and coupon codes!已入库，跳过-----
+2020-10-02 17:22:05,630 - ERROR: -----Bomb Deals - Promo Codes - Coupons已入库，跳过-----
+2020-10-02 17:22:10,172 - ERROR: -----Bewitching Deals & Freebies Canada已入库，跳过-----
+2020-10-02 17:22:14,338 - ERROR: -----Best Deals in Canada已入库，跳过-----
+2020-10-02 17:22:18,645 - ERROR: -----What's the Big Deal? Online Savings for Canadian Parents.已入库，跳过-----
+2020-10-02 17:22:22,468 - ERROR: -----FSJ Deals & Steals人数为3037，跳过-----
+2020-10-02 17:22:29,922 - ERROR: -----Sénégal Business (achats-ventes-deals) supa business人数为782，跳过-----
+2020-10-02 17:22:33,456 - ERROR: -----Ludo Star 2 Trusted Dealings ✔️人数为1535，跳过-----
+2020-10-02 17:22:36,531 - ERROR: -----THE AMAZON PROJECT RISE OF THE SUPER WOMEN人数为292，跳过-----
+2020-10-02 17:22:39,721 - ERROR: -----E-Commerce Sales & Review人数为217，跳过-----
+2020-10-02 17:22:48,646 - ERROR: -----Capture The Code - Bargains, Deals & Discount Savings‼️已入库，跳过-----
+2020-10-02 17:23:01,652 - ERROR: -----Been There, Bought That: Deals Discounts Coupons Codes & Savings人数为2992，跳过-----
+2020-10-02 17:23:05,123 - ERROR: -----Vancouver Island Supernatural人数为323，跳过-----
+2020-10-02 17:23:08,455 - ERROR: -----Awesome Deals, Online Codes, Black Friday Sales, Promos & Cyber Shopping已入库，跳过-----
+2020-10-02 17:23:37,161 - ERROR: -----Vancouver Supernatural人数为604，跳过-----
+2020-10-02 17:23:47,898 - ERROR: -----Deals Codes-Coupons & US已入库，跳过-----
+2020-10-02 17:23:53,056 - ERROR: -----SuperDeals 👗👠💄🥣💰🔥人数为381，跳过-----
+2020-10-02 17:23:57,462 - ERROR: -----Aliexpress Super Deals人数为1882，跳过-----
+2020-10-02 17:24:02,035 - ERROR: -----Canada Deals and Review人数为969，跳过-----
+2020-10-02 17:24:12,410 - ERROR: -----Super Deals! Free, Direct Shipping & 20- 99% off人数为1537，跳过-----
+2020-10-02 17:24:24,048 - ERROR: -----Super Deal Haiti vin HT vin vann人数为255，跳过-----
+2020-10-02 17:24:28,398 - ERROR: -----fashion edition : DEALFINDER人数为2649，跳过-----
+2020-10-02 17:24:32,838 - ERROR: -----Super Deals Clicking & Saving!人数为99，跳过-----
+2020-10-02 17:24:43,415 - ERROR: -----tiffs super deals人数为116，跳过-----
+2020-10-02 17:25:05,665 - ERROR: -----steal deals discounts & coupons人数为545，跳过-----
+2020-10-02 17:25:15,892 - ERROR: -----La Superbe 👑💕 الرائعة人数为3754，跳过-----
+2020-10-02 17:25:20,316 - ERROR: -----Embroidery Super Deal Stitch Outs人数为185，跳过-----
+2020-10-02 17:25:24,806 - ERROR: -----AliExpress SUPER DEALS人数为1949，跳过-----
+2020-10-02 17:25:30,147 - ERROR: -----Hesperia,Victorville, phelan, adelanto, Barstow Super Great offer Deals🤗!人数为2356，跳过-----
+2020-10-02 17:25:35,123 - ERROR: -----Coupons Deals & Codes(Just US)已入库，跳过-----
+2020-10-02 17:25:46,431 - ERROR: -----Super Frugal Mom Community | Lifestyle, Debt Payoff, & Deals人数为350，跳过-----
+2020-10-02 17:25:55,875 - ERROR: -----Good Deal Overload人数为559，跳过-----
+2020-10-02 17:25:59,478 - ERROR: -----The Good Deal Dog人数为1177，跳过-----
+2020-10-02 17:26:08,175 - ERROR: -----Kącik Super Deal人数为2077，跳过-----
+2020-10-02 17:26:12,702 - ERROR: -----GOOD DEALS ONLY SPORTS CARDS人数为669，跳过-----
+2020-10-02 17:26:22,178 - ERROR: -----Shopping Deals人数为445，跳过-----
+2020-10-02 17:26:32,654 - ERROR: -----Barb's Super Deal's!!!人数为767，跳过-----
+2020-10-02 17:26:52,764 - ERROR: -----Super Seller Group人数为2200，跳过-----
+2020-10-02 17:26:57,140 - ERROR: -----Sharon's Super Savings Deals人数为181，跳过-----
+2020-10-02 17:27:06,050 - ERROR: -----Coupons, Deals, Giveaways & Discounts人数为3973，跳过-----
+2020-10-02 17:27:10,519 - ERROR: -----Savings Geek Fashion & Lifestyle Deals💄人数为3835，跳过-----
+2020-10-02 17:27:14,928 - ERROR: -----deal coupons and saving money人数为249，跳过-----
+2020-10-02 17:27:29,624 - ERROR: -----Organic Coupons and Deals- All Natural Savings人数为3068，跳过-----
+2020-10-02 17:27:34,540 - ERROR: -----Killer Deals人数为930，跳过-----
+2020-10-02 17:27:38,846 - ERROR: -----Super Saving Group人数为166，跳过-----
+2020-10-02 17:27:43,129 - ERROR: -----Deal Me Up Deals人数为474，跳过-----
+2020-10-02 17:27:47,613 - ERROR: -----Best Deals CANADA, Savings & Promos, Coupons, Freebies, Price Mistakes人数为243，跳过-----
+2020-10-02 17:27:51,843 - ERROR: -----Champlin, MN Super Target Clearance & Deals人数为1039，跳过-----
+2020-10-02 17:27:56,698 - ERROR: -----Juice France Deals人数为311，跳过-----
+2020-10-02 17:28:10,687 - ERROR: -----ibotta, Savings Star & Checkout51 Deals人数为149，跳过-----
+2020-10-02 17:28:25,710 - ERROR: -----Wicked Deals Canada人数为446，跳过-----
+2020-10-02 17:28:56,037 - ERROR: -----ONLY 2SURE DEAL GAME ((DODZI 1))人数为1522，跳过-----
+2020-10-02 17:29:06,981 - ERROR: -----Dr. Wives Saving, Coupon, Deals, & Freebies人数为1437，跳过-----
+2020-10-02 17:29:11,694 - ERROR: -----Dover and Deal Mums and Mums to be人数为650，跳过-----
+2020-10-02 17:29:16,710 - ERROR: -----Raw Deal TV Chile (WWE Trading Card Game)人数为802，跳过-----
+2020-10-02 17:29:21,957 - ERROR: -----DEANO'S 4X4 WRECKER'S / DEANO'S DEAL'S ON WHEEL'S人数为3207，跳过-----
+2020-10-02 17:29:26,942 - ERROR: -----KS Deal's人数为836，跳过-----
+2020-10-02 17:29:42,081 - ERROR: -----Fire 🔥 Deal Finder Squad人数为2376，跳过-----
+2020-10-02 17:29:46,422 - ERROR: -----Sam's Sweet Deals 😎人数为1556，跳过-----
+2020-10-02 17:29:50,989 - ERROR: -----Die Superhändler RTL 4 Räume 1 Deal人数为1659，跳过-----
+2020-10-02 17:29:55,494 - ERROR: -----G & L DISCOUNT DIVAS/ONLINE DEALS人数为654，跳过-----
+2020-10-02 17:29:59,760 - ERROR: -----D & J Awesome Discount Deals人数为238，跳过-----
+2020-10-02 17:30:04,189 - ERROR: -----🎸 ROCK'IN DEALS & SAVINGS🎸人数为806，跳过-----

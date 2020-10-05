@@ -33,7 +33,6 @@ def login_required(func):
 @app.route('/index')
 @login_required
 def index():
-    print("index")
     return render_template("index.html",user=session.get('user'),title="世纪营联")
 
 
@@ -101,6 +100,49 @@ def stopThread():
     except:
         pass
     res_json = {"code": "0000"}
+    return jsonify(res_json)
+
+@app.route('/buyerList')
+@login_required
+def buyerList():
+    return render_template("buyer-list.html", user=session.get('user'))
+
+@app.route('/getBuyerData',methods=['POST'])
+def getBuyerData():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "select * from tb_cbb_customer where 1=1 "
+    param = []
+    try:
+        if json_data.get('type'):
+            sql += "and type=%s "
+            param.append(json_data.get('type'))
+    except:
+        pass
+    try:
+        if json_data.get('name'):
+            name = '%' + str(json_data.get('name')) + '%'
+            sql += " and name like %s "
+            param.append(name)
+    except:
+        pass
+    try:
+        if json_data.get('bigNum'):
+            sql += " and nums < %s "
+            param.append(json_data.get('bigNum'))
+    except:
+        pass
+    try:
+        if json_data.get('smallNum'):
+            sql += " and nums > %s "
+            param.append(json_data.get('smallNum'))
+    except:
+        pass
+    group_list = mp.fetch_all(sql,param)
+    res_json = {"code":"0000","list":group_list}
     return jsonify(res_json)
 
 if __name__ == '__main__':
