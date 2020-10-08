@@ -50,14 +50,15 @@ def getProData(ip,keyword):
             driver.quit()
             return False,keyword
         except:
-            try:
-                WebDriverWait(driver, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, '//div[contains(@class,"s-main-slot")]')))
-            except:
-                error_log.logger.error(
-                    "***ip=%s,keyword=%s,页面采集错误,结束当前采集***" % (ip, keyword))
-                driver.quit()
-                return False,keyword
+            pass
+        try:
+            WebDriverWait(driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, '//div[contains(@class,"s-main-slot")]')))
+        except:
+            error_log.logger.error(
+                "***ip=%s,keyword=%s,页面采集错误,结束当前采集***" % (ip, keyword))
+            driver.quit()
+            return False, keyword
     divs = driver.find_elements_by_xpath('//div[contains(@class,"s-main-slot")]/div')
     try:
         for div in divs:
@@ -170,7 +171,6 @@ def getProData(ip,keyword):
                     sql_param = [keyword, asin, img, sponsored, price, title, fba, star, review, brand, qa,
                                  big_rank_txt, big_rank, mid_rank_txt, mid_rank, small_rank_txt, small_rank,
                                  put_date]
-                    print(sql_param)
                     try:
                         mp.insert(sql, sql_param)
                         all_log.logger.info("-----%s(%s)入库成功-----" % (asin, keyword))
@@ -245,14 +245,14 @@ def removeTxtLine(txt,index):
     os.remove('test.bak')
 
 if __name__ == "__main__":
-    txt_name = "keyword_bak.txt"
+    txt_name = "keyword.txt"
     pool_num = 5
     keyword_list = []
     with open(txt_name, 'r') as f:
         for line in f.readlines():
             keyword_list.append(line.strip())
     num = len(keyword_list)
-    url = "http://120.79.85.144/index.php/api/entry?method=proxyServer.tiqu_api_url&packid=0&fa=0&dt=0&groupid=0&fetch_key=&qty=29&time=1&port=1&format=json&ss=5&css=&dt=0&pro=&city=&usertype=6"
+    url = "http://ip.ipjldl.com/index.php/api/entry?method=proxyServer.tiqu_api_url&packid=0&fa=0&dt=0&groupid=0&fetch_key=&qty=5&time=2&port=1&format=json&ss=5&css=&dt=0&pro=&city=&usertype=6"
     i = 1
     print('关键词总行数为%s行。' %num)
     all_log.logger.info("#######亚马逊关键词爬取开始%s#######" %datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -260,13 +260,13 @@ if __name__ == "__main__":
         ip_data = urllib.request.urlopen(url).read()
         json_list = list(json.loads(ip_data)['data'])
         param_list = []
-        for j in range(pool_num):
-        # for index,json_data in enumerate(json_list):
-            json_data = json_list[j]
+        # for j in range(pool_num):
+        for index,json_data in enumerate(json_list):
+            # json_data = json_list[j]
             param = []
             ip = "%s:%s"%(json_data['IP'],json_data['Port'])
             param.append(ip)
-            param.append(keyword_list[j])
+            param.append(keyword_list[index])
             param_list.append(param)
         pool = Pool(5)
         res_list = pool.starmap(getProData, param_list)
