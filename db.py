@@ -5,7 +5,7 @@
 # @Software : PyCharm
 
 import pymysql
-from DBUtils.PooledDB import PooledDB, SharedDBConnection
+from DBUtils.PooledDB import PooledDB
 '''
 连接池
 '''
