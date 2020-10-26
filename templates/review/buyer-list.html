@@ -87,7 +87,7 @@
                         <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href={{ url_for('fb.fbList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
@@ -110,7 +110,7 @@
                             </a>
                         </li>
                         <li class="sidebar-nav-link">
-                            <a href={{ url_for('fb.groupList') }} class="sub-active">
+                            <a href={{ url_for('fb.groupList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
                             </a>
                         </li>
@@ -123,14 +123,14 @@
                 </li>
             {% endif %}
             <li class="sidebar-nav-link">
-                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title active">
                     <i class="am-icon-dollar sidebar-nav-link-logo"></i> 刷单模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     {% if user.level == 1 %}
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('review.buyerList') }}>
+                        <a href={{ url_for('review.buyerList') }} class="sub-active">
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 买手列表
                         </a>
                     </li>
@@ -174,48 +174,20 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">Facebook小组列表</div>
+                            <div class="widget-title  am-cf">买手列表</div>
                         </div>
                         <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="group_type">
-                                        <option value="none">选择类型</option>
-                                        <option value="0">公开</option>
-                                        <option value="1">非公开</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="small_num" placeholder="人数大于"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="big_num" placeholder="人数小于"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="group_name" placeholder="请输入群组关键词"/>
-                                    <span class="am-input-group-btn">
-                                        <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button" onclick="submitOpt()"></button>
-                                      </span>
-                                </div>
-                            </div>
-
                             <div class="am-u-sm-12">
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
                                        id="example-r">
                                     <thead>
                                     <tr>
-                                        <th width="35%">小组名称</th>
-                                        <th width="35%">管理员</th>
-                                        <th width="10%">人数</th>
-                                        <th width="10%">小组类型</th>
-                                        <th width="10%">添加时间</th>
+                                        <th>买手姓名</th>
+                                        <th>邮箱</th>
+                                        <th>等级</th>
+                                        <th>profile</th>
+                                        <th>添加时间</th>
+{#                                        <th>关联订单</th>#}
                                     </tr>
                                     </thead>
                                     <tbody id="list-tbody">
@@ -241,6 +213,6 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/group-list.js"></script>
+<script src="../../static/assets/js/review/buyer-list.js"></script>
 </body>
 </html>

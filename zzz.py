@@ -132,8 +132,8 @@ def removeTxtLine(txt,index):
     os.remove('test.bak')
 
 if __name__ == '__main__':
-    removeTxtLine('keyword_bak.txt',0)
-
+    # removeTxtLine('keyword_bak.txt',0)
+    a = "12345"
 
     # for line in fileinput.input("keyword_bak.txt", inplace=1):
     #     if not fileinput.isfirstline():

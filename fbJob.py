@@ -51,7 +51,7 @@ def collectionGroup(acc,keywrods):
     }
     options.add_experimental_option('prefs', prefs)
     options.add_argument("--start-maximized")
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.baidu.com/")
     if type('') is type(acc['cookies']):
@@ -94,6 +94,7 @@ def collectionGroup(acc,keywrods):
                     js = 'window.open("' + pro_url + '")'
                     driver.execute_script(js)
                     driver.switch_to.window(driver.window_handles[1])
+                    sleep(1000)
                     try:
                         if group_num == 0:
                             WebDriverWait(driver, 5).until(
@@ -134,12 +135,6 @@ def collectionGroup(acc,keywrods):
                         error_log.logger.error("*****获取%s信息出错*****"%pro_url)
                         driver.close()
                         driver.switch_to.window(driver.window_handles[0])
-
-
-
-
-
-
 
 def getTask():
     mp = MysqlPool()
@@ -403,17 +398,23 @@ def answerQuersion(task,driver):
 def doComment(acc,task,content):
     options = webdriver.ChromeOptions()
     options.add_argument("user-agent=" + acc['user-agent'])
-    prefs = {
-        'profile.default_content_setting_values': {
-            'notifications': 2
-        }
-    }
-    options.add_experimental_option('prefs', prefs)
-    options.add_argument("--start-maximized")
+    # prefs = {
+    #     'profile.default_content_setting_values': {
+    #         'notifications': 2
+    #     }
+    # }
+    # options.add_experimental_option('prefs', prefs)
+    # options.add_argument("--start-maximized")
     # options.add_argument("--headless")
+    # options.add_argument("--disable-gpu")
+    # options.add_argument("log-level=3")
+    # options.add_argument('blink-settings=imagesEnabled=false')
+    # options.add_experimental_option('useAutomationExtension', False)
+    # options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
     driver = webdriver.Chrome(options=options)
     try:
         driver.get("https://www.baidu.com/")
+        sleep(1000)
         if type('') is type(acc['cookies']):
             cookie_list = eval(acc['cookies'])
         else:
@@ -421,7 +422,7 @@ def doComment(acc,task,content):
         for cookie in cookie_list:
             driver.add_cookie(cookie_dict=cookie)
         driver.get("https://www.facebook.com/search/groups/?q=%s"%task['group_id'])
-        # sleep(5)
+        # sleep(5000)
         try:
             WebDriverWait(driver, 5).until(
                 EC.visibility_of_element_located((By.XPATH,

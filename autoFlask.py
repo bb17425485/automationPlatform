@@ -7,16 +7,17 @@
 from flask import Flask, render_template, request, session, redirect,jsonify,url_for,json,flash
 from functools import wraps
 from db import MysqlPool
-import os,logging,logging.handlers,threading
+import os,logging,logging.handlers,threading,hashlib,pymysql
 from blueprint_facebook import fb
-from zzz import DownThread
+from blueprint_amazon import amz
+from blueprint_review import review
+from utils import pyUtils
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.register_blueprint(fb,url_prefix='/fb')
-
-dt = DownThread()
-t = None
+app.register_blueprint(amz,url_prefix='/amz')
+app.register_blueprint(review,url_prefix='/review')
 
 def login_required(func):
     @wraps(func) # 修饰内层函数，防止当前装饰器去修改被装饰函数的属性
@@ -24,6 +25,17 @@ def login_required(func):
         # 从session获取用户信息，如果有，则用户已登录，否则没有登录
         user = session.get('user')
         if not user:
+            return redirect(url_for("login"))
+        else:
+            return func(*args, **kwargs)
+    return inner
+
+def admin_required(func):
+    @wraps(func) # 修饰内层函数，防止当前装饰器去修改被装饰函数的属性
+    def inner(*args, **kwargs):
+        # 从session获取用户信息，如果有，则用户已登录，否则没有登录
+        user = session.get('user')
+        if not user or user['level'] != 1:
             return redirect(url_for("login"))
         else:
             return func(*args, **kwargs)
@@ -38,7 +50,6 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    logging.error("-----login-----")
     if request.method == 'GET':
         return render_template("login.html")
     if request.method == 'POST':
@@ -47,16 +58,23 @@ def login():
         session.permanent = True
         app.permanent_session_lifetime = timedelta(minutes=1)
         '''
-        account = request.form.get("account")
+        account = request.form.get("account").lower()
         mp = MysqlPool()
         user = mp.fetch_one("select * from tb_user where account=%s",account)
         if user:
-            if request.form.get("pwd") == user['password']:
-                session['user'] = user
-                mp = MysqlPool()
-                sql = "update tb_user set login_time=now() where id=%s"
-                mp.update(sql,user['id'])
-                return redirect('/index')
+            if pyUtils.getMd5(request.form.get("pwd")) == user['password']:
+                if user['state'] == 3:
+                    flash("帐号已停用，请联系管理员")
+                elif user['state'] == 2:
+                    flash("帐号待审核，请联系管理员")
+                else:
+                    session['user'] = user
+                    mp = MysqlPool()
+                    sql = "update tb_user set login_time=now() where id=%s"
+                    mp.update(sql,user['id'])
+                    return redirect('/index')
+            else:flash("密码错误")
+        else:flash("帐号未注册")
         return redirect(url_for("login"))
 
 @app.route('/logout')
@@ -85,64 +103,64 @@ def doThreading():
     res_json = {"code": "0000"}
     return jsonify(res_json)
 
-@app.route('/stopThread',methods=['POST'])
-def stopThread():
-    data = request.get_data()
-    json_data = json.loads(data.decode("utf-8"))
-    global t,dt
-    try:
-        if json_data.get('stop'):
-            print("stop")
-            if t.is_alive():
-                print("stopppppppppppp")
-                dt.terminate()
-                t.join()
-    except:
-        pass
-    res_json = {"code": "0000"}
-    return jsonify(res_json)
+@app.route('/userList')
+@admin_required
+def userList():
+    return render_template("user-list.html", user=session.get('user'))
 
-@app.route('/buyerList')
-@login_required
-def buyerList():
-    return render_template("buyer-list.html", user=session.get('user'))
-
-@app.route('/getBuyerData',methods=['POST'])
-def getBuyerData():
+@app.route('/getUserData',methods=['POST'])
+@admin_required
+def getUserData():
     data = request.get_data()
     json_data = []
     if data:
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
-    sql = "select * from tb_cbb_customer where 1=1 "
+    sql = "select t.id,t.account,t.level,t.nickname,t.state,DATE_FORMAT(t.reg_time,'%%Y-%%m-%%d %%H:%%i:%%s') reg_time," \
+          "DATE_FORMAT(t.login_time,'%%Y-%%m-%%d %%H:%%i:%%s') login_time from tb_user t where 1=1 "
     param = []
     try:
-        if json_data.get('type'):
-            sql += "and type=%s "
-            param.append(json_data.get('type'))
+        if json_data.get('level'):
+            sql += "and level=%s "
+            param.append(json_data.get('level'))
     except:
         pass
+    user_list = mp.fetch_all(sql,param)
+    res_json = {"code":"0000","list":user_list}
+    return jsonify(res_json)
+
+@app.route('/updateUser',methods=['POST'])
+@admin_required
+def updateUser():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "update tb_user set state=%s where id=%s"
+    param = [json_data.get('state'),json_data.get('id')]
+    mp.update(sql,param)
+    res_json = {"code":"0000","msg":"修改成功"}
+    return jsonify(res_json)
+
+@app.route('/addUser',methods=['POST'])
+@admin_required
+def addUser():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "insert into tb_user(account, password, nickname, level, state, reg_time) values (%s,%s,%s,%s,1,now())"
+    param = [json_data.get('account'), pyUtils.getMd5(json_data.get("password")),json_data.get('nickname'),json_data.get('level')]
+    msg = "用户添加成功"
     try:
-        if json_data.get('name'):
-            name = '%' + str(json_data.get('name')) + '%'
-            sql += " and name like %s "
-            param.append(name)
-    except:
-        pass
-    try:
-        if json_data.get('bigNum'):
-            sql += " and nums < %s "
-            param.append(json_data.get('bigNum'))
-    except:
-        pass
-    try:
-        if json_data.get('smallNum'):
-            sql += " and nums > %s "
-            param.append(json_data.get('smallNum'))
-    except:
-        pass
-    group_list = mp.fetch_all(sql,param)
-    res_json = {"code":"0000","list":group_list}
+        mp.update(sql, param)
+    except pymysql.err.IntegrityError:
+        msg = "添加失败,用户名已存在"
+    except Exception as e:
+        msg = "添加失败,%s"%e
+    res_json = {"code": "0000", "msg": msg}
     return jsonify(res_json)
 
 if __name__ == '__main__':

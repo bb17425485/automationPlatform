@@ -76,7 +76,7 @@
         <!-- 菜单 -->
         <ul class="sidebar-nav">
             <li class="sidebar-nav-link">
-                <a href={{ url_for('index') }} >
+                <a href={{ url_for('index') }}>
                     <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                 </a>
             </li>
@@ -86,14 +86,14 @@
                         <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href={{ url_for('fb.fbList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
                             </a>
                         </li>
                         <li class="sidebar-nav-link">
-                            <a href={{ url_for('fb.form') }} class="sub-active">
+                            <a href={{ url_for('fb.form') }}>
                                 <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 任务提交
 
                             </a>
@@ -122,17 +122,17 @@
                 </li>
             {% endif %}
             <li class="sidebar-nav-link">
-                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title active">
                     <i class="am-icon-dollar sidebar-nav-link-logo"></i> 刷单模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     {% if user.level == 1 %}
-                    <li class="sidebar-nav-link">
-                        <a href={{ url_for('review.buyerList') }}>
-                            <i class="am-icon-table sidebar-nav-link-logo"></i> 买手列表
-                        </a>
-                    </li>
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('review.buyerList') }}>
+                                <i class="am-icon-table sidebar-nav-link-logo"></i> 买手列表
+                            </a>
+                        </li>
                     {% endif %}
                     <li class="sidebar-nav-link">
                         <a href={{ url_for('review.reviewList') }}>
@@ -140,7 +140,7 @@
                         </a>
                     </li>
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('review.reviewForm') }}>
+                        <a href={{ url_for('review.reviewForm') }} class="sub-active">
                             <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 需求提交
                         </a>
                     </li>
@@ -194,44 +194,104 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title am-fl">FaceBook顶帖</div>
-                            <div class="widget-function am-fr">
-                                <a href="javascript:;" class="am-icon-cog"></a>
-                            </div>
+                            <div class="widget-title am-fl">需求提交 — <span style="color: red">红色*为必填项</span></div>
                         </div>
                         <div class="widget-body am-fr">
-                            <form id="fb-form" class="am-form tpl-form-line-form" {{ url_for('fb.form') }} method="post">
+                            <form class="am-form tpl-form-line-form" {{ url_for('review.reviewForm') }}
+                                  method="post">
                                 <div class="am-form-group">
-                                    <label class="am-form-label am-u-sm-2">请勾选小组</label>
-                                    <div class="am-u-sm-10">
-                                        {% for group in groups %}
-                                            <label class="am-checkbox">
-                                                <input type="checkbox" name="group_id" value="{{ group }}" data-am-ucheck> {{ group }}
-                                            </label>
-                                        {% endfor %}
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">关键词<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" required class="tpl-form-input" name="keyword" placeholder="请输入关键词">
+                                        </div>
+                                    </div>
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">页数<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" class="tpl-form-input" name="kw_page" placeholder="请输入关键词所在页数">
+                                        </div>
+                                    </div>
+                                    <div style="float: right;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">所属用户<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            {% if user.level == 1 %}
+                                                <select name="user_id" data-am-selected="{searchBox: 1}">
+                                                {% for uu in user_list %}
+                                                    <option value="{{ uu.id }}">{{ uu.account }}</option>
+                                                {% endfor %}
+                                                </select>
+                                            {% else %}
+                                                <input type="text" style="background: rgba(192,187,192,0.7)" class="tpl-form-input" disabled value="{{ user['account'] }}">
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="am-form-group">
-                                    <label class="am-u-sm-2 am-form-label">帖子关键词</label>
-                                    <div class="am-u-sm-10">
-                                        <input type="text" class="tpl-form-input" name="keyword" placeholder="请输入帖子关键词">
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">价格<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" class="tpl-form-input" name="price" placeholder="请输入价格">
+                                        </div>
+                                    </div>
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">品牌名<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" class="tpl-form-input" name="brand" placeholder="请输入品牌名">
+                                        </div>
+                                    </div>
+                                    <div style="float: right;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">店铺名<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" class="tpl-form-input" name="store" placeholder="请输入店铺名">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="am-form-group">
-                                    <label class="am-u-sm-2 am-form-label">评论数量</label>
-                                    <div class="am-u-sm-10">
-                                        <input type="number" class="tpl-form-input" name="nums" placeholder="请输入评论数量">
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">每日单数<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="number" class="tpl-form-input" name="days_order"
+                                                   placeholder="请输入每日最大单量">
+                                        </div>
+                                    </div>
+                                    <div style="float: left;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">总单数<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="number" class="tpl-form-input" name="total_order"
+                                                   placeholder="请输入总单数">
+                                        </div>
+                                    </div>
+                                    <div style="float: right;width: 33.3%">
+                                        <label class="am-u-sm-4 am-form-label">产品简写<span style="color: red">*</span></label>
+                                        <div class="am-u-sm-8">
+                                            <input type="text" class="tpl-form-input" name="name" placeholder="请输入产品的中文简写">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="am-form-group">
-                                    <label class="am-u-sm-2 am-form-label">分享次数</label>
+                                    <label class="am-u-sm-2 am-form-label">ASIN<span style="color: red">*</span></label>
                                     <div class="am-u-sm-10">
-                                        <input type="number" class="tpl-form-input" name="share_num" placeholder="请输入分享次数">
+                                        <input type="text" class="tpl-form-input" name="asin" placeholder="请输入ASIN,多个变体请用 | 隔开">
                                     </div>
                                 </div>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-2 am-form-label">主图链接<span style="color: red">*</span></label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" class="tpl-form-input" name="img" placeholder="请输入主图链接">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-2 am-form-label">备注</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" class="tpl-form-input" name="note" placeholder="请输入备注">
+                                    </div>
+                                </div>
+
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" onclick="postForm()" class="am-btn am-btn-primary tpl-btn-bg-color-success ">
+                                        <button type="button" onclick="postForm()"
+                                                class="am-btn am-btn-primary tpl-btn-bg-color-success ">
                                             提交
                                         </button>
                                     </div>
@@ -248,7 +308,7 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/form.js"></script>
+<script src="../../static/assets/js/review/review-form.js"></script>
 </body>
 
 </html>

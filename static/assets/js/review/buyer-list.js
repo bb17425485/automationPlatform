@@ -59,22 +59,23 @@ function doPagination() {
 
 function structureHtml(html, data, i) {
     html += '<tr class="gradeX">';
-    html += '<td>' + data[i].customer_name + '</td>'
-    html += '<td>' + data[i].paypal + '</td>'
-    html += '<td>' + data[i].asin + '</td>'
-    html += '<td>' + new Date(data[i].add_time).Format("yyyy-MM-dd hh:mm:ss") + '</td>'
+    html += '<td>' + data[i].name + '</td>'
+    html += '<td>' + data[i].email + '</td>'
+    html += '<td>' + data[i].level + '</td>'
     if(data[i].profile){
         html += '<td><div class="tpl-table-black-operation">' +
-        '<a href="javascript:void(0);" class="tpl-table-black-operation-del" onclick="openPage(\'' + data[i].profile + '\')"><i class="am-icon-amazon"></i> 跳转</a></div></td>'
+            '<a href="javascript:void(0);" class="tpl-table-black-operation-del" onclick="window.open(\'' + data[i].profile + '\')"><i class="am-icon-amazon"></i> 跳转</a></div></td>'
     }else{
         html += '<td></td>'
     }
+    html += '<td>' + new Date(data[i].add_time).Format("yyyy-MM-dd hh:mm:ss") + '</td>'
+    // html += '<td><div class="tpl-table-black-operation">' +
+    //     '<a href="javascript:void(0);" class="tpl-table-black-operation-del" onclick="openPage(\'https://www.cashbackbase.com/seller/order/' + data[i].order_id + '/sequence\')"><i class="am-icon-pencil"></i> 跳转</a></div></td>'
     html += '<tr/>'
     return html;
 }
 
 function openPage(url){
-    console.log(url)
     window.open(url)
 }
 

@@ -16,12 +16,16 @@ def getData():
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument('blink-settings=imagesEnabled=false')
+    options.add_experimental_option('useAutomationExtension', False)
+    options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.baidu.com/")
     cookies = [{'domain': '.cashbackbase.com', 'expiry': 1599363219, 'httpOnly': False, 'name': '_gat_gtag_UA_119767146_3', 'path': '/', 'secure': False, 'value': '1'}, {'domain': '.cashbackbase.com', 'expiry': 1757043117, 'httpOnly': True, 'name': 'cash-ab-test', 'path': '/', 'secure': False, 'value': 'eyJpdiI6InFRZHJVdDNYUHA0UXpPell2MFZFM2c9PSIsInZhbHVlIjoieXFZSjRManpHb00zR01vaGpiNlY5Zz09IiwibWFjIjoiMDU5ZGY3YjA3OGVlNjM2MWRhMjk1YmIxNDJiZTNhOTkxMzRkN2UzNGVhYzViYjM3NGIzMWViZTU2OGY3MGViMyJ9'}, {'domain': '.cashbackbase.com', 'expiry': 1599363180, 'httpOnly': False, 'name': '_gat_gtag_UA_119767146_1', 'path': '/', 'secure': False, 'value': '1'}, {'domain': '.cashbackbase.com', 'expiry': 1599449559, 'httpOnly': False, 'name': '_gid', 'path': '/', 'secure': False, 'value': 'GA1.2.731395315.1599363120'}, {'domain': 'www.cashbackbase.com', 'httpOnly': False, 'name': 'current-page', 'path': '/', 'secure': False, 'value': 'https%3A%2F%2Fwww.cashbackbase.com%2Fseller-central'}, {'domain': '.cashbackbase.com', 'httpOnly': True, 'name': 'cashbackbasev6_session', 'path': '/', 'secure': False, 'value': 'eyJpdiI6IlNveW42QlNCN29ndXdicE96RVVRTFE9PSIsInZhbHVlIjoidWQ0MmtvS2c5RUg4SVN4YlY4NzNjN2h2Wjl0MGFaOW5CK0FFbU5YOFBoMmJHYlZPQzdmUDFDWEtkU2xEaFppQyIsIm1hYyI6ImM3YTI4YWEyNzEzYTI2ZWIyZTMyOWU5YTc5MzNhMWI5ZTViNGZiZDgzZGYyNmJjNmUxYTUzY2MzZmIzNmUzYmQifQ%3D%3D'}, {'domain': '.cashbackbase.com', 'expiry': 1662435159, 'httpOnly': False, 'name': '_ga', 'path': '/', 'secure': False, 'value': 'GA1.2.606942347.1599363120'}]
     for cookie in cookies:
         driver.add_cookie(cookie_dict=cookie)
-    driver.get("https://www.cashbackbase.com/seller/order?key=amz_order_id&value=&status=refunded&page=10")
+    driver.get("https://www.cashbackbase.com/seller/order?key=amz_order_id&value=&status=refunded")
     try:
         WebDriverWait(driver,5).until(EC.visibility_of_element_located((By.ID,'msg-notify')))
         driver.find_element_by_xpath('//*[@id="msg-notify"]//button[@class="close"]').click()
@@ -43,6 +47,7 @@ def getData():
             try:
                 order_id = tr.find_element_by_xpath('./td').text
                 asin = tr.find_element_by_xpath('.//strong').text
+                img = tr.find_element_by_xpath('.//img').get_attribute("src")
                 url = tr.find_element_by_xpath('./td[last()]/p/a').get_attribute('href')
                 js = 'window.open("' + url + '")'
                 driver.execute_script(js)
@@ -57,8 +62,8 @@ def getData():
                 driver.close()
                 driver.switch_to.window(driver.window_handles[0])
                 mp = MysqlPool()
-                sql = "insert into tb_cbb_customer(order_id,asin,customer_name,paypal,profile,add_time) values(%s,%s,%s,%s,%s,now())"
-                param = [order_id,asin,customer_name,paypal,profile]
+                sql = "insert into tb_cbb_customer(order_id,asin,img,customer_name,paypal,profile,add_time) values(%s,%s,%s,%s,%s,%s,now())"
+                param = [order_id,asin,img,customer_name,paypal,profile]
                 try:
                     mp.insert(sql,param)
                     print("%s入库成功"%order_id)
@@ -73,18 +78,6 @@ def getData():
             sleep(1)
         else:break
     driver.quit()
-
-
-def getTrData(driver):
-    trs = driver.find_elements_by_tag_name('tr')
-    for tr in trs:
-        order_id = tr.find_element_by_xpath('./td').text
-        asin = tr.find_element_by_xpath('./strong').text
-        print(order_id,asin)
-    driver.quit()
-
-
-
 
 if __name__ == "__main__":
     getData()

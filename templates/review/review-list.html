@@ -22,6 +22,18 @@
     <script src="../../static/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/jquery.pagination_js/js/jquery.pagination.js"></script>
 </head>
+<style>
+    #review_table th {
+        text-align: center;
+    }
+    #review_table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    #order_table td {
+        text-align: left;
+    }
+</style>
 <body data-type="widgets">
 <script src="../../static/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
@@ -44,7 +56,7 @@
                 <ul>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="javascript:;">欢迎你, <span>{{ user['nickname'] }}</span> </a>
+                        <a href="javascript:;">欢迎你, <span id="user_nickname">{{ user['nickname'] }}</span><span id="user_level" style="display: none">{{ user['level'] }}</span> </a>
                     </li>
 
                     <!-- 退出 -->
@@ -87,7 +99,7 @@
                         <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href={{ url_for('fb.fbList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
@@ -110,7 +122,7 @@
                             </a>
                         </li>
                         <li class="sidebar-nav-link">
-                            <a href={{ url_for('fb.groupList') }} class="sub-active">
+                            <a href={{ url_for('fb.groupList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
                             </a>
                         </li>
@@ -123,11 +135,11 @@
                 </li>
             {% endif %}
             <li class="sidebar-nav-link">
-                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title active">
                     <i class="am-icon-dollar sidebar-nav-link-logo"></i> 刷单模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     {% if user.level == 1 %}
                     <li class="sidebar-nav-link">
                         <a href={{ url_for('review.buyerList') }}>
@@ -136,7 +148,7 @@
                     </li>
                     {% endif %}
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('review.reviewList') }}>
+                        <a href={{ url_for('review.reviewList') }} class="sub-active">
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
                         </a>
                     </li>
@@ -167,6 +179,61 @@
             </li>
         </ul>
     </div>
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my_confirm">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">修改提示</div>
+            <div class="am-modal-bd">
+                你，确定要修改这条记录的状态吗？
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="tips_modal">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提示信息
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" id="tips_content">
+                Modal 内容。
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="order_modal">
+        <div class="am-modal-dialog" style="height: 70%;width: 60%;overflow:auto">
+            <div class="am-modal-hd">
+                <img style="width: 6rem;height: 6rem;cursor:pointer;" id="order_img" src="" class="tpl-table-line-img" alt="">
+                <span style="line-height: 6rem" id="order_asin"></span>
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-hd" style="height: 13rem;width: 90%;margin: 0 auto;padding: 0 10px">
+                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
+                       id="order_table">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>订单号</th>
+                            <th>流量渠道</th>
+                            <th>下单时间</th>
+                            <th>profile</th>
+                            <th>留评链接</th>
+                            <th>结算状态</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order_tbody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" style="width:75rem"
+                 id="tpl_echarts"></div>
+        </div>
+    </div>
+
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
@@ -174,49 +241,45 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">Facebook小组列表</div>
+                            <div class="widget-title am-cf">刷单任务列表<div class="am-fr" style="color: red" id="total_num"></div></div>
                         </div>
-                        <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="group_type">
-                                        <option value="none">选择类型</option>
-                                        <option value="0">公开</option>
-                                        <option value="1">非公开</option>
-                                    </select>
+                        <div class="widget-body am-fr">
+                            <div class="am-fl" style="padding: 1rem 0">
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width: 100%">
+                                        <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="small_num" placeholder="人数大于"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="big_num" placeholder="人数小于"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="group_name" placeholder="请输入群组关键词"/>
-                                    <span class="am-input-group-btn">
-                                        <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button" onclick="submitOpt()"></button>
-                                      </span>
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field" id="asin" placeholder="请输入ASIN"/>
+                                        <span class="am-input-group-btn">
+                                            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
+                                                    type="button" onclick="submitOpt()"></button>
+                                          </span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
-                                       id="example-r">
+                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
+                                       id="review_table">
                                     <thead>
-                                    <tr>
-                                        <th width="35%">小组名称</th>
-                                        <th width="35%">管理员</th>
-                                        <th width="10%">人数</th>
-                                        <th width="10%">小组类型</th>
-                                        <th width="10%">添加时间</th>
-                                    </tr>
+                                        <tr>
+                                            <th>主图</th>
+                                            {% if user.level == 1 %}
+                                            <th>用户</th>
+                                            {% endif %}
+                                            <th>产品简写</th>
+                                            <th width="15%">关键词</th>
+                                            <th width="10%">ASIN</th>
+                                            <th>价格</th>
+                                            <th>品牌名</th>
+                                            <th>店铺名</th>
+                                            <th>完成度</th>
+                                            <th>添加时间</th>
+                                            <th>操作</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="list-tbody">
                                     </tbody>
@@ -241,6 +304,6 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/group-list.js"></script>
+<script src="../../static/assets/js/review/review-list.js"></script>
 </body>
 </html>

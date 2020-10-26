@@ -77,48 +77,93 @@
         <!-- 菜单 -->
         <ul class="sidebar-nav">
             <li class="sidebar-nav-link">
-                <a href={{ url_for('index') }}>
+                <a href={{ url_for('index') }} >
                     <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                 </a>
             </li>
+            {% if user.level == 1 %}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                        <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('fb.fbList') }}>
+                                <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('fb.form') }}>
+                                <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 任务提交
+
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('fb.cpList') }}>
+                                <i class="am-icon-table sidebar-nav-link-logo"></i> 评论池
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('fb.accountList') }} class="sub-active">
+                                <i class="am-icon-table sidebar-nav-link-logo"></i> 帐号列表
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href={{ url_for('fb.groupList') }}>
+                                <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href={{ url_for('userList') }}>
+                        <i class="am-icon-user sidebar-nav-link-logo"></i> 用户列表
+                    </a>
+                </li>
+            {% endif %}
             <li class="sidebar-nav-link">
                 <a href="javascript:void(0);" class="sidebar-nav-sub-title">
-                    <i class="am-icon-table sidebar-nav-link-logo"></i> FB模块
+                    <i class="am-icon-dollar sidebar-nav-link-logo"></i> 刷单模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    {% if user.level == 1 %}
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.fbList') }}>
+                        <a href={{ url_for('review.buyerList') }}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 买手列表
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('review.reviewList') }}>
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
                         </a>
                     </li>
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.form') }}>
-                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 任务提交
-
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.cpList') }}>
-                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 评论池
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.accountList') }} class="sub-active">
-                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 帐号列表
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-link">
-                        <a href={{ url_for('fb.groupList') }}>
-                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 小组列表
+                        <a href={{ url_for('review.reviewForm') }}>
+                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 需求提交
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="sidebar-nav-link">
-                <a href={{ url_for('buyerList') }}>
-                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 买手列表
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                    <i class="am-icon-amazon sidebar-nav-link-logo"></i> 亚马逊模块
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('amz.trackList') }}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 追踪任务列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('amz.form') }}>
+                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 追踪需求提交
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

@@ -10,26 +10,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="icon" type="image/png" href="../../static/assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="../../static/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="../static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../static/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <script src="../../static/assets/js/echarts.min.js"></script>
-    <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"/>
-    <link rel="stylesheet" href="../../static/assets/css/amazeui.datatables.min.css"/>
-    <link rel="stylesheet" href="../../static/assets/css/app.css">
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/reset.css"/>
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/pagination.css"/>
-    <script src="../../static/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/jquery.pagination_js/js/jquery.pagination.js"></script>
+    <script src="../static/assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.datatables.min.css"/>
+    <link rel="stylesheet" href="../static/assets/css/app.css">
+    <link rel="stylesheet" href="../static/jquery.pagination_js/css/reset.css"/>
+    <link rel="stylesheet" href="../static/jquery.pagination_js/css/pagination.css"/>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/jquery.pagination_js/js/jquery.pagination.js"></script>
 </head>
+<style>
+    .am-selected {
+        width: 80%;
+    }
+</style>
 <body data-type="widgets">
-<script src="../../static/assets/js/theme.js"></script>
+<script src="../static/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
     <!-- 头部 -->
     <header>
         <!-- logo -->
         <div class="am-fl tpl-header-logo">
-            <a href="javascript:;"><img src="../../static/assets/img/logo.png" alt=""></a>
+            <a href="javascript:;"><img src="../static/assets/img/logo.png" alt=""></a>
         </div>
         <!-- 右侧内容 -->
         <div class="tpl-header-fluid">
@@ -77,7 +82,7 @@
         <!-- 菜单 -->
         <ul class="sidebar-nav">
             <li class="sidebar-nav-link">
-                <a href={{ url_for('index') }} >
+                <a href={{ url_for('index') }}>
                     <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                 </a>
             </li>
@@ -110,14 +115,14 @@
                             </a>
                         </li>
                         <li class="sidebar-nav-link">
-                            <a href={{ url_for('fb.groupList') }} class="sub-active">
+                            <a href={{ url_for('fb.groupList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href={{ url_for('userList') }}>
+                    <a href={{ url_for('userList') }} class="active">
                         <i class="am-icon-user sidebar-nav-link-logo"></i> 用户列表
                     </a>
                 </li>
@@ -127,7 +132,7 @@
                     <i class="am-icon-dollar sidebar-nav-link-logo"></i> 刷单模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     {% if user.level == 1 %}
                     <li class="sidebar-nav-link">
                         <a href={{ url_for('review.buyerList') }}>
@@ -152,7 +157,7 @@
                     <i class="am-icon-amazon sidebar-nav-link-logo"></i> 亚马逊模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     <li class="sidebar-nav-link">
                         <a href={{ url_for('amz.trackList') }}>
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 追踪任务列表
@@ -167,6 +172,47 @@
             </li>
         </ul>
     </div>
+
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="user_prompt">
+        <div class="am-modal-dialog" style="width: 400px">
+            <div class="am-modal-hd" style="font-weight: 700;padding-bottom: 2rem">新增用户</div>
+            <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px">
+                <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;">帐号:</span>
+                <input type="text" class="am-modal-prompt-input" style="margin: 0 auto">
+            </div>
+            <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px">
+                <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;">昵称:</span>
+                <input type="text" class="am-modal-prompt-input" style="margin: 0 auto">
+            </div>
+            <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px">
+                <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;">密码:</span>
+                <input type="text" class="am-modal-prompt-input" style="margin: 0 auto">
+            </div>
+            <div class="am-modal-bd" style="width: 80%;margin: 0 auto;padding: 5px 10px 15px 10px">
+                <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;">等级:</span>
+                <select id="add_user_level" data-am-selected="{btnSize: 'sm'}">
+                    <option value="1">管理员</option>
+                    <option value="2" selected>平台用户</option>
+                </select>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="tips_modal">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd" style="font-size: 2rem">提示信息
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" id="tips_content" style="font-size: 1.8rem">
+                Modal 内容。
+            </div>
+        </div>
+    </div>
+
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
@@ -174,60 +220,48 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">Facebook小组列表</div>
+                            <div class="widget-title  am-cf">买手列表</div>
                         </div>
                         <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="group_type">
-                                        <option value="none">选择类型</option>
-                                        <option value="0">公开</option>
-                                        <option value="1">非公开</option>
-                                    </select>
+                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-7">
+                                <div class="am-form-group">
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs" style="height: 32px">
+                                            <button type="button" onclick="addUser()" style="height: 100%"
+                                                    class="am-btn am-btn-default am-btn-success"><span
+                                                    class="am-icon-plus"></span> 新增
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="small_num" placeholder="人数大于"/>
+                            <div class="widget-body  am-fr">
+                                <div class="am-u-sm-12">
+                                    <table width="100%"
+                                           class="am-table am-table-compact am-table-striped tpl-table-black "
+                                           id="example-r">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>帐号</th>
+                                            <th>昵称</th>
+                                            <th>等级</th>
+                                            <th>状态</th>
+                                            <th>注册时间</th>
+                                            <th>最后登录时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="list-tbody">
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="big_num" placeholder="人数小于"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="group_name" placeholder="请输入群组关键词"/>
-                                    <span class="am-input-group-btn">
-                                        <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button" onclick="submitOpt()"></button>
-                                      </span>
-                                </div>
-                            </div>
-
-                            <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
-                                       id="example-r">
-                                    <thead>
-                                    <tr>
-                                        <th width="35%">小组名称</th>
-                                        <th width="35%">管理员</th>
-                                        <th width="10%">人数</th>
-                                        <th width="10%">小组类型</th>
-                                        <th width="10%">添加时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="list-tbody">
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="pages">
-                                <div id="Pagination"></div>
-                                <div class="searchPage">
-                                    <span class="page-sum">共<strong class="allPage">0</strong>页</span>
-                                    <span class="page-go">跳转<input id="go_page" type="text"/>页</span>
-                                    <a href="javascript:void(0);" onclick="goPage()" class="page-btn">GO</a>
+                                <div class="pages">
+                                    <div id="Pagination"></div>
+                                    <div class="searchPage">
+                                        <span class="page-sum">共<strong class="allPage">0</strong>页</span>
+                                        <span class="page-go">跳转<input id="go_page" type="text"/>页</span>
+                                        <a href="javascript:void(0);" onclick="goPage()" class="page-btn">GO</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -237,10 +271,10 @@
         </div>
     </div>
 </div>
-<script src="../../static/assets/js/amazeui.min.js"></script>
-<script src="../../static/assets/js/amazeui.datatables.min.js"></script>
-<script src="../../static/assets/js/dataTables.responsive.min.js"></script>
-<script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/group-list.js"></script>
+<script src="../static/assets/js/amazeui.min.js"></script>
+<script src="../static/assets/js/amazeui.datatables.min.js"></script>
+<script src="../static/assets/js/dataTables.responsive.min.js"></script>
+<script src="../static/assets/js/app.js"></script>
+<script src="../static/assets/js/user-list.js"></script>
 </body>
 </html>

@@ -17,11 +17,10 @@
     <link rel="stylesheet" href="../../static/assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="../../static/assets/css/amazeui.datatables.min.css"/>
     <link rel="stylesheet" href="../../static/assets/css/app.css">
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/reset.css"/>
-    <link rel="stylesheet" href="../../static/jquery.pagination_js/css/pagination.css"/>
     <script src="../../static/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/jquery.pagination_js/js/jquery.pagination.js"></script>
+
 </head>
+
 <body data-type="widgets">
 <script src="../../static/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
@@ -87,7 +86,7 @@
                         <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href={{ url_for('fb.fbList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
@@ -110,7 +109,7 @@
                             </a>
                         </li>
                         <li class="sidebar-nav-link">
-                            <a href={{ url_for('fb.groupList') }} class="sub-active">
+                            <a href={{ url_for('fb.groupList') }}>
                                 <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
                             </a>
                         </li>
@@ -148,18 +147,18 @@
                 </ul>
             </li>
             <li class="sidebar-nav-link">
-                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title active">
                     <i class="am-icon-amazon sidebar-nav-link-logo"></i> 亚马逊模块
                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                 </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
                     <li class="sidebar-nav-link">
                         <a href={{ url_for('amz.trackList') }}>
                             <i class="am-icon-table sidebar-nav-link-logo"></i> 追踪任务列表
                         </a>
                     </li>
                     <li class="sidebar-nav-link">
-                        <a href={{ url_for('amz.form') }}>
+                        <a href={{ url_for('amz.form') }} class="sub-active">
                             <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 追踪需求提交
                         </a>
                     </li>
@@ -167,69 +166,64 @@
             </li>
         </ul>
     </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提示信息</div>
+            <div class="am-modal-bd" id="alert-text">
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="tips_modal">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提示信息
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" id="tips_content">
+                Modal 内容。
+            </div>
+        </div>
+    </div>
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
+
             <div class="row">
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">Facebook小组列表</div>
+                            <div class="widget-title am-fl">亚马逊ASIN追踪</div>
                         </div>
-                        <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="group_type">
-                                        <option value="none">选择类型</option>
-                                        <option value="0">公开</option>
-                                        <option value="1">非公开</option>
-                                    </select>
+                        <div class="widget-body am-fr">
+                            <form id="fb-form" class="am-form tpl-form-line-form" {{ url_for('fb.form') }} method="post">
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-2 am-form-label">关键词</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" class="tpl-form-input" name="keyword" placeholder="请输入关键词">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="small_num" placeholder="人数大于"/>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-2 am-form-label">ASIN</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" class="tpl-form-input" name="asin" placeholder="请输入ASIN">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-1">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="big_num" placeholder="人数小于"/>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-2 am-form-label">最大页数</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="number" class="tpl-form-input" name="page_size" placeholder="请输入最大页数">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="group_name" placeholder="请输入群组关键词"/>
-                                    <span class="am-input-group-btn">
-                                        <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button" onclick="submitOpt()"></button>
-                                      </span>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="button" onclick="postForm()" class="am-btn am-btn-primary tpl-btn-bg-color-success ">
+                                            提交
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
-                                       id="example-r">
-                                    <thead>
-                                    <tr>
-                                        <th width="35%">小组名称</th>
-                                        <th width="35%">管理员</th>
-                                        <th width="10%">人数</th>
-                                        <th width="10%">小组类型</th>
-                                        <th width="10%">添加时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="list-tbody">
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="pages">
-                                <div id="Pagination"></div>
-                                <div class="searchPage">
-                                    <span class="page-sum">共<strong class="allPage">0</strong>页</span>
-                                    <span class="page-go">跳转<input id="go_page" type="text"/>页</span>
-                                    <a href="javascript:void(0);" onclick="goPage()" class="page-btn">GO</a>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -241,6 +235,7 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/fb/group-list.js"></script>
+<script src="../../static/assets/js/amz/track-form.js"></script>
 </body>
+
 </html>

@@ -9,95 +9,95 @@ import threading, time
 from facebook import FaceBookOperat
 from selenium import webdriver
 from time import sleep
-import configparser,random,threading,traceback
+import configparser,random,threading,traceback,zipfile
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common.exceptions import TimeoutException
 import win32api,win32con
 
+desired_capabilities = DesiredCapabilities.CHROME  # 修改页面加载策略
+desired_capabilities["pageLoadStrategy"] = "none"  # 注释这两行会导致最后输出结果的延迟，即等待页面加载完成再输出
+
 if __name__ == '__main__':
     config = configparser.RawConfigParser()
-    config.read("amz-account.ini", encoding="utf-8")
-    nums = 6656
-    for i,account in enumerate(config):
-        if i > 0:
-            print(account)
-            options = webdriver.ChromeOptions()
-            options.add_argument("user-agent="+str(config[account]['ua']))
-            options.add_argument("--start-maximized")
-            # options.add_argument("--headless")
-            driver = webdriver.Chrome(options=options)
-            driver.get("https://www.baidu.com/")
-            sleep(1)
-            for cookie in eval(config[account]['cookies']):
-                driver.add_cookie(cookie_dict=cookie)
-            # keyword = "cigarette holder"
-            # driver.get("https://www.amazon.com/s?k="+keyword+"&ref=nb_sb_noss&page=2")
-            # WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.XPATH,'//div[@data-index="0"]')))
-            # divs = driver.find_elements_by_xpath('//div[@data-index="0"]/../div')
-            # for div in divs:
-            #     asin = div.get_attribute("data-asin")
-            #     print("-----已留言数量：",nums,"-----")
-            #     if asin and asin not in ["B083SH3BP3","B0811855ZX","B08BLNSGHK","B06XPLMFDF","B0897KZF9Z","B07W7R8G7S","B01AMRK4S8","B07PZJX96K","B07F3FN2GX"]:
-            #         print(asin)
-            #         review_url = "https://www.amazon.com/product-reviews/"+asin+"?ie=UTF8&reviewerType=all_reviews"
-            #         js = 'window.open("'+review_url+'")'
-            #         driver.execute_script(js)
-            #         driver.switch_to.window(driver.window_handles[1])
-            #         try:
-            #             while True:
-            #                 WebDriverWait(driver, 10).until(
-            #                     EC.visibility_of_element_located((By.ID, 'cm_cr-review_list')))
-            #                 review_div_list = driver.find_elements_by_xpath(
-            #                     '//div[@data-a-expander-name="review_comment_expander"]')
-            #                 for review_div in review_div_list:
-            #                     review_div.find_element_by_xpath('./a').click()
-            #                     sleep(0.5)
-            #                     try:
-            #                         WebDriverWait(review_div, 3).until(
-            #                             EC.visibility_of_element_located(
-            #                                 (By.XPATH, './/textarea[contains(@placeholder,"Respond to this review")]')))
-            #                     except TimeoutException:
-            #                         WebDriverWait(review_div, 5).until(
-            #                             EC.visibility_of_element_located(
-            #                                 (By.XPATH, './/span[contains(text(),"Comment")]')))
-            #                         review_div.find_element_by_xpath('.//span[contains(text(),"Comment")]/..').click()
-            #                         WebDriverWait(review_div, 5).until(
-            #                             EC.visibility_of_element_located(
-            #                                 (By.XPATH, './/textarea[contains(@placeholder,"Respond to this review")]')))
-            #                     review_div.find_element_by_xpath(
-            #                         './/textarea[contains(@placeholder,"Respond to this review")]').send_keys(
-            #                         "Thank you for purchasing our product, we now have a free product to test, you can contact my email: g1150082245@gmail。com")#
-            #                     review_div.find_element_by_xpath('.//span[text()="Post a comment"]/../..').click()
-            #                     sleep(0.5)
-            #                     review_div.find_element_by_xpath('./a').click()
-            #                     nums += 1
-            #                     sleep(1)
-            #                 try:
-            #                     WebDriverWait(driver, 5).until(
-            #                         EC.visibility_of_element_located(
-            #                             (By.XPATH, './/li[@class="a-last"]')))
-            #                     driver.find_element_by_class_name('a-last').click()
-            #                     sleep(1.5)
-            #                 except TimeoutException as e:
-            #                     print("已到最后一页")
-            #                     break
-            #         except:
-            #             traceback.print_exc()
-            #         driver.close()
-            #         driver.switch_to.window(driver.window_handles[0])
+    config.read("amz-config.ini", encoding="utf-8")
+    options = webdriver.ChromeOptions()
+    options.add_argument("user-agent="+str(config['account']['ua']))
+    ip = config['account']['ip']
+    options.add_argument(('--proxy-server=socks5://' + ip))
+    options.add_argument("--start-maximized")
+    # options.add_argument("--headless")
+    driver = webdriver.Chrome(options=options)
+    driver.get("https://www.google.com/")
+    # WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, 'su')))
+    sleep(10000)
+    for cookie in eval(config['account']['cookies']):
+        driver.add_cookie(cookie_dict=cookie)
+    keyword = config['account']['keyword']
+    driver.get("https://www.amazon.com/s?k="+keyword+"&ref=nb_sb_noss")
+    WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.XPATH,'//div[@data-index="0"]')))
+    divs = driver.find_elements_by_xpath('//div[@data-index="0"]/../div')
+    for div in divs:
+        asin = div.get_attribute("data-asin")
+        if asin:
+            print(asin)
+            review_url = "https://www.amazon.com/product-reviews/"+asin+"?ie=UTF8&reviewerType=all_reviews"
+            js = 'window.open("'+review_url+'")'
+            driver.execute_script(js)
+            driver.switch_to.window(driver.window_handles[1])
+            try:
+                while True:
+                    WebDriverWait(driver, 10).until(
+                        EC.visibility_of_element_located((By.ID, 'cm_cr-review_list')))
+                    review_div_list = driver.find_elements_by_xpath(
+                        '//div[@data-a-expander-name="review_comment_expander"]')
+                    for review_div in review_div_list:
+                        review_div.find_element_by_xpath('./a').click()
+                        sleep(0.5)
+                        try:
+                            WebDriverWait(review_div, 3).until(
+                                EC.visibility_of_element_located(
+                                    (By.XPATH, './/textarea[contains(@placeholder,"Respond to this review")]')))
+                        except TimeoutException:
+                            WebDriverWait(review_div, 5).until(
+                                EC.visibility_of_element_located(
+                                    (By.XPATH, './/span[contains(text(),"Comment")]')))
+                            review_div.find_element_by_xpath('.//span[contains(text(),"Comment")]/..').click()
+                            WebDriverWait(review_div, 5).until(
+                                EC.visibility_of_element_located(
+                                    (By.XPATH, './/textarea[contains(@placeholder,"Respond to this review")]')))
+                        review_div.find_element_by_xpath(
+                            './/textarea[contains(@placeholder,"Respond to this review")]').send_keys(config['account']['comment'])
+                        review_div.find_element_by_xpath('.//span[text()="Post a comment"]/../..').click()
+                        sleep(0.5)
+                        review_div.find_element_by_xpath('./a').click()
+                        sleep(1)
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            EC.visibility_of_element_located(
+                                (By.XPATH, './/li[@class="a-last"]')))
+                        driver.find_element_by_class_name('a-last').click()
+                        sleep(1.5)
+                    except TimeoutException as e:
+                        print("已到最后一页")
+                        break
+            except:
+                traceback.print_exc()
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
 
-            driver.get("https://www.amazon.com")
-            sleep(1)
-            driver.find_element_by_xpath('//*[@id="nav-orders"]').click()
-            WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.ID,'ap_password')))
-            driver.find_element_by_id('ap_password').send_keys(config[account]['pwd'])
-            sleep(1)
-            driver.find_element_by_id('signInSubmit').click()
-            sleep(3)
-            cookies = driver.get_cookies()
-            driver.quit()
+            # driver.get("https://www.amazon.com")
+            # sleep(1)
+            # driver.find_element_by_xpath('//*[@id="nav-orders"]').click()
+            # WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.ID,'ap_password')))
+            # driver.find_element_by_id('ap_password').send_keys(config[account]['pwd'])
+            # sleep(1)
+            # driver.find_element_by_id('signInSubmit').click()
+            # sleep(3)
+            # cookies = driver.get_cookies()
+            # driver.quit()
             # config.set(account, "cookies", cookies)
             # config.write(open("amz-account.ini", "w"))
             # driver.quit()
