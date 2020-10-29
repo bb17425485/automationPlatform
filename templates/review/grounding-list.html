@@ -21,11 +21,15 @@
     <script type="text/javascript" src="../../static/jquery.pagination_js/js/jquery.pagination.js"></script>
 </head>
 <style>
-    #echarts_table th {
+    #review_table th {
         text-align: center;
     }
-    #example-r td{
+    #review_table td {
+        text-align: center;
         vertical-align: middle;
+    }
+    #order_table td {
+        text-align: left;
     }
 </style>
 <body data-type="widgets">
@@ -47,24 +51,25 @@
         </div>
     </div>
 
-    <div class="am-modal am-modal-no-btn" tabindex="-1" id="charts_modal">
-        <div class="am-modal-dialog" style="height: 40rem;width: 80rem">
-            <div class="am-modal-hd"><span id="echarts_title"></span>
-                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="order_modal">
+        <div class="am-modal-dialog" style="height: 70%;width: 60%;overflow:auto">
+            <div class="am-modal-hd" id="order_title">
             </div>
-            <div class="am-modal-hd" style="height: 13rem;width: 90%;margin: 0 auto">
-                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black"
-                       id="echarts_table">
+            <div class="am-modal-hd" style="height: 13rem;width: 90%;margin: 0 auto;padding: 0 10px">
+                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
+                       id="order_table">
                     <thead>
-                    <tr>
-                        <th>关键词排名</th>
-                        <th>大类排名</th>
-                        <th>评论数</th>
-                        <th>价格</th>
-                        <th>星级</th>
-                    </tr>
+                        <tr>
+                            <th>编号</th>
+                            <th>订单号</th>
+                            <th>流量渠道</th>
+                            <th>下单时间</th>
+                            <th>profile</th>
+                            <th>留评链接</th>
+                            <th>结算状态</th>
+                        </tr>
                     </thead>
-                    <tbody id="echarts_tbody">
+                    <tbody id="order_tbody">
                     </tbody>
                 </table>
             </div>
@@ -80,48 +85,45 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">ASIN跟踪列表</div>
+                            <div class="widget-title am-cf">刷单任务列表<div class="am-fr" style="color: red" id="total_num"></div></div>
                         </div>
-                        <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                    <select data-am-selected="{btnSize: 'sm'}" id="state">
-                                        <option value="none">选择状态</option>
-                                        <option value="working">进行中</option>
-                                        <option value="finish">已停止</option>
-                                    </select>
+                        <div class="widget-body am-fr">
+                            <div class="am-fl" style="padding: 1rem 0">
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width: 100%">
+                                        <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-2">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                    <input type="text" class="am-form-field" id="asin" placeholder="请输入ASIN"/>
-                                    <span class="am-input-group-btn">
-                                        <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button" onclick="submitOpt()"></button>
-                                      </span>
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field" id="asin" placeholder="请输入ASIN"/>
+                                        <span class="am-input-group-btn">
+                                            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
+                                                    type="button" onclick="submitOpt()"></button>
+                                          </span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
-                                       id="example-r">
+                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
+                                       id="review_table">
                                     <thead>
-                                    <tr>
-                                        <th>图片</th>
-                                        <th width="20%">关键词</th>
-                                        <th>ASIN</th>
-                                        <th>状态</th>
-                                        <th>排名</th>
-                                        <th>评论</th>
-                                        <th width="20%">大类排名</th>
-                                        <th>更新时间</th>
-                                        <th>操作</th>
-                                    </tr>
+                                        <tr>
+                                            <th>主图</th>
+                                            {% if user.level == 1 %}
+                                            <th>用户</th>
+                                            {% endif %}
+                                            <th>产品简写</th>
+                                            <th width="15%">关键词</th>
+                                            <th width="10%">ASIN</th>
+                                            <th>价格</th>
+                                            <th>品牌名</th>
+                                            <th>店铺名</th>
+                                            <th>完成度</th>
+                                            <th>添加时间</th>
+                                            <th>操作</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="list-tbody">
                                     </tbody>
@@ -146,6 +148,6 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/amz/track-list.js"></script>
+<script src="../../static/assets/js/review/review-list.js"></script>
 </body>
 </html>

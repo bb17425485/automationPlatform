@@ -38,7 +38,7 @@ def admin_required(func):
 @review.route('/buyerList')
 @admin_required
 def buyerList():
-    return render_template("review/buyer-list.html", user=session.get('user'))
+    return render_template("review/buyer-list.html", user=session.get('user'),active="reviewBuyerList")
 
 @review.route('/getBuyerData',methods=['POST'])
 @admin_required
@@ -89,7 +89,7 @@ def reviewForm():
         user_list = None
         if user['level'] == 1:
             user_list = mp.fetch_all(user_sql,None)
-        return render_template("review/review-form.html", user=user,user_list=user_list)
+        return render_template("review/review-form.html", user=user,user_list=user_list,active="reviewForm")
     if request.method == 'POST':
         data = request.get_data()
         json_data = json.loads(data.decode("utf-8"))
@@ -115,7 +115,7 @@ def reviewForm():
 @review.route('/reviewList')
 @login_required
 def reviewList():
-    return render_template("review/review-list.html", user=session.get('user'))
+    return render_template("review/review-list.html", user=session.get('user'),active="reviewList")
 
 @review.route('/getReviewData',methods=['POST'])
 @login_required
@@ -126,7 +126,89 @@ def getReviewData():
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
     sql = "SELECT t.*,DATE_FORMAT(t.add_time,'%%Y-%%m-%%d') add_time_str,u.nickname," \
-          "(select count(0) from tb_task_order t1 where t1.task_id=t.id) num" \
+          "(select count(0) from tb_task_order t1 where t1.task_id=t.id) num," \
+          "(select count(0) from tb_task_order t1 where t1.task_id=t.id and t1.state=1) done_num," \
+          "REPLACE(t.asin,'|',' ') as asin_str" \
+          " from tb_review_task t,tb_user u where t.user_id = u.id "
+    param = []
+    if session.get('user')['level'] != 1:
+        sql += 'and t.user_id = %s'
+        param.append(session.get('user')['id'])
+    try:
+        if json_data.get('keyword'):
+            keyword = '%' + str(json_data.get('keyword')) + '%'
+            sql += " and t.keyword like %s "
+            param.append(keyword)
+    except:
+        pass
+    try:
+        if json_data.get('asin'):
+            asin = '%' + str(json_data.get('asin')) + '%'
+            sql += " and t.asin like %s "
+            param.append(asin)
+    except:
+        pass
+    sql += " order by t.user_id desc,t.add_time desc"
+    review_list = mp.fetch_all(sql,param)
+    res_json = {"code":"0000","list":review_list}
+    return jsonify(res_json)
+
+@review.route('/getOrderData',methods=['POST'])
+@login_required
+def getOrderData():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "SELECT t.*,DATE_FORMAT(t.order_time,'%%Y-%%m-%%d') order_time_str,tb.profile " \
+          "from tb_task_order t,tb_buyer tb where t.task_id = %s and t.buyer_id = tb.id"
+    param = [json_data.get('task_id')]
+    sql += " order by t.order_time desc"
+    order_list = mp.fetch_all(sql,param)
+    res_json = {"code":"0000","list":order_list}
+    return jsonify(res_json)
+
+@review.route('/updateTaskState',methods=['POST'])
+@login_required
+def updateTaskState():
+    data = request.get_data()
+    json_data = json.loads(data.decode("utf-8"))
+    sql = "update tb_review_task set state=%s where id=%s"
+    param = [json_data.get('state'),json_data.get('id')]
+    mp = MysqlPool()
+    mp.update(sql, param)
+    res_json = {"code": "0000", "msg": "上架状态修改成功！"}
+    return jsonify(res_json)
+
+@review.route('/updateOrderState',methods=['POST'])
+@admin_required
+def updateOrderState():
+    data = request.get_data()
+    json_data = json.loads(data.decode("utf-8"))
+    sql = "update tb_task_order set state=%s where id=%s"
+    param = [json_data.get('state'),json_data.get('id')]
+    mp = MysqlPool()
+    mp.update(sql, param)
+    res_json = {"code": "0000", "msg": "结算状态修改成功！"}
+    return jsonify(res_json)
+
+@review.route('/groundingList')
+@admin_required
+def groundingList():
+    return render_template("review/grounding-list.html", user=session.get('user'),active="reviewGroundingList")
+
+@review.route('/getGroundingData',methods=['POST'])
+@admin_required
+def getGroundingData():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    sql = "SELECT t.*,DATE_FORMAT(t.add_time,'%%Y-%%m-%%d') add_time_str,u.nickname," \
+          "(select count(0) from tb_task_order t1 where t1.task_id=t.id) num," \
+          "(select count(0) from tb_task_order t1 where t1.task_id=t.id and t1.state=1) done_num" \
           " from tb_review_task t,tb_user u where t.user_id = u.id "
     param = []
     if session.get('user')['level'] != 1:
@@ -149,31 +231,4 @@ def getReviewData():
     sql += " order by t.user_id desc,t.id desc"
     review_list = mp.fetch_all(sql,param)
     res_json = {"code":"0000","list":review_list}
-    return jsonify(res_json)
-
-@review.route('/getOrderData',methods=['POST'])
-@login_required
-def getOrderData():
-    data = request.get_data()
-    json_data = []
-    if data:
-        json_data = json.loads(data.decode("utf-8"))
-    mp = MysqlPool()
-    sql = "SELECT t.*,DATE_FORMAT(t.order_time,'%%Y-%%m-%%d') order_time_str,tb.profile " \
-          "from tb_task_order t,tb_buyer tb where t.task_id = %s and t.buyer_id = tb.id"
-    param = [json_data.get('task_id')]
-    sql += " order by t.id desc"
-    order_list = mp.fetch_all(sql,param)
-    res_json = {"code":"0000","list":order_list}
-    return jsonify(res_json)
-
-@review.route('/updateOrderState',methods=['POST'])
-def updateOrderState():
-    data = request.get_data()
-    json_data = json.loads(data.decode("utf-8"))
-    sql = "update tb_task_order set state=%s where id=%s"
-    param = [json_data.get('state'),json_data.get('id')]
-    mp = MysqlPool()
-    mp.update(sql, param)
-    res_json = {"code": "0000", "msg": "结算状态修改成功！"}
     return jsonify(res_json)

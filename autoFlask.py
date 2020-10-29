@@ -45,7 +45,7 @@ def admin_required(func):
 @app.route('/index')
 @login_required
 def index():
-    return render_template("index.html",user=session.get('user'),title="世纪营联")
+    return render_template("index.html",user=session.get('user'),title="世纪营联",active="index")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -72,7 +72,8 @@ def login():
                     mp = MysqlPool()
                     sql = "update tb_user set login_time=now() where id=%s"
                     mp.update(sql,user['id'])
-                    return redirect('/index')
+                    if user['level'] == 1:return redirect('/index')
+                    elif user['level'] == 2:return redirect('/review/reviewList')
             else:flash("密码错误")
         else:flash("帐号未注册")
         return redirect(url_for("login"))
@@ -106,7 +107,7 @@ def doThreading():
 @app.route('/userList')
 @admin_required
 def userList():
-    return render_template("user-list.html", user=session.get('user'))
+    return render_template("user-list.html", user=session.get('user'),active="userList")
 
 @app.route('/getUserData',methods=['POST'])
 @admin_required
@@ -161,6 +162,26 @@ def addUser():
     except Exception as e:
         msg = "添加失败,%s"%e
     res_json = {"code": "0000", "msg": msg}
+    return jsonify(res_json)
+
+@app.route('/updatePassword',methods=['POST'])
+@login_required
+def updatePassword():
+    data = request.get_data()
+    json_data = []
+    if data:
+        json_data = json.loads(data.decode("utf-8"))
+    mp = MysqlPool()
+    find_sql = "select * from tb_user where password=%s and id=%s"
+    find_param = [pyUtils.getMd5(json_data.get('old_psw')),session.get('user')['id']]
+    find_req = mp.fetch_all(find_sql,find_param)
+    if len(find_req) == 1:
+        sql = "update tb_user set password=%s where id=%s"
+        param = [pyUtils.getMd5(json_data.get('new_psw')),session.get('user')['id']]
+        mp.update(sql,param)
+        res_json = {"code":"0000","msg":"修改成功"}
+    else:
+        res_json = {"code": "9999", "msg": "修改失败,原密码错误"}
     return jsonify(res_json)
 
 if __name__ == '__main__':

@@ -17,6 +17,7 @@ from datetime import datetime
 from fake_useragent import UserAgent
 from multiprocessing import Pool,Process
 import fileinput,os
+from urllib import request
 
 import time
 import threading
@@ -133,8 +134,11 @@ def removeTxtLine(txt,index):
 
 if __name__ == '__main__':
     # removeTxtLine('keyword_bak.txt',0)
-    a = "12345"
-
+    # a = "12345"
+    url = "http://amz.do/"
+    response = request.urlopen(url)
+    html = response.read()
+    print(html.decode('utf-8'))
     # for line in fileinput.input("keyword_bak.txt", inplace=1):
     #     if not fileinput.isfirstline():
     #         print(line.replace('\n', ''))

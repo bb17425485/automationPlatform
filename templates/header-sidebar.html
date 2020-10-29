@@ -1,0 +1,223 @@
+<!-- 头部 -->
+<header>
+    <!-- logo -->
+    <div class="am-fl tpl-header-logo">
+        <a href="javascript:void(0);"><img src="../static/assets/img/sjyl-b.png" alt=""></a>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="tpl-header-fluid">
+        <!-- 侧边切换 -->
+        <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+                </span>
+        </div>
+        <!-- 其它功能-->
+        <div class="am-fr tpl-header-navbar">
+            <ul>
+                <!-- 欢迎语 -->
+                <li class="am-text-sm tpl-header-navbar-welcome">
+                    <a href="javascript:void(0);">欢迎你, <span>{{ user['nickname'] }}</span><span id="user_level"
+                                                                                                style="display: none">{{ user['level'] }}</span>
+                    </a>
+                </li>
+                <li class="am-text-sm tpl-header-navbar-welcome" onclick="updatePassword()">
+                    <a href="javascript:void(0);"><i class="am-icon-key"></i>修改密码</a>
+                </li>
+                <!-- 退出 -->
+                <li class="am-text-sm">
+                    <a href={{ url_for('logout') }}>
+                        <span class="am-icon-sign-out"></span> 退出
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</header>
+<!-- 风格切换 -->
+<div class="tpl-skiner">
+    <div class="tpl-skiner-toggle am-icon-cog">
+    </div>
+    <div class="tpl-skiner-content">
+        <div class="tpl-skiner-content-title">
+            选择主题
+        </div>
+        <div class="tpl-skiner-content-bar">
+            <span class="skiner-color skiner-white" data-color="theme-white"></span>
+            <span class="skiner-color skiner-black" data-color="theme-black"></span>
+        </div>
+    </div>
+</div>
+<!-- 侧边导航栏 -->
+<div class="left-sidebar">
+    <!-- 菜单 -->
+    <ul class="sidebar-nav">
+        {% if user.level == 1 %}
+            <li class="sidebar-nav-link">
+                <a href={{ url_for('index') }}
+                           {% if active == "index" %}
+                               class="active"
+                           {% endif %}>
+                    <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href={{ url_for('userList') }}
+                           {% if active == "userList" %}
+                               class="active"
+                           {% endif %}>
+                    <i class="am-icon-user sidebar-nav-link-logo"></i> 用户列表
+                </a>
+            </li>
+        {% endif %}
+        <li class="sidebar-nav-link">
+            <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                <i class="am-icon-dollar sidebar-nav-link-logo"></i> 代购模块
+                <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+            </a>
+            <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                <li class="sidebar-nav-link">
+                    <a href={{ url_for('review.reviewList') }}
+                               {% if active == "reviewList" %}
+                                   class="sub-active"
+                               {% endif %}>
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href={{ url_for('review.reviewForm') }}
+                               {% if active == "reviewForm" %}
+                                   class="sub-active"
+                               {% endif %}>
+                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 需求提交
+                    </a>
+                </li>
+                {% if user.level == 1 %}
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('review.buyerList') }}
+                                   {% if active == "reviewBuyerList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 买手列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('review.groundingList') }}
+                                   {% if active == "reviewGroundingList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 上架管理
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </li>
+        {% if user.level == 1 %}
+            <li class="sidebar-nav-link">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                    <i class="am-icon-facebook-square sidebar-nav-link-logo"></i> FB模块
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.fbList') }}
+                                   {% if active == "fbList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 任务列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.form') }}
+                                   {% if active == "fbForm" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 任务提交
+
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.cpList') }}
+                                   {% if active == "fbCpList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 评论池
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.accountList') }}
+                                   {% if active == "fbAccountList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 帐号列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('fb.groupList') }}
+                                   {% if active == "fbGroupList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 小组列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="javascript:void(0);" class="sidebar-nav-sub-title">
+                    <i class="am-icon-amazon sidebar-nav-link-logo"></i> 亚马逊模块
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('amz.trackList') }}
+                                   {% if active == "amzTrackList" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-table sidebar-nav-link-logo"></i> 追踪任务列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href={{ url_for('amz.form') }}
+                                   {% if active == "amzTrackForm" %}
+                                       class="sub-active"
+                                   {% endif %}>
+                            <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 追踪需求提交
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="psw_prompt">
+    <div class="am-modal-dialog" style="width: 400px">
+        <div class="am-modal-hd" style="font-weight: 700;padding-bottom: 2rem">修改密码</div>
+        <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px">
+            <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;width: 30%">原密码:</span>
+            <input type="text" class="am-modal-prompt-input" style="margin: 0 auto;width: 70%">
+        </div>
+        <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px">
+            <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;width: 30%">新密码:</span>
+            <input type="password" class="am-modal-prompt-input" style="margin: 0 auto;width: 70%">
+        </div>
+        <div class="am-modal-bd" style="border: 0;width: 80%;margin: 0 auto;padding: 5px 10px 15px 10px">
+            <span style="float: left;line-height: 1.8rem;vertical-align: middle;font-size: 1.5rem;padding: 5px;width: 30%">确认密码:</span>
+            <input type="password" class="am-modal-prompt-input" style="margin: 0 auto;width: 70%">
+        </div>
+        <div class="am-modal-footer" style="border-top: 1px solid #ebebeb;">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="tips_modal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd" style="font-size: 2rem">提示信息
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd" id="tips_content" style="font-size: 1.8rem">
+            Modal 内容。
+        </div>
+    </div>
+</div>

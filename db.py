@@ -5,7 +5,7 @@
 # @Software : PyCharm
 
 import pymysql
-from DBUtils.PooledDB import PooledDB
+from dbutils.pooled_db import PooledDB
 '''
 连接池
 '''
@@ -112,7 +112,10 @@ class MysqlPool(object):
         '''
         conn, cursor = self.connect()
         for param in args:
-            cursor.execute(sql, param)
+            try:
+                cursor.execute(sql, param)
+            except pymysql.err.IntegrityError:
+                pass
         conn.commit()
         self.connect_close(conn, cursor)
         return cursor.lastrowid

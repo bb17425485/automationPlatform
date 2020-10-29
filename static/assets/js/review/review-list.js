@@ -1,9 +1,10 @@
-let json, pageSize = 30
+let json, pageSize = 30,level
 $(function () {
     $('.setPageDiv').change(function () {
         doPagination(parseInt($(this).val()))
     })
     getList({})
+    level = $("#user_level").html()
 })
 
 function getList(opt) {
@@ -29,6 +30,7 @@ function getList(opt) {
             }
             $('#list-tbody').html(html)
             doPagination()
+            checkedChange()
         }
     });
 }
@@ -61,25 +63,32 @@ function doPagination() {
                 }
             }
             $('#list-tbody').html(html)
+            checkedChange()
         }
     })
 }
 
 function structureHtml(html, data, i) {
-    let level = $("#user_level").html()
     let asin = data[i].asin.substr(0,10)
     html += '<tr class="gradeX">';
-    html += '<td><img style="width: 6rem;height: 6rem;cursor:pointer;" src="'+data[i].img+'" onclick="openAmzPage(\''+asin+'\')" class="tpl-table-line-img" alt=""></td>'
+    html += '<td><img style="width: 6rem;height: 6rem;cursor:pointer;" src="'+(data[i].img?data[i].img:'')+'" onclick="openAmzPage(\''+asin+'\')" class="tpl-table-line-img" alt=""></td>'
     if(level === "1"){
         html += '<td>' + checkObj(data[i].nickname) + '</td>'
     }
     html += '<td>' + checkObj(data[i].name) + '</td>'
+    let checked = ""
+    if(data[i].state===1){
+        checked = " checked"
+    }
+    html += '<td><div class="tpl-switch">' +
+        '<input type="checkbox" style="margin-left: -2.5rem" data-id="' + data[i].id + '" class="ios-switch bigswitch tpl-switch-btn"'+checked+'>' +
+        '<div class="tpl-switch-btn-view" style="margin: 0 auto"><div></div></div></div></td>'
     html += '<td>' + checkObj(data[i].keyword) + '</td>'
-    html += '<td>' + checkObj(data[i].asin.replaceAll("|"," ")) + '</td>'
+    html += '<td>' + checkObj(data[i].asin_str) + '</td>'
     html += '<td>' + checkObj(data[i].price) + '</td>'
-    html += '<td>' + checkObj(data[i].brand) + '</td>'
+    // html += '<td>' + checkObj(data[i].brand) + '</td>'
     html += '<td>' + checkObj(data[i].store) + '</td>'
-    html += '<td style="text-align: center">' + data[i].num+'/'+checkObj(data[i].total_order) +'</td>'
+    html += '<td style="text-align: center"><span style="color: red">' + data[i].done_num+'</span>/'+data[i].num+'/'+checkObj(data[i].total_order) +'<br>结/单/总</td>'
     html += '<td>' + checkObj(data[i].add_time_str) + '</td>'
     html += '<td><div class="tpl-table-black-operation">' +
         '<a href="javascript:void(0);" class="tpl-table-black-operation" onclick="showDetail(' + data[i].id + ',\''+asin+'\',\''+data[i].img+'\')"><i class="am-icon-bar-chart-o"></i> 进度</a></div></td>'
@@ -105,8 +114,12 @@ function showDetail(id,asin,img){
 }
 
 function getOrderData(dataList,asin,img){
-    $("#order_img").attr("src",img)
-    $("#order_asin").html(" — "+asin)
+    let titleHtml = ""
+    if (img && img !== "null"){
+        titleHtml += '<img style="width: 6rem;height: 6rem;cursor:pointer;" id="order_img" src="'+img+'" class="tpl-table-line-img" alt="">'
+    }
+    titleHtml += '<span style="line-height: 6rem">'+asin+'</span><a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>'
+    $("#order_title").html(titleHtml)
     let html = ""
     if(dataList.length === 0){
         html = "<tr><td colspan='7' style='text-align: center;line-height: 20rem'>暂无订单数据</td>></tr>>"
@@ -127,7 +140,7 @@ function getOrderData(dataList,asin,img){
             }else{
                 html += '<td>暂无</td>'
             }
-            html += '<td><div class="tpl-switch"><input type="checkbox" data-id="' + data.id + '" class="ios-switch bigswitch tpl-switch-btn"'+(data.state===1?' checked':'')+'><div class="tpl-switch-btn-view" style="margin: 0"><div></div></div></div></td>'
+            html += '<td><div class="tpl-switch"><input type="checkbox" data-id="' + data.id + '" class="ios-switch bigswitch tpl-switch-btn"'+(data.state===1?' checked':'')+(level === "1"?'':' disabled')+'><div class="tpl-switch-btn-view" style="margin: 0"><div></div></div></div></td>'
             html += '</tr>'
         })
     }
@@ -147,7 +160,7 @@ function goPage() {
         }
     }
     $('#list-tbody').html(html)
-    updateBtnInit()
+    checkedChange()
 }
 
 function submitOpt() {
@@ -164,7 +177,7 @@ function submitOpt() {
 }
 
 function checkedChange() {
-    $("input[type='checkbox']").on("change", function () {
+    $("#order_tbody").find("input[type='checkbox']").on("change", function () {
         let id = $(this).data("id")
         if (id) {
             let opt = {"state":$(this).is(":checked")?1:0,"id":id}
@@ -176,7 +189,26 @@ function checkedChange() {
                 contentType: "application/json",
                 data: JSON.stringify(opt),
                 success: function (d) {
-                    alert(d.msg)
+                    if(d.code !== "0000"){
+                        alert(d.msg)
+                    }
+                }
+            });
+        }
+    })
+    $("#list-tbody").find("input[type='checkbox']").on("change", function () {
+        let id = $(this).data("id")
+        if (id) {
+            let opt = {"state":$(this).is(":checked")?1:0,"id":id}
+            $.ajax({
+                type: "post",
+                url: "updateTaskState",
+                dataType: "json",
+                charset: "utf-8",
+                contentType: "application/json",
+                data: JSON.stringify(opt),
+                success: function (d) {
+                    showTips(d.msg)
                 }
             });
         }

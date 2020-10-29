@@ -10,6 +10,7 @@ from datetime import datetime
 from db import MysqlPool
 from pymysql.err import IntegrityError
 import configparser
+from utils import pyUtils
 
 fb = Blueprint('fb',__name__)
 
@@ -30,7 +31,7 @@ def form():
     if request.method == 'GET':
         config = configparser.RawConfigParser()
         config.read("group-answer.ini", encoding="utf-8")
-        return render_template("fb/form.html", groups=config.sections(), user=session.get('user'))
+        return render_template("fb/form.html", groups=config.sections(), user=session.get('user'),active="fbForm")
     if request.method == 'POST':
         data = request.get_data()
         json_data = json.loads(data.decode("utf-8"))
@@ -49,7 +50,7 @@ def form():
 @fb.route('/fbList')
 @login_required
 def fbList():
-    return render_template("fb/post-list.html", user=session.get('user'))
+    return render_template("fb/post-list.html", user=session.get('user'),active="fbList")
 
 @fb.route('/getFbData',methods=['POST'])
 def getFbDataByUser():
@@ -88,7 +89,7 @@ def getFbDataByUser():
 @fb.route('/cpList')
 @login_required
 def cpList():
-    return render_template("fb/comment-pool.html", user=session.get('user'))
+    return render_template("fb/comment-pool.html", user=session.get('user'),active="fbCpList")
 
 @fb.route('/getCpData',methods=['POST'])
 def getCpData():
@@ -162,34 +163,21 @@ def fileUpload():
 @fb.route('/accountList')
 @login_required
 def accountList():
-    return render_template("fb/account-list.html", user=session.get('user'))
+    return render_template("fb/account-list.html", user=session.get('user'),active="fbAccountList")
 
 @fb.route('/getAccountData',methods=['POST'])
 @login_required
 def getAccountData():
     config = configparser.RawConfigParser()
     config.read("fb-user.ini", encoding="utf-8")
-    res_json = {"code": "0000","list":parserToJson(config)}
+    res_json = {"code": "0000","list":pyUtils.parserToJson(config)}
     print(res_json)
     return res_json
-
-#将ini文件内容转换为字典
-def parserToJson(config):
-    d = dict(config)
-    res = {}
-    for k in d:
-        if k != "DEFAULT":
-            res[k] = dict(d[k])
-    return res
-
-
-def allowed_file(filename):
-    return '.' in filename
 
 @fb.route('/groupList')
 @login_required
 def groupList():
-    return render_template("fb/group-list.html", user=session.get('user'))
+    return render_template("fb/group-list.html", user=session.get('user'),active="fbGroupList")
 
 @fb.route('/getGroupData',methods=['POST'])
 def getGroupData():
