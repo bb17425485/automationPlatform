@@ -138,7 +138,7 @@ def collectionGroup(acc,keywrods):
 
 def getTask():
     mp = MysqlPool()
-    sql = "select * from tb_post where state = 'working'"
+    sql = "select * from tb_post where status = 'working'"
     task_list = mp.fetch_all(sql,None)
     if task_list:
         content_sql = "select content from tb_comment"
@@ -205,7 +205,7 @@ def getTask():
                             update_param = [account+"|",content+"|",task['id']]
                             mp.update(update_sql,update_param)
                         else:
-                            update_sql = "update tb_post set done_num=%s,accounts=concat(accounts,%s),state='finish',finish_time=%s,content=concat(content,%s)"
+                            update_sql = "update tb_post set done_num=%s,accounts=concat(accounts,%s),status='finish',finish_time=%s,content=concat(content,%s)"
                             if is_share:
                                 update_sql += ",done_share=done_share+1"
                             update_sql += " where id=%s"
@@ -427,25 +427,25 @@ def doComment(acc,task,content):
             WebDriverWait(driver, 5).until(
                 EC.visibility_of_element_located((By.XPATH,
                                                   '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/button')))
-            group_state = driver.find_element_by_xpath(
+            group_status = driver.find_element_by_xpath(
                 '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/button').text
         except:
             try:
                 WebDriverWait(driver, 5).until(
                     EC.visibility_of_element_located((By.XPATH,
                                                       '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a')))
-                group_state = driver.find_element_by_xpath(
+                group_status = driver.find_element_by_xpath(
                     '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a').text
             except:
                 error_log.logger.error("-----查找群组%s出错-----" % task['group_id'])
                 driver.quit()
                 return False,False,True
-        all_log.logger.info("*****state:%s*****"%group_state)
-        if group_state == "请求已发送":
+        all_log.logger.info("*****status:%s*****"%group_status)
+        if group_status == "请求已发送":
             all_log.logger.info("-----%s加入群组请求已发送-----" % acc['account'])
             driver.quit()
             return False,False,True
-        elif group_state == "加入":
+        elif group_status == "加入":
             driver.find_element_by_xpath(
                 '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a').click()
             try:
@@ -457,7 +457,7 @@ def doComment(acc,task,content):
                 error_log.logger.error("-----%s无需回答问题-----"% task['group_id'])
             driver.quit()
             return False,False,True
-        elif group_state == "已加入":
+        elif group_status == "已加入":
             try:
                 driver.find_element_by_xpath('//*[@id="BrowseResultsContainer"]/div[1]//a').click()
                 WebDriverWait(driver, 8).until(

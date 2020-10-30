@@ -51,33 +51,6 @@
         </div>
     </div>
 
-    <div class="am-modal am-modal-no-btn" tabindex="-1" id="order_modal">
-        <div class="am-modal-dialog" style="height: 70%;width: 60%;overflow:auto">
-            <div class="am-modal-hd" id="order_title">
-            </div>
-            <div class="am-modal-hd" style="height: 13rem;width: 90%;margin: 0 auto;padding: 0 10px">
-                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
-                       id="order_table">
-                    <thead>
-                        <tr>
-                            <th>编号</th>
-                            <th>订单号</th>
-                            <th>流量渠道</th>
-                            <th>下单时间</th>
-                            <th>profile</th>
-                            <th>留评链接</th>
-                            <th>结算状态</th>
-                        </tr>
-                    </thead>
-                    <tbody id="order_tbody">
-                    </tbody>
-                </table>
-            </div>
-            <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" style="width:75rem"
-                 id="tpl_echarts"></div>
-        </div>
-    </div>
-
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
@@ -85,22 +58,40 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title am-cf">刷单任务列表<div class="am-fr" style="color: red" id="total_num"></div></div>
+                            <div class="widget-title am-cf">上下架管理<div class="am-fr" style="color: red" id="total_num"></div></div>
                         </div>
                         <div class="widget-body am-fr">
-                            <div class="am-fl" style="padding: 1rem 0">
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width: 100%">
-                                        <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
-                                    </div>
-                                </div>
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                            <div class="am-fr" style="padding: 1rem 0">
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: right">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <input type="text" class="am-form-field" id="asin" placeholder="请输入ASIN"/>
                                         <span class="am-input-group-btn">
                                             <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
                                                     type="button" onclick="submitOpt()"></button>
                                           </span>
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-1" style="float: right">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width: 100%">
+                                        <input type="text" class="am-form-field" id="task_id" placeholder="任务号"/>
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-1" style="float: right;padding: 0;margin-right: 13rem;">
+                                    <div class="am-form-group tpl-table-list-select">
+                                        <select id="order_status" data-am-selected="{btnSize: 'sm'}">
+                                            <option value="99">订单状态</option>
+                                            <option value="1">上架中</option>
+                                            <option value="0">已下架</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-1" style="float: right;padding: 0;margin-right: 13rem;">
+                                    <div class="am-form-group tpl-table-list-select">
+                                        <select id="task_status" data-am-selected="{btnSize: 'sm'}">
+                                            <option value="99">任务状态</option>
+                                            <option value="1">执行中</option>
+                                            <option value="0">已停止</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -111,18 +102,13 @@
                                     <thead>
                                         <tr>
                                             <th>主图</th>
-                                            {% if user.level == 1 %}
                                             <th>用户</th>
-                                            {% endif %}
-                                            <th>产品简写</th>
-                                            <th width="15%">关键词</th>
-                                            <th width="10%">ASIN</th>
+                                            <th>任务号</th>
+                                            <th>ASIN</th>
                                             <th>价格</th>
-                                            <th>品牌名</th>
-                                            <th>店铺名</th>
-                                            <th>完成度</th>
-                                            <th>添加时间</th>
-                                            <th>操作</th>
+                                            <th>最后上架时间</th>
+                                            <th>任务状态</th>
+                                            <th>是否上架</th>
                                         </tr>
                                     </thead>
                                     <tbody id="list-tbody">
@@ -148,6 +134,6 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/review/review-list.js"></script>
+<script src="../../static/assets/js/review/grounding-list.js?t=20201031"></script>
 </body>
 </html>

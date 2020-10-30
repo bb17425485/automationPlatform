@@ -64,9 +64,9 @@ function structureHtml(html, data, i) {
     html += '<td>' + data[i].nums + '</td>'
     html += '<td>' + data[i].share_num + '</td>'
     html += '<td>' + data[i].done_num + '</td>'
-    if (data[i].state === "working") {
+    if (data[i].status === "working") {
         html += '<td class="am-warning">进行中</td>'
-    } else if (data[i].state === "finish") {
+    } else if (data[i].status === "finish") {
         html += '<td class="am-success">已完成</td>'
     } else {
         html += '<td>未知</td>'
@@ -92,13 +92,13 @@ function goPage(){
 }
 
 function submitOpt() {
-    let state = $('#state').val();
+    let status = $('#status').val();
     let keyword = $('#keyword').val();
     let group_id = $('#group_id').val();
     console.log(keyword)
     let opt = {};
-    if (state !== "none") {
-        opt['state'] = state;
+    if (status !== "none") {
+        opt['status'] = status;
     }
     if (keyword) {
         opt['keyword'] = keyword;

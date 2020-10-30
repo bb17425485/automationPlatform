@@ -69,12 +69,12 @@ function structureHtml(html, data, i) {
     } else if (data[i].level === 2) {
         html += '<td>平台用户</td>'
     }
-    html += '<td><select class="state_select" style="font-size: 1.5rem" data-id="' + data[i].id + '" data-am-selected="{btnSize: \'sm\'}"><option value="none">选择状态</option>'
-    if (data[i].state === 1) {
+    html += '<td><select class="status_select" style="font-size: 1.5rem" data-id="' + data[i].id + '" data-am-selected="{btnSize: \'sm\'}"><option value="none">选择状态</option>'
+    if (data[i].status === 1) {
         html += '<option value="1" selected>正常</option><option value="2">待审核</option><option value="3">停用</option>'
-    } else if (data[i].state === 2) {
+    } else if (data[i].status === 2) {
         html += '<option value="1">正常</option><option value="2" selected>待审核</option><option value="3">停用</option>'
-    } else if (data[i].state === 3) {
+    } else if (data[i].status === 3) {
         html += '<option value="1">正常</option><option value="2">待审核</option><option value="3" selected>停用</option>'
     }
     html += '</select></div></div></td>'
@@ -85,10 +85,10 @@ function structureHtml(html, data, i) {
 }
 
 function selectOnChange() {
-    $('.state_select').on("change", function () {
+    $('.status_select').on("change", function () {
         let id = $(this).data("id")
         if (id) {
-            let opt = {"state":$(this).find(':selected').val(),"id":id}
+            let opt = {"status":$(this).find(':selected').val(),"id":id}
             $.ajax({
                 type: "post",
                 url: "updateUser",

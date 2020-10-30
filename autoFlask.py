@@ -63,9 +63,9 @@ def login():
         user = mp.fetch_one("select * from tb_user where account=%s",account)
         if user:
             if pyUtils.getMd5(request.form.get("pwd")) == user['password']:
-                if user['state'] == 3:
+                if user['status'] == 3:
                     flash("帐号已停用，请联系管理员")
-                elif user['state'] == 2:
+                elif user['status'] == 2:
                     flash("帐号待审核，请联系管理员")
                 else:
                     session['user'] = user
@@ -117,7 +117,7 @@ def getUserData():
     if data:
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
-    sql = "select t.id,t.account,t.level,t.nickname,t.state,DATE_FORMAT(t.reg_time,'%%Y-%%m-%%d %%H:%%i:%%s') reg_time," \
+    sql = "select t.id,t.account,t.level,t.nickname,t.status,DATE_FORMAT(t.reg_time,'%%Y-%%m-%%d %%H:%%i:%%s') reg_time," \
           "DATE_FORMAT(t.login_time,'%%Y-%%m-%%d %%H:%%i:%%s') login_time from tb_user t where 1=1 "
     param = []
     try:
@@ -138,8 +138,8 @@ def updateUser():
     if data:
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
-    sql = "update tb_user set state=%s where id=%s"
-    param = [json_data.get('state'),json_data.get('id')]
+    sql = "update tb_user set status=%s where id=%s"
+    param = [json_data.get('status'),json_data.get('id')]
     mp.update(sql,param)
     res_json = {"code":"0000","msg":"修改成功"}
     return jsonify(res_json)
@@ -152,7 +152,7 @@ def addUser():
     if data:
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
-    sql = "insert into tb_user(account, password, nickname, level, state, reg_time) values (%s,%s,%s,%s,1,now())"
+    sql = "insert into tb_user(account, password, nickname, level, status, reg_time) values (%s,%s,%s,%s,1,now())"
     param = [json_data.get('account'), pyUtils.getMd5(json_data.get("password")),json_data.get('nickname'),json_data.get('level')]
     msg = "用户添加成功"
     try:

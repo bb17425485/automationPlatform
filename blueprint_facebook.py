@@ -38,7 +38,7 @@ def form():
         mp = MysqlPool()
         try:
             for i,group_id in enumerate(json_data.get('group_id')):
-                sql = "insert into tb_post(group_id,keyword,nums,share_num,done_num,done_share,content,user_id,state,add_time,accounts) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'')"
+                sql = "insert into tb_post(group_id,keyword,nums,share_num,done_num,done_share,content,user_id,status,add_time,accounts) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'')"
                 param = [group_id, json_data.get("keyword"), json_data.get("nums"),json_data.get("share_num"),"0","0",
                          json_data.get('content'), session.get('user')['id'], 'working', datetime.now()]
                 mp.insert(sql, param)
@@ -62,9 +62,9 @@ def getFbDataByUser():
     sql = "select * from tb_post where user_id=%s "
     param = [session.get('user')['id']]
     try:
-        if json_data.get('state'):
-            sql += "and state=%s "
-            param.append(json_data.get('state'))
+        if json_data.get('status'):
+            sql += "and status=%s "
+            param.append(json_data.get('status'))
     except:
         pass
     try:

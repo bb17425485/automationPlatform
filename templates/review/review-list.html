@@ -24,10 +24,12 @@
     #review_table th {
         text-align: center;
     }
+
     #review_table td {
         text-align: center;
         vertical-align: middle;
     }
+
     #order_table td {
         text-align: left;
     }
@@ -59,15 +61,15 @@
                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
                        id="order_table">
                     <thead>
-                        <tr>
-                            <th>编号</th>
-                            <th>订单号</th>
-                            <th>流量渠道</th>
-                            <th>下单时间</th>
-                            <th>profile</th>
-                            <th>留评链接</th>
-                            <th>结算状态</th>
-                        </tr>
+                    <tr>
+                        <th>编号</th>
+                        <th>订单号</th>
+                        <th>流量渠道</th>
+                        <th>下单时间</th>
+                        <th>profile</th>
+                        <th>留评链接</th>
+                        <th>结算状态</th>
+                    </tr>
                     </thead>
                     <tbody id="order_tbody">
                     </tbody>
@@ -85,16 +87,13 @@
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title am-cf">刷单任务列表<div class="am-fr" style="color: red" id="total_num"></div></div>
+                            <div class="widget-title am-cf">代购任务列表
+                                <div class="am-fr" style="color: red" id="total_num"></div>
+                            </div>
                         </div>
                         <div class="widget-body am-fr">
                             <div class="am-fl" style="padding: 1rem 0">
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="width: 100%">
-                                        <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
-                                    </div>
-                                </div>
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: left">
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: right">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <input type="text" class="am-form-field" id="asin" placeholder="请输入ASIN"/>
                                         <span class="am-input-group-btn">
@@ -103,28 +102,48 @@
                                           </span>
                                     </div>
                                 </div>
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-2" style="float: right">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p"
+                                         style="width: 100%">
+                                        <input type="text" class="am-form-field" id="keyword" placeholder="请输入关键词"/>
+                                    </div>
+                                </div>
+                                {% if user.level == 1 %}
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-1" style="float: right;padding: 0;margin-right: 13rem;">
+                                    <div class="am-form-group tpl-table-list-select">
+                                        <select id="user_select" data-am-selected="{searchBox: 1}">
+                                            <option value="0">所有用户</option>
+                                            {% for uu in user_list %}
+                                                <option value="{{ uu.id }}">{{ uu.nickname }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
 
                             <div class="am-u-sm-12 am-scrollable-horizontal">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
+                                <table width="100%"
+                                       class="am-table am-table-compact am-table-striped tpl-table-black am-table-hover"
                                        id="review_table">
                                     <thead>
-                                        <tr>
-                                            <th>主图</th>
-                                            {% if user.level == 1 %}
-                                                <th>用户</th>
-                                            {% endif %}
-                                            <th>产品简写</th>
+                                    <tr>
+                                        <th>主图</th>
+                                        {% if user.level == 1 %}
+                                            <th>用户</th>
                                             <th>上架状态</th>
-                                            <th width="15%">关键词</th>
-                                            <th width="9%">ASIN</th>
-                                            <th>价格</th>
-{#                                            <th>品牌名</th>#}
-                                            <th>店铺名</th>
-                                            <th>完成度</th>
-                                            <th>添加时间</th>
-                                            <th>操作</th>
-                                        </tr>
+                                            <th>折扣</th>
+                                        {% endif %}
+                                        <th>产品简写</th>
+                                        <th width="15%">关键词</th>
+                                        <th width="9%">ASIN</th>
+                                        <th>价格</th>
+                                        {#                                            <th>品牌名</th>#}
+                                        <th>店铺名</th>
+                                        <th>完成度</th>
+                                        <th>添加时间</th>
+                                        <th>操作</th>
+                                    </tr>
                                     </thead>
                                     <tbody id="list-tbody">
                                     </tbody>
@@ -149,6 +168,6 @@
 <script src="../../static/assets/js/amazeui.datatables.min.js"></script>
 <script src="../../static/assets/js/dataTables.responsive.min.js"></script>
 <script src="../../static/assets/js/app.js"></script>
-<script src="../../static/assets/js/review/review-list.js?t=20201029"></script>
+<script src="../../static/assets/js/review/review-list.js?t=20201031"></script>
 </body>
 </html>

@@ -115,25 +115,25 @@ class FaceBookOperat:
                 WebDriverWait(driver, 10).until(
                     EC.visibility_of_element_located((By.XPATH,
                                                       '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/button')))
-                group_state = driver.find_element_by_xpath(
+                group_status = driver.find_element_by_xpath(
                     '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/button').text
             except:
                 try:
                     WebDriverWait(driver, 5).until(
                         EC.visibility_of_element_located((By.XPATH,
                                                           '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a')))
-                    group_state = driver.find_element_by_xpath(
+                    group_status = driver.find_element_by_xpath(
                         '//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a').text
                 except:
                     print("-----查找群组%s出错-----"%self.group_id)
                     driver.quit()
                     return 0
-            print("*****state:",group_state,"*****")
-            if group_state == "请求已发送":
+            print("*****status:",group_status,"*****")
+            if group_status == "请求已发送":
                 print("-----%s加入群组请求已发送-----"%acc['account'])
                 driver.quit()
                 return 0
-            elif group_state == "加入":
+            elif group_status == "加入":
                 driver.find_element_by_xpath('//div[@id="BrowseResultsContainer"]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/a').click()
                 WebDriverWait(driver, 15).until(
                     EC.visibility_of_element_located((By.XPATH,
@@ -145,7 +145,7 @@ class FaceBookOperat:
                     print("-----回答问题失败-----")
                 driver.quit()
                 return 0
-            elif group_state == "已加入":
+            elif group_status == "已加入":
                 try:
                     driver.find_element_by_xpath('//*[@id="BrowseResultsContainer"]/div[1]//a').click()
                     WebDriverWait(driver, 15).until(
@@ -176,7 +176,7 @@ class FaceBookOperat:
                     sleep(1)
                     print("*****分享成功*****")
                     mp = MysqlPool()
-                    sql = "update tb_post set state=%s,finish_time=%s where id=%s"
+                    sql = "update tb_post set status=%s,finish_time=%s where id=%s"
                     param = ["finish",datetime.now(),str(self.post_id)]
                     mp.update(sql,param)
                     print("*****更新数据库成功*****")

@@ -46,7 +46,7 @@ def form():
         data = request.get_data()
         json_data = json.loads(data.decode("utf-8"))
         mp = MysqlPool()
-        sql = "insert into tb_amz_track_pro(user_id,keyword,asin,state,page_size,add_time) values(%s,%s,%s,%s,%s,now())"
+        sql = "insert into tb_amz_track_pro(user_id,keyword,asin,status,page_size,add_time) values(%s,%s,%s,%s,%s,now())"
         param = [session.get('user')['id'], json_data.get("keyword"), json_data.get("asin"), "1",json_data.get('page_size')]
         try:
             mp.insert(sql, param)
@@ -67,14 +67,14 @@ def getTrackData():
     if data:
         json_data = json.loads(data.decode("utf-8"))
     mp = MysqlPool()
-    sql = "SELECT t.*,DATE_FORMAT(t.add_time,'%%Y-%%m-%%d %%H') update_time, tt.asin, tt.keyword, tt.page_size, tt.state FROM tb_amz_track_data t, tb_amz_track_pro tt " \
+    sql = "SELECT t.*,DATE_FORMAT(t.add_time,'%%Y-%%m-%%d %%H') update_time, tt.asin, tt.keyword, tt.page_size, tt.status FROM tb_amz_track_data t, tb_amz_track_pro tt " \
           "WHERE t.add_time IN ( SELECT MAX(t1.add_time) FROM tb_amz_track_data t1 GROUP BY t1.pro_id ) " \
           "AND t.pro_id = tt.id AND tt.user_id = %s"
     param = [session.get('user')['id']]
     try:
-        if json_data.get('state'):
-            sql += "and tt.state=%s "
-            param.append(json_data.get('state'))
+        if json_data.get('status'):
+            sql += "and tt.status=%s "
+            param.append(json_data.get('status'))
     except:
         pass
     try:
@@ -106,15 +106,15 @@ def getDataByProId():
     res_json = {"code": "0000", "list": pro_list}
     return jsonify(res_json)
 
-@amz.route('/updateTrackState',methods=['POST'])
-def updateTrackState():
+@amz.route('/updateTrackStatus',methods=['POST'])
+def updateTrackStatus():
     data = request.get_data()
     json_data = json.loads(data.decode("utf-8"))
-    state = json_data.get('state')
-    sql = "update tb_amz_track_pro set state=%s where id=%s"
-    if state == 1:update_state = 0
-    else:update_state = 1
-    param = [update_state,json_data.get('id')]
+    status = json_data.get('status')
+    sql = "update tb_amz_track_pro set status=%s where id=%s"
+    if status == 1:update_status = 0
+    else:update_status = 1
+    param = [update_status,json_data.get('id')]
     mp = MysqlPool()
     mp.update(sql, param)
     res_json = {"code": "0000", "msg": "状态修改成功！"}

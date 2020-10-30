@@ -45,10 +45,10 @@ function updateBtnInit() {
             relatedTarget: this,
             onConfirm: function (options) {
                 let $link = $(this.relatedTarget);
-                let opt = {"state":$link.data('state'),"id":$link.data('id')}
+                let opt = {"status":$link.data('status'),"id":$link.data('id')}
                 $.ajax({
                     type: "post",
-                    url: "updateTrackState",
+                    url: "updateTrackStatus",
                     dataType: "json",
                     charset: "utf-8",
                     contentType: "application/json",
@@ -94,10 +94,10 @@ function structureHtml(html, data, i) {
     html += '<td><img style="width: 5rem" src="https://m.media-amazon.com/images/I/915Jnh4JIcL._AC_UL320_.jpg" class="tpl-table-line-img" alt=""></td>'
     html += '<td>' + data[i].keyword + '</td>'
     html += '<td>' + data[i].asin + '</td>'
-    if (data[i].state === 1) {
-        html += '<td class="am-success"><div class="tpl-table-black-operation"><a href="javascript:void(0);" data-id="' + data[i].pro_id + '" data-state="' + data[i].state + '" class="tpl-table-black-operation cf_class"><i class="am-icon-cog"></i> 进行中</a></div></td>'
-    } else if (data[i].state === 0) {
-        html += '<td class="am-warning"><div class="tpl-table-black-operation"><a href="javascript:void(0);" data-id="' + data[i].pro_id + '" data-state="' + data[i].state + '" class="tpl-table-black-operation-del cf_class"><i class="am-icon-cog"></i> 已停止</a></div></td>'
+    if (data[i].status === 1) {
+        html += '<td class="am-success"><div class="tpl-table-black-operation"><a href="javascript:void(0);" data-id="' + data[i].pro_id + '" data-status="' + data[i].status + '" class="tpl-table-black-operation cf_class"><i class="am-icon-cog"></i> 进行中</a></div></td>'
+    } else if (data[i].status === 0) {
+        html += '<td class="am-warning"><div class="tpl-table-black-operation"><a href="javascript:void(0);" data-id="' + data[i].pro_id + '" data-status="' + data[i].status + '" class="tpl-table-black-operation-del cf_class"><i class="am-icon-cog"></i> 已停止</a></div></td>'
     } else {
         html += '<td>未知</td>'
     }
@@ -143,12 +143,12 @@ function goPage() {
 }
 
 function submitOpt() {
-    let state = $('#state').val();
+    let status = $('#status').val();
     let keyword = $('#keyword').val();
     let asin = $('#asin').val();
     let opt = {};
-    if (state !== "none") {
-        opt['state'] = state;
+    if (status !== "none") {
+        opt['status'] = status;
     }
     if (keyword) {
         opt['keyword'] = keyword;

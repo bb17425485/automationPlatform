@@ -18,6 +18,6 @@ if __name__ == "__main__":
     for s in s_list:
         asins = str(s['asin']).split("|")
         for asin in asins:
-            in_sql = "insert into tb_task_asin(task_id,asin,state) values(%s,%s,1)"
+            in_sql = "insert into tb_task_asin(task_id,asin,status) values(%s,%s,1)"
             param = [s['id'],asin]
             mp.insert(in_sql,param)

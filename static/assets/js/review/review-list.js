@@ -74,15 +74,16 @@ function structureHtml(html, data, i) {
     html += '<td><img style="width: 6rem;height: 6rem;cursor:pointer;" src="'+(data[i].img?data[i].img:'')+'" onclick="openAmzPage(\''+asin+'\')" class="tpl-table-line-img" alt=""></td>'
     if(level === "1"){
         html += '<td>' + checkObj(data[i].nickname) + '</td>'
+        let checked = ""
+        if(data[i].status===1){
+            checked = " checked"
+        }
+        html += '<td><div class="tpl-switch">' +
+            '<input type="checkbox" style="margin-left: -2.5rem" data-id="' + data[i].id + '" class="ios-switch bigswitch tpl-switch-btn"'+checked+'>' +
+            '<div class="tpl-switch-btn-view" style="margin: 0 auto"><div></div></div></div></td>'
+        html += '<td><input type="text" onblur="discountChange(this)" data-id="' + data[i].id + '" style="font-size: 14px;width: 4rem;color: #838FA1;line-height: 1.6;text-align: center" value="'+checkObj(data[i].discount)+'"></td>'
     }
     html += '<td>' + checkObj(data[i].name) + '</td>'
-    let checked = ""
-    if(data[i].state===1){
-        checked = " checked"
-    }
-    html += '<td><div class="tpl-switch">' +
-        '<input type="checkbox" style="margin-left: -2.5rem" data-id="' + data[i].id + '" class="ios-switch bigswitch tpl-switch-btn"'+checked+'>' +
-        '<div class="tpl-switch-btn-view" style="margin: 0 auto"><div></div></div></div></td>'
     html += '<td>' + checkObj(data[i].keyword) + '</td>'
     html += '<td>' + checkObj(data[i].asin_str) + '</td>'
     html += '<td>' + checkObj(data[i].price) + '</td>'
@@ -113,6 +114,26 @@ function showDetail(id,asin,img){
     $("#order_modal").modal('open')
 }
 
+function discountChange(obj){
+    let id = $(obj).data("id")
+        if (id) {
+            let opt = {"discount":$(obj).val(),"id":id}
+            $.ajax({
+                type: "post",
+                url: "updateTaskDiscount",
+                dataType: "json",
+                charset: "utf-8",
+                contentType: "application/json",
+                data: JSON.stringify(opt),
+                success: function (d) {
+                    if(d.code !== "0000"){
+                        alert(d.msg)
+                    }
+                }
+            });
+        }
+}
+
 function getOrderData(dataList,asin,img){
     let titleHtml = ""
     if (img && img !== "null"){
@@ -140,7 +161,7 @@ function getOrderData(dataList,asin,img){
             }else{
                 html += '<td>暂无</td>'
             }
-            html += '<td><div class="tpl-switch"><input type="checkbox" data-id="' + data.id + '" class="ios-switch bigswitch tpl-switch-btn"'+(data.state===1?' checked':'')+(level === "1"?'':' disabled')+'><div class="tpl-switch-btn-view" style="margin: 0"><div></div></div></div></td>'
+            html += '<td><div class="tpl-switch"><input type="checkbox" data-id="' + data.id + '" class="ios-switch bigswitch tpl-switch-btn"'+(data.status===1?' checked':'')+(level === "1"?'':' disabled')+'><div class="tpl-switch-btn-view" style="margin: 0"><div></div></div></div></td>'
             html += '</tr>'
         })
     }
@@ -166,12 +187,16 @@ function goPage() {
 function submitOpt() {
     let keyword = $('#keyword').val();
     let asin = $('#asin').val();
+    let user_id = $("#user_select").val()
     let opt = {};
     if (keyword) {
         opt['keyword'] = keyword;
     }
     if (asin) {
         opt['asin'] = asin;
+    }
+    if (user_id && user_id!=="0"){
+        opt['user_id'] = user_id;
     }
     getList(opt);
 }
@@ -180,10 +205,10 @@ function checkedChange() {
     $("#order_tbody").find("input[type='checkbox']").on("change", function () {
         let id = $(this).data("id")
         if (id) {
-            let opt = {"state":$(this).is(":checked")?1:0,"id":id}
+            let opt = {"status":$(this).is(":checked")?1:0,"id":id}
             $.ajax({
                 type: "post",
-                url: "updateOrderState",
+                url: "updateOrderStatus",
                 dataType: "json",
                 charset: "utf-8",
                 contentType: "application/json",
@@ -199,16 +224,16 @@ function checkedChange() {
     $("#list-tbody").find("input[type='checkbox']").on("change", function () {
         let id = $(this).data("id")
         if (id) {
-            let opt = {"state":$(this).is(":checked")?1:0,"id":id}
+            let opt = {"status":$(this).is(":checked")?1:0,"id":id}
             $.ajax({
                 type: "post",
-                url: "updateTaskState",
+                url: "updateTaskStatus",
                 dataType: "json",
                 charset: "utf-8",
                 contentType: "application/json",
                 data: JSON.stringify(opt),
                 success: function (d) {
-                    showTips(d.msg)
+                    // showTips(d.msg)
                 }
             });
         }
